@@ -29,12 +29,12 @@ function extractKeyboardsIds(xinputResult) {
 
     const stripped = item.replace(/\[slave\s+keyboard/, '');
 
-    if (!stripped.match(/Keyboard/i)) continue;
+    if (!stripped.match(/XinputKeyboard/i)) continue;
 
     if (
       stripped.indexOf('Virtual core XTEST keyboard') >= 0
-      || stripped.indexOf('Keyboard System Control') >= 0
-      || stripped.indexOf('Keyboard Consumer Control') >= 0
+      || stripped.indexOf('XinputKeyboard System Control') >= 0
+      || stripped.indexOf('XinputKeyboard Consumer Control') >= 0
     ) continue;
 
     ids.push(parseInt(stripped.match(/id=(\d+)/)[1]));

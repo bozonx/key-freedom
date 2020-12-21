@@ -1,4 +1,4 @@
-import Keyboard from './Keyboard'
+import XinputKeyboard from './XinputKeyboard'
 import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
 import {AppConfig} from './interfaces/AppConfig'
@@ -7,7 +7,7 @@ import RunAction from './RunAction'
 
 export default class Main {
   readonly config: AppConfig
-  readonly keyboard: Keyboard
+  readonly keyboard: XinputKeyboard
   readonly combinations: Combinations
   readonly shortcutFinder: ShortcutFinder
   readonly runAction: RunAction
@@ -15,7 +15,7 @@ export default class Main {
 
   constructor(config: AppConfig) {
     this.config = config
-    this.keyboard = new Keyboard(this)
+    this.keyboard = new XinputKeyboard(this)
     this.combinations = new Combinations(this)
     this.shortcutFinder = new ShortcutFinder(this)
     this.runAction = new RunAction(this)
