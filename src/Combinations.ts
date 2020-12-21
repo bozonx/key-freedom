@@ -13,7 +13,7 @@ export type CombinationsHandler = (
   key: number,
   orderedMod: string[],
   event: CombinationEvent
-) => boolean
+) => void
 
 
 export default class Combinations {

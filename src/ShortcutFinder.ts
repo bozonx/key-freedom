@@ -28,7 +28,15 @@ export default class ShortcutFinder {
     key: number,
     pressedMods: string[],
     event: CombinationEvent
-  ): boolean => {
+  ) => {
+    this.main.log.debug(
+      `Combination ${(event === CombinationEvent.press) ? 'press' : 'release'} ` +
+      ` ${key}, mods: ${pressedMods.join(', ')}`
+    )
+
+    // TODO: remove
+    return
+
     for (const binding of this.bindings) {
       const isMatches = isCombinationMatches(
         key,
