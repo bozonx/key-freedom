@@ -1,4 +1,5 @@
 import LogLevel, {LOG_LEVELS} from '../interfaces/LogLevel'
+import {SPECIAL_KEYS_NAMES} from '../constants'
 
 
 /**
@@ -31,6 +32,7 @@ export function parseCombination(combination?: string): string[][] | undefined {
 }
 
 export function keyCodeToModName(keyCode: number): string {
-  // TODO: add
-  return ''
+  const keyName: string | undefined = SPECIAL_KEYS_NAMES[keyCode]
+
+  return (keyName) ? keyName : String(keyCode)
 }
