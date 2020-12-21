@@ -2,38 +2,32 @@
 
 
 bindings:
-- key: a
-  mod:
-  - CapsLock
+- key: CapsLock + a
   cmd: konsole
 
-- key: Space
-  mod:
-    - CapsLock
-  cmd: xdotool key --clearmodifiers shift+20
+- key: CapsLock + Space
+  combination: Shift + Minus
+  #cmd: xdotool key --clearmodifiers shift+20
 
 #- key: CapsLock
 #  mod:
 #    - Alt_R
 #  cmd: xdotool key --clearmodifiers 119
 
-- key: CapsLock
-  mod:
-    - Alt_L
-  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
+#- key: Alt_L + CapsLock
+#  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
 
-- key: Shift_L
-  mod:
-    - Alt_L
-  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
+#- key: Alt_L + Shift_L
+#  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
 
 ######## ARROWS
-- key: f
-  mod:
-    #- Shift_L
-    - CapsLock
-  cmd: "xdotool key --clearmodifiers 111"
-  #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
+#- key: f
+#  mod:
+#    #- Shift_L
+#    - CapsLock
+#  release: true
+#  cmd: xdotool key --clearmodifiers 111
+#  #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
 
 #- key: k
 #  mod:
