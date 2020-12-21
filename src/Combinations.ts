@@ -50,9 +50,18 @@ export default class Combinations {
     // TODO: добавляем таймаут чтобы убрать себя из модификатора
 
     if (this.pressedKey) {
-      // move previously pressed key to modifier
-      this.pressedMods[keyCodeToModName(keyCode)] = keyCode
-      // TODO: cancel one shot timeout
+      if (this.pressedKey === keyCode) {
+        // pressed second time
+        return
+      }
+      else {
+        // pressed some other key
+        // move previously pressed key to modifier
+        this.pressedMods[keyCodeToModName(this.pressedKey)] = this.pressedKey
+
+        this.pressedKey = keyCode
+        // TODO: cancel one shot timeout
+      }
     }
     else {
       // TODO: для первой нажатой клавиши добавляем таймаут one shot
@@ -68,8 +77,19 @@ export default class Combinations {
   }
 
   private handleRelease(keyCode: number) {
-    // do not emit releases of modifiers
-    if (this.pressedKey !== keyCode) {
+    if (this.pressedKey && this.pressedKey === keyCode) {
+      // release currently pressed key
+      this.keyEvents.emit(
+        this.pressedKey,
+        Object.keys(this.pressedMods),
+        CombinationEvent.release
+      )
+
+      delete this.pressedKey
+      // TODO: delete modifiers ???
+    }
+    else {
+      // some other key. Means modifier
       for (const key of Object.keys(this.pressedMods)) {
         if (this.pressedMods[key] !== keyCode) continue
 
@@ -77,17 +97,14 @@ export default class Combinations {
 
         // TODO: remove modifier timeout also
       }
-      // do nothing
-      return
     }
+
+    // do not emit releases of modifiers
+    //if (this.pressedKey !== keyCode) return
 
     // TODO: cancel one shot timeout
 
-    this.keyEvents.emit(
-      this.pressedKey,
-      Object.keys(this.pressedMods),
-      CombinationEvent.press
-    )
+
   }
 
   private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {

@@ -31,7 +31,7 @@ export default class ShortcutFinder {
   ) => {
     this.main.log.debug(
       `Combination ${(event === CombinationEvent.press) ? 'press' : 'release'} ` +
-      ` ${key}, mods: ${pressedMods.join(', ')}`
+      `${key}, mods: ${pressedMods.join(', ')}`
     )
 
     // TODO: remove

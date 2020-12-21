@@ -5,7 +5,7 @@ export const KEY_POSTFIX = {
   any: '_A',
 }
 
-export const SPECIAL_KEYS_NAMES = {
+export const SPECIAL_KEYS_NAMES: Record<string, string> = {
   9: 'Escape',
   49: 'Tilda',
   23: 'Tab',
@@ -34,4 +34,6 @@ export const SPECIAL_KEYS_NAMES = {
   // TODO: add Super_R
   // TODO: add key pad
   // TODO: add F keys
+  // TODO: add ciphers
+  // TODO: add eng characters
 }
