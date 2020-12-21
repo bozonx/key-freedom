@@ -1,27 +1,20 @@
 import Main from './Main'
 import {CombinationEvent} from './Combinations'
-import {
-  isCombinationMatches,
-  prepareBindings,
-} from './helpers/shurtcutMatchHelpers'
-import {Binding} from './interfaces/Binding'
+import {isCombinationMatches} from './helpers/shurtcutMatchHelpers'
 import {keyCodeToModName} from './helpers/helpers'
 
 
 export default class ShortcutFinder {
   private readonly main: Main
-  private bindings: Binding[]
 
 
   constructor(main: Main) {
     this.main = main
-    this.bindings = prepareBindings(this.main.config)
 
     this.main.combinations.addListener(this.onCombination)
   }
 
   async destroy() {
-    this.bindings = []
   }
 
 
@@ -35,7 +28,7 @@ export default class ShortcutFinder {
       `${key}, mods: ${pressedMods.join(', ')}`
     )
 
-    for (const binding of this.bindings) {
+    for (const binding of this.main.bindings) {
       const isMatches = isCombinationMatches(
         key,
         pressedMods,

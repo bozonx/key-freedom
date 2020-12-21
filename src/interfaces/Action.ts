@@ -3,4 +3,8 @@ export interface Action {
   cmd?: string
   // run some other combination
   combination?: string[][]
+  deShortCut?: {
+    component: string
+    shortCutName: string
+  }
 }

@@ -1,5 +1,6 @@
 # TODO: выполнение комманд - xdotool key --clearmodifiers ctrl+113
 
+de: kdePlasmaX
 
 bindings:
 - key: CapsLock + a
