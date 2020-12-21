@@ -1,7 +1,8 @@
 import Main from './Main'
 import {CombinationEvent} from './Combinations'
-import {isOrderedArraysSame, isUnOrderedArraysSame} from './helpers/arrays'
 import {Action} from './interfaces/Action'
+import {KEY_POSTFIX} from './constants'
+import {replacePostfix} from './helpers/helpers'
 
 
 interface PreparedBinding extends Action {
@@ -9,7 +10,6 @@ interface PreparedBinding extends Action {
   key: number[]
   // ordered modifiers
   orderedMod?: string[]
-  unorderedMod?: string[]
   // act on release
   release?: boolean
 }
@@ -35,7 +35,6 @@ export default class ShortcutFinder {
   private onCombination(
     key: number,
     orderedMod: string[],
-    unorderedMod: string[],
     event: CombinationEvent
   ): boolean {
     for (const binding of this.bindings) {
@@ -48,10 +47,7 @@ export default class ShortcutFinder {
       else if (!binding.key.includes(key)) {
         continue
       }
-      else if (binding.orderedMod && !isOrderedArraysSame(binding.orderedMod, orderedMod)) {
-        continue
-      }
-      else if (!isUnOrderedArraysSame(binding.unorderedMod, unorderedMod)) {
+      else if (!this.isModsSame(orderedMod, binding.orderedMod)) {
         continue
       }
 
@@ -66,7 +62,36 @@ export default class ShortcutFinder {
     return false
   }
 
+  private isModsSame(orderedEventMods: string[], orderedBindingMods?: string[]): boolean {
+    // TODO: отработать one shot
+    if (!orderedBindingMods || !orderedBindingMods.length) return false;
+
+    let foundCount = 0
+
+    for (const pressedMod of orderedEventMods) {
+      if (orderedBindingMods.includes(pressedMod)) {
+        // means it has the same key
+        foundCount++
+
+        continue
+      }
+      else {
+        // try to find key with postfix _A
+        if (orderedBindingMods.includes(replacePostfix(pressedMod, KEY_POSTFIX.any))) {
+          foundCount++
+
+          continue
+        }
+
+        return false
+      }
+    }
+
+    return foundCount === orderedBindingMods.length
+  }
+
   private prepareBindings(): PreparedBinding[] {
+
     // TODO: add
   }
 

@@ -10,7 +10,6 @@ export enum CombinationEvent {
 export type CombinationsHandler = (
   key: number,
   orderedMod: string[],
-  unorderedMod: string[],
   event: CombinationEvent
 ) => boolean
 

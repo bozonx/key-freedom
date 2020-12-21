@@ -4,7 +4,7 @@ export interface ConfigBinding {
   // modifiers
   mod?: string[]
   // order of modifiers matters. By default it doesn't matters.
-  ordered?: boolean
+  //ordered?: boolean
   // act on release
   release?: boolean
   // run some cmd
