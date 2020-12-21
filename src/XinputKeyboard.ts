@@ -2,6 +2,7 @@ import {spawn} from 'child_process'
 
 import Main from './Main'
 import {Keyboard, KeyboardHandler} from './interfaces/Keyboard'
+import IndexedEvents from './helpers/IndexedEvents'
 
 
 
@@ -49,6 +50,7 @@ function extractKeyboardsIds(xinputResult: string): string[] {
 
 export default class XinputKeyboard implements Keyboard {
   private readonly main: Main
+  private keyEvents = new IndexedEvents<KeyboardHandler>()
 
 
   constructor(main: Main) {
@@ -66,17 +68,17 @@ export default class XinputKeyboard implements Keyboard {
 
     for (const id of keyboardsIds) {
       await this.addKeyboardListener(id, (keyCode: number, press: boolean, release: boolean) => {
-        this.keyEvent.emit(keyCode, press, release)
+        this.keyEvents.emit(keyCode, press, release)
       })
     }
   }
 
   addListener(cb: KeyboardHandler): number {
-
+    return this.keyEvents.addListener(cb)
   }
 
   removeListener(handlerIndex: number) {
-
+    this.keyEvents.removeListener(handlerIndex)
   }
 
 

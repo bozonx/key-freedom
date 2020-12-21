@@ -1,7 +1,7 @@
 import {KEY_POSTFIX} from '../constants'
 import {AppConfig} from '../interfaces/AppConfig'
 import {ShortcutBinding} from '../interfaces/ShortcutBinding'
-import {convertToKeyCode, parseCombination, prepareMods, replacePostfix} from './common'
+import {convertToKeyCode, parseCombination, prepareMods, replacePostfix} from './helpers'
 import {CombinationEvent} from '../Combinations'
 
 
