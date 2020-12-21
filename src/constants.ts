@@ -31,6 +31,8 @@ export const SPECIAL_KEYS_NAMES: Record<string, string> = {
   117: 'PgDown',
   110: 'Home',
   115: 'End',
+
+  38: 'a',
   // TODO: add Super_R
   // TODO: add key pad
   // TODO: add F keys

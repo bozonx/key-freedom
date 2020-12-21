@@ -1,3 +1,5 @@
 bindings:
-  - key: 38
-    cmd: konsole
+- key: 'a'
+  mod:
+  - CapsLock
+  cmd: konsole

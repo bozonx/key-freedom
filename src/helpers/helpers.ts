@@ -16,23 +16,24 @@ export function replacePostfix(str: string, to: string): string {
   return ''
 }
 
-export function convertToKeyCode(key: string): number[] {
-// TODO: add
-  return []
-}
-
-export function prepareMods(mod?: string[]): string[] | undefined {
-// TODO: add
-  return
-}
-
-export function parseCombination(combination?: string): string[][] | undefined {
-  // TODO: add
-  return
-}
 
 export function keyCodeToModName(keyCode: number): string {
   const keyName: string | undefined = SPECIAL_KEYS_NAMES[keyCode]
 
   return (keyName) ? keyName : String(keyCode)
+}
+
+export function convertToKeyCode(key: string): number[] {
+  // TODO: add
+  return []
+}
+
+export function prepareMods(mod?: string[]): string[] | undefined {
+  // TODO: add - Prefix "_A" added if need
+  return mod
+}
+
+export function parseCombination(combination?: string): string[][] | undefined {
+  // TODO: add somedate
+  return
 }
