@@ -1,3 +1,5 @@
+export type ConfigDe = 'kdePlasmaX'
+
 export interface ConfigAction {
   // run some cmd
   cmd?: string
@@ -27,5 +29,6 @@ export interface ConfigProps {
 }
 
 export interface AppConfig extends ConfigProps {
+  de: ConfigDe
   bindings: ConfigBinding[]
 }

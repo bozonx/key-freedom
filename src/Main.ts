@@ -1,14 +1,16 @@
 import XinputKeyboard from './XinputKeyboard'
 import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
-import {AppConfig} from './interfaces/AppConfig'
+import {AppConfig, ConfigProps} from './interfaces/AppConfig'
 import RunAction from './RunAction'
 import Logger from './interfaces/Logger'
+import {ShortcutBinding} from './interfaces/ShortcutBinding'
 
 
 export default class Main {
   readonly log: Logger
-  readonly config: AppConfig
+  readonly props: ConfigProps
+  readonly bindings: ShortcutBinding
   readonly keyboard: XinputKeyboard
   readonly combinations: Combinations
   readonly shortcutFinder: ShortcutFinder
