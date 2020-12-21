@@ -62,14 +62,15 @@ export default class ShortcutFinder {
     return false
   }
 
-  private isModsSame(orderedEventMods: string[], orderedBindingMods?: string[]): boolean {
+  private isModsSame(pressedMods: string[], bindingMods?: string[]): boolean {
     // TODO: отработать one shot
-    if (!orderedBindingMods || !orderedBindingMods.length) return false;
+    if (!bindingMods || !bindingMods.length) return false;
+    // TODO: check the same length
 
     let foundCount = 0
 
-    for (const pressedMod of orderedEventMods) {
-      if (orderedBindingMods.includes(pressedMod)) {
+    for (const pressedMod of pressedMods) {
+      if (bindingMods.includes(pressedMod)) {
         // means it has the same key
         foundCount++
 
@@ -77,7 +78,7 @@ export default class ShortcutFinder {
       }
       else {
         // try to find key with postfix _A
-        if (orderedBindingMods.includes(replacePostfix(pressedMod, KEY_POSTFIX.any))) {
+        if (bindingMods.includes(replacePostfix(pressedMod, KEY_POSTFIX.any))) {
           foundCount++
 
           continue
@@ -87,7 +88,7 @@ export default class ShortcutFinder {
       }
     }
 
-    return foundCount === orderedBindingMods.length
+    return foundCount === bindingMods.length
   }
 
   private prepareBindings(): PreparedBinding[] {

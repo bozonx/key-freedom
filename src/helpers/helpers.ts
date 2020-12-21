@@ -2,6 +2,6 @@
 
 //}
 
-export function replacePostfix(str: string, to: string) {
+export function replacePostfix(str: string, to: string): string {
   // TODO: add -
 }
