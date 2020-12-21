@@ -1,6 +1,6 @@
 import {KEY_POSTFIX} from '../constants'
 import {AppConfig} from '../interfaces/AppConfig'
-import {ShortcutBinding} from '../interfaces/ShortcutBinding'
+import {Binding} from '../interfaces/Binding'
 import {convertToKeyCode, parseCombination, prepareMods, replacePostfix} from './helpers'
 import {CombinationEvent} from '../Combinations'
 
@@ -9,7 +9,7 @@ export function isCombinationMatches(
   key: number,
   pressedMods: string[],
   event: CombinationEvent,
-  binding: ShortcutBinding
+  binding: Binding
 ): boolean {
   if (binding.release && event != CombinationEvent.release) {
     return false
@@ -62,8 +62,8 @@ export function isModsSame(pressedMods: string[], bindingMods?: string[]): boole
   return foundCount === bindingMods.length
 }
 
-export function prepareBindings(config: AppConfig): ShortcutBinding[] {
-  const result: ShortcutBinding[] = []
+export function prepareBindings(config: AppConfig): Binding[] {
+  const result: Binding[] = []
 
   for (const item of config.bindings) {
     result.push({

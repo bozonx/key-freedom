@@ -1,7 +1,7 @@
 import {Action} from './Action'
 
 
-export interface ShortcutBinding extends Action {
+export interface Binding extends Action {
   // main key codes. More than one for left and right Ctrl etc
   key: number[]
   // prepared modifiers. Prefix "_A" added if need

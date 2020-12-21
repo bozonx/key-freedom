@@ -4,13 +4,13 @@ import {
   isCombinationMatches,
   prepareBindings,
 } from './helpers/shurtcutMatchHelpers'
-import {ShortcutBinding} from './interfaces/ShortcutBinding'
+import {Binding} from './interfaces/Binding'
 import {keyCodeToModName} from './helpers/helpers'
 
 
 export default class ShortcutFinder {
   private readonly main: Main
-  private bindings: ShortcutBinding[]
+  private bindings: Binding[]
 
 
   constructor(main: Main) {
