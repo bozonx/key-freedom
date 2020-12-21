@@ -11,6 +11,12 @@ Specify config
 
     node ~/.local/share/key-freedom/key-freedom.js -c ~/mySuperConfig.yaml
 
+## Build
+
+    yarn build
+
+After that look up `./build` dir
+
 ## Debug
 
     yarn start --debug -c ./src/testConfig.yaml
