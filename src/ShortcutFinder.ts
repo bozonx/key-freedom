@@ -1,7 +1,7 @@
 import Main from './Main'
 import {CombinationEvent} from './Combinations'
 import {
-  isModsSame,
+  isCombinationMatches,
   prepareBindings,
 } from './helpers/helpers'
 import {ShortcutBinding} from './interfaces/ShortcutBinding'
@@ -30,25 +30,21 @@ export default class ShortcutFinder {
     event: CombinationEvent
   ): boolean {
     for (const binding of this.bindings) {
-      if (binding.release && event != CombinationEvent.release) {
-        continue
-      }
-      else if (!binding.release && event == CombinationEvent.release) {
-        continue
-      }
-      else if (!binding.key.includes(key)) {
-        continue
-      }
-      else if (!isModsSame(pressedMods, binding.mod)) {
-        continue
-      }
+      const isMatches = isCombinationMatches(
+        key,
+        pressedMods,
+        event,
+        binding
+      )
 
-      this.main.runAction.run({
-        cmd: binding.cmd,
-        combination: binding.combination,
-      })
-      // means cancel of releases of modificators
-      return true
+      if (isMatches) {
+        this.main.runAction.run({
+          cmd: binding.cmd,
+          combination: binding.combination,
+        })
+        // means cancel of releases of modifiers
+        return true
+      }
     }
 
     return false

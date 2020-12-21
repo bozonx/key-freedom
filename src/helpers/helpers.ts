@@ -2,7 +2,30 @@ import {KEY_POSTFIX} from '../constants'
 import {AppConfig} from '../interfaces/AppConfig'
 import {ShortcutBinding} from '../interfaces/ShortcutBinding'
 import {convertToKeyCode, parseCombination, prepareMods, replacePostfix} from './common'
+import {CombinationEvent} from '../Combinations'
 
+
+export function isCombinationMatches(
+  key: number,
+  pressedMods: string[],
+  event: CombinationEvent,
+  binding: ShortcutBinding
+): boolean {
+  if (binding.release && event != CombinationEvent.release) {
+    return false
+  }
+  else if (!binding.release && event == CombinationEvent.release) {
+    return false
+  }
+  else if (!binding.key.includes(key)) {
+    return false
+  }
+  else if (!isModsSame(pressedMods, binding.mod)) {
+    return false
+  }
+
+  return true
+}
 
 export function isModsSame(pressedMods: string[], bindingMods?: string[]): boolean {
   if (!bindingMods || !bindingMods.length) {

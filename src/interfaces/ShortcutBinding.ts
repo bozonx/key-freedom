@@ -7,5 +7,5 @@ export interface ShortcutBinding extends Action {
   // prepared modifiers. Prefix "_A" added if need
   mod?: string[]
   // act only on release
-  release?: boolean
+  release: boolean
 }

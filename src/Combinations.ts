@@ -27,6 +27,8 @@ export default class Combinations {
   }
 
 
+  // TODO: blocking of modifiers releases do on next key press
+
   addListener(cb: CombinationsHandler): number {
 
   }
