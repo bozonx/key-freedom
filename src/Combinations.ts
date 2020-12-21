@@ -1,6 +1,18 @@
 import Main from './Main'
 
-export type CombinationsHandler = () => void
+
+export enum CombinationEvent {
+  press,
+  release,
+}
+
+
+export type CombinationsHandler = (
+  key: number,
+  orderedMod: string[],
+  unorderedMod: string[],
+  event: CombinationEvent
+) => boolean
 
 
 export default class Combinations {
