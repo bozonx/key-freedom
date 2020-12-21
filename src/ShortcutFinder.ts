@@ -34,9 +34,6 @@ export default class ShortcutFinder {
       `${key}, mods: ${pressedMods.join(', ')}`
     )
 
-    // TODO: remove
-    return
-
     for (const binding of this.bindings) {
       const isMatches = isCombinationMatches(
         key,
@@ -45,17 +42,13 @@ export default class ShortcutFinder {
         binding
       )
 
-      if (isMatches) {
-        this.main.runAction.run({
-          cmd: binding.cmd,
-          combination: binding.combination,
-        })
-        // means cancel of releases of modifiers
-        return true
-      }
-    }
+      if (!isMatches) continue
 
-    return false
+      this.main.runAction.run({
+        cmd: binding.cmd,
+        combination: binding.combination,
+      })
+    }
   }
 
 }
