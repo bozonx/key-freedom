@@ -11,6 +11,10 @@ export default class Combinations {
     this.main = main
   }
 
+  async destroy() {
+    // TODO: add
+  }
+
 
   addListener(cb: CombinationsHandler): number {
 

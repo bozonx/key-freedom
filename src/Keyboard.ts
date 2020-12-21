@@ -11,6 +11,14 @@ export default class Keyboard {
     this.main = main
   }
 
+  async destroy() {
+    // TODO: add
+  }
+
+
+  async start() {
+    // TODO: add
+  }
 
   addListener(cb: KeyboardHandler): number {
 
