@@ -16,6 +16,7 @@ export type CombinationsHandler = (
 
 export default class Combinations {
   private readonly main: Main
+  private readonly pressedMods: Record<string, boolean> = {}
 
 
   constructor(main: Main) {
