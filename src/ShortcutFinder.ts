@@ -3,7 +3,7 @@ import {CombinationEvent} from './Combinations'
 import {
   isCombinationMatches,
   prepareBindings,
-} from './helpers/helpers'
+} from './helpers/shurtcutMatchHelpers'
 import {ShortcutBinding} from './interfaces/ShortcutBinding'
 
 
