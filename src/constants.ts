@@ -46,8 +46,8 @@ export const SPECIAL_KEYS_NAMES: string[] = [
   'Ctrl_L', // 37
   'a', // 38
   's', // 39
-  '-40',
-  '-41',
+  'd', // 40
+  'f', // 41
   '-42',
   '-43',
   'j', // 44

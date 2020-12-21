@@ -28,11 +28,13 @@ bindings:
   cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
 
 ######## ARROWS
-#- key: j
-#  mod:
-#    - CapsLock
-#  cmd: xdotool key --clearmodifiers 83
-#
+- key: f
+  mod:
+    #- Shift_L
+    - CapsLock
+  cmd: "xdotool key --clearmodifiers 111"
+  #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
+
 #- key: k
 #  mod:
 #    - CapsLock

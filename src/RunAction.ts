@@ -26,6 +26,7 @@ export default class RunAction {
 
 
   private runCmd(cmd: string) {
+    console.log(111111111, cmd)
     // TODO: does it need arguments???
     const res = exec(cmd);
 
