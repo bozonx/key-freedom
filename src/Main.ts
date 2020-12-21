@@ -2,6 +2,7 @@ import Keyboard from './Keyboard'
 import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
 import {AppConfig} from './interfaces/AppConfig'
+import RunAction from './RunAction'
 
 
 export default class Main {
@@ -9,6 +10,7 @@ export default class Main {
   readonly keyboard: Keyboard
   readonly combinations: Combinations
   readonly shortcutFinder: ShortcutFinder
+  readonly runAction: RunAction
 
 
   constructor(config: AppConfig) {
@@ -16,6 +18,7 @@ export default class Main {
     this.keyboard = new Keyboard(this)
     this.combinations = new Combinations(this)
     this.shortcutFinder = new ShortcutFinder(this)
+    this.runAction = new RunAction(this)
   }
 
   async destroy() {

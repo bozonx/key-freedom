@@ -1,9 +1,10 @@
 import Main from './Main'
 import {CombinationEvent} from './Combinations'
 import {isOrderedArraysSame, isUnOrderedArraysSame} from './helpers/arrays'
+import {Action} from './interfaces/Action'
 
 
-interface PreparedBinding {
+interface PreparedBinding extends Action {
   // main key codes. More than one for left and right Ctrl etc
   key: number[]
   // ordered modifiers
@@ -11,10 +12,6 @@ interface PreparedBinding {
   unorderedMod?: string[]
   // act on release
   release?: boolean
-  // run some cmd
-  cmd?: string
-  // run some other combination
-  combination?: string[][]
 }
 
 
@@ -31,7 +28,7 @@ export default class ShortcutFinder {
   }
 
   async destroy() {
-    // TODO: add
+    this.bindings = []
   }
 
 
@@ -42,7 +39,13 @@ export default class ShortcutFinder {
     event: CombinationEvent
   ): boolean {
     for (const binding of this.bindings) {
-      if (!binding.key.includes(key)) {
+      if (binding.release && event != CombinationEvent.release) {
+        continue
+      }
+      else if (!binding.release && event == CombinationEvent.release) {
+        continue
+      }
+      else if (!binding.key.includes(key)) {
         continue
       }
       else if (binding.orderedMod && !isOrderedArraysSame(binding.orderedMod, orderedMod)) {
@@ -52,16 +55,15 @@ export default class ShortcutFinder {
         continue
       }
 
-      this.runAction(binding)
-      // means cancel of releases of mods
+      this.main.runAction.run({
+        cmd: binding.cmd,
+        combination: binding.combination,
+      })
+      // means cancel of releases of modificators
       return true
     }
 
     return false
-  }
-
-  private runAction(binding: PreparedBinding) {
-    // TODO: add
   }
 
   private prepareBindings(): PreparedBinding[] {
