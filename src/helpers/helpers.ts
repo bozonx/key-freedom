@@ -29,3 +29,8 @@ export function parseCombination(combination?: string): string[][] | undefined {
   // TODO: add
   return
 }
+
+export function keyCodeToModName(keyCode: number): string {
+  // TODO: add
+  return ''
+}

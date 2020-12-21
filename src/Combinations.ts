@@ -1,5 +1,6 @@
 import Main from './Main'
 import IndexedEvents from './helpers/IndexedEvents'
+import {keyCodeToModName} from './helpers/helpers'
 
 
 export enum CombinationEvent {
@@ -17,8 +18,9 @@ export type CombinationsHandler = (
 
 export default class Combinations {
   private readonly main: Main
-  private keyEvents = new IndexedEvents<CombinationsHandler>()
-  private readonly pressedMods: Record<string, boolean> = {}
+  private readonly keyEvents = new IndexedEvents<CombinationsHandler>()
+  private readonly pressedMods: Record<string, number> = {}
+  private pressedKey?: number
 
 
   constructor(main: Main) {
@@ -28,6 +30,7 @@ export default class Combinations {
   }
 
   async destroy() {
+    this.keyEvents.destroy()
     // TODO: add
   }
 
@@ -43,11 +46,41 @@ export default class Combinations {
   }
 
 
+  private handlePress(keyCode: number) {
+    // TODO: ??? если какая-то кнопка нажата то отменяем ее release
+    // TODO: добавляем таймаут чтобы убрать себя из модификатора
+
+    if (this.pressedKey) {
+      // move previously pressed key to modifier
+      this.pressedMods[keyCodeToModName(keyCode)] = keyCode
+      // TODO: cancel one shot timeout
+    }
+    else {
+      // TODO: для первой нажатой клавиши добавляем таймаут one shot
+    }
+
+    this.pressedKey = keyCode
+
+    this.keyEvents.emit(
+      this.pressedKey,
+      Object.keys(this.pressedMods),
+      CombinationEvent.press
+    )
+  }
+
+  private handleRelease(keyCode: number) {
+    // TODO: cancel one shot timeout
+  }
+
   private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {
     this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${keyCode}`)
 
-    // TODO: если какая-то кнопка нажата то отменяем ее release
-    // TODO:
+    if (press) {
+      this.handlePress(keyCode)
+    }
+    else {
+      this.handleRelease(keyCode)
+    }
   }
 
 }

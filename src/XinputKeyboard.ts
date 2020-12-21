@@ -58,7 +58,7 @@ export default class XinputKeyboard implements Keyboard {
   }
 
   async destroy() {
-    // TODO: add
+    this.keyEvents.destroy()
   }
 
 
