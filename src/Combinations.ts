@@ -47,7 +47,6 @@ export default class Combinations {
 
 
   private handlePress(keyCode: number) {
-    // TODO: ??? если какая-то кнопка нажата то отменяем ее release
     // TODO: добавляем таймаут чтобы убрать себя из модификатора
 
     if (this.pressedKey) {
@@ -69,7 +68,26 @@ export default class Combinations {
   }
 
   private handleRelease(keyCode: number) {
+    // do not emit releases of modifiers
+    if (this.pressedKey !== keyCode) {
+      for (const key of Object.keys(this.pressedMods)) {
+        if (this.pressedMods[key] !== keyCode) continue
+
+        delete this.pressedMods[key]
+
+        // TODO: remove modifier timeout also
+      }
+      // do nothing
+      return
+    }
+
     // TODO: cancel one shot timeout
+
+    this.keyEvents.emit(
+      this.pressedKey,
+      Object.keys(this.pressedMods),
+      CombinationEvent.press
+    )
   }
 
   private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {
