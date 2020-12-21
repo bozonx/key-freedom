@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-# TODO: выполнение комманд - xdotool key --clearmodifiers ctrl+113
 
 const { spawn } = require('child_process');
 

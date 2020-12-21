@@ -5,6 +5,7 @@ import {
   prepareBindings,
 } from './helpers/shurtcutMatchHelpers'
 import {ShortcutBinding} from './interfaces/ShortcutBinding'
+import {keyCodeToModName} from './helpers/helpers'
 
 
 export default class ShortcutFinder {
@@ -43,6 +44,8 @@ export default class ShortcutFinder {
       )
 
       if (!isMatches) continue
+
+      this.main.log.info(`Matched ${pressedMods.join('+')} + ${keyCodeToModName(key)}`)
 
       this.main.runAction.run({
         cmd: binding.cmd,

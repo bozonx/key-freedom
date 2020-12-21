@@ -1,5 +1,49 @@
+# TODO: выполнение комманд - xdotool key --clearmodifiers ctrl+113
+
+
 bindings:
-- key: 'a'
+- key: a
   mod:
   - CapsLock
   cmd: konsole
+
+- key: Space
+  mod:
+    - CapsLock
+  cmd: xdotool key --clearmodifiers shift+20
+
+#- key: CapsLock
+#  mod:
+#    - Alt_R
+#  cmd: xdotool key --clearmodifiers 119
+
+- key: CapsLock
+  mod:
+    - Alt_L
+  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
+
+- key: Shift_L
+  mod:
+    - Alt_L
+  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
+
+######## ARROWS
+#- key: j
+#  mod:
+#    - CapsLock
+#  cmd: xdotool key --clearmodifiers 83
+#
+#- key: k
+#  mod:
+#    - CapsLock
+#  cmd: xdotool key --clearmodifiers 111
+#
+#- key: l
+#  mod:
+#    - CapsLock
+#  cmd: xdotool key --clearmodifiers 116
+#
+#- key: Apostrophe
+#  mod:
+#    - CapsLock
+#  cmd: xdotool key --clearmodifiers 114

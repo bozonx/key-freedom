@@ -26,8 +26,8 @@ export const SPECIAL_KEYS_NAMES: string[] = [
   '-17',
   '-18',
   '-19',
-  '-20',
-  '-21',
+  'Minus', // 20
+  'Equal', // 21
   'BackSpace', // 22
   'Tab', // 23
   '-24',
@@ -42,19 +42,19 @@ export const SPECIAL_KEYS_NAMES: string[] = [
   '-33',
   '-34',
   '-35',
-  'Enter', // 36
+  'Enter', // 36 (or Return???)
   'Ctrl_L', // 37
   'a', // 38
-  '-39',
+  's', // 39
   '-40',
   '-41',
   '-42',
   '-43',
-  '-44',
-  '-45',
-  '-46',
-  '-47',
-  '-48',
+  'j', // 44
+  'k', // 45
+  'l', // 46
+  'Semicolon', // 47
+  'Apostrophe', // 48
   'Tilda', // 49
   'Shift_L', // 50
   'BackSlash', // 51
@@ -85,17 +85,17 @@ export const SPECIAL_KEYS_NAMES: string[] = [
   '-76',
   '-77',
   '-78',
-  '-79',
-  '-80',
-  '-81',
+  'KpHome', // 79
+  'KpUp', // 80
+  'KpPgUp', // 81
   '-82',
-  '-83',
+  'KpLeft', // 83
   '-84',
-  '-85',
+  'KpRight', // 85
   '-86',
-  '-87',
-  '-88',
-  '-89',
+  'KpEnd', // 87
+  'KpDown', // 88
+  'KpPgDown', // 89
   '-90',
   '-91',
   '-92',
