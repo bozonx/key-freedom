@@ -23,8 +23,10 @@ export function keyCodeToModName(keyCode: number): string {
   return (keyName) ? keyName : String(keyCode)
 }
 
-export function convertToKeyCode(key: string): number[] {
-  // TODO: add
+export function convertToKeyCode(keyName: string): number[] {
+
+
+  // TODO: add - поддержка мета клавиш - Alt, Ctrl
   return []
 }
 
