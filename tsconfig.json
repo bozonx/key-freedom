@@ -7,17 +7,12 @@
     "moduleResolution": "node",
     "noEmitOnError": false,
     "noImplicitReturns": true,
-    "preserveConstEnums": true,
     "preserveSymlinks": true,
     "removeComments": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": true,
-    "resolveJsonModule": true,
-    "target": "es5",
-    "forceConsistentCasingInFileNames": true,
-    "outFile": "./build/build.js",
-    "sourceRoot": "./src/",
-    "rootDir": "./src/"
+    "target": "es2018",
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["build", "node_modules"]
 }

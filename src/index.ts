@@ -1,3 +1,4 @@
+import * as yargs from 'yargs';
 import YAML from 'yaml'
 import fs from 'fs'
 import {AppConfig} from './interfaces/AppConfig'
