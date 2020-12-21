@@ -24,11 +24,11 @@ export default class ShortcutFinder {
   }
 
 
-  private onCombination(
+  private onCombination = (
     key: number,
     pressedMods: string[],
     event: CombinationEvent
-  ): boolean {
+  ): boolean => {
     for (const binding of this.bindings) {
       const isMatches = isCombinationMatches(
         key,

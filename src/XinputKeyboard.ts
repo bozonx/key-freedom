@@ -5,7 +5,6 @@ import {Keyboard, KeyboardHandler} from './interfaces/Keyboard'
 import IndexedEvents from './helpers/IndexedEvents'
 
 
-
 function getXinputResult(): Promise<string> {
   return new Promise((resolve, reject) => {
     const proc = spawn('xinput')
@@ -24,17 +23,18 @@ function extractKeyboardsIds(xinputResult: string): string[] {
   const xinputResultLines: string[] = xinputResult.split('\n')
   const ids: string[] = []
 
+
   for (const item of xinputResultLines) {
     if (!item.match(/\[slave\s+keyboard/)) continue
 
     const stripped = item.replace(/\[slave\s+keyboard/, '');
 
-    if (!stripped.match(/XinputKeyboard/i)) continue
+    if (!stripped.match(/Keyboard/i)) continue
 
     if (
       stripped.indexOf('Virtual core XTEST keyboard') >= 0
-      || stripped.indexOf('XinputKeyboard System Control') >= 0
-      || stripped.indexOf('XinputKeyboard Consumer Control') >= 0
+      || stripped.indexOf('System Control') >= 0
+      || stripped.indexOf('Consumer Control') >= 0
     ) continue
 
     const matchResult = stripped.match(/id=(\d+)/);

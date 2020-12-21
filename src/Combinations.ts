@@ -20,6 +20,8 @@ export default class Combinations {
 
   constructor(main: Main) {
     this.main = main
+
+    this.main.keyboard.addListener(this.onKeyEvent)
   }
 
   async destroy() {
@@ -30,11 +32,16 @@ export default class Combinations {
   // TODO: blocking of modifiers releases do on next key press
 
   addListener(cb: CombinationsHandler): number {
-
+    return 0
   }
 
   removeListener(handlerIndex: number) {
 
+  }
+
+
+  private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {
+    console.log(111, keyCode, press, release)
   }
 
 }
