@@ -3,9 +3,11 @@ import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
 import {AppConfig} from './interfaces/AppConfig'
 import RunAction from './RunAction'
+import Logger from './interfaces/Logger'
 
 
 export default class Main {
+  readonly log: Logger
   readonly config: AppConfig
   readonly keyboard: XinputKeyboard
   readonly combinations: Combinations
@@ -13,7 +15,8 @@ export default class Main {
   readonly runAction: RunAction
 
 
-  constructor(config: AppConfig) {
+  constructor(logger: Logger, config: AppConfig) {
+    this.log = logger
     this.config = config
     this.keyboard = new XinputKeyboard(this)
     this.combinations = new Combinations(this)

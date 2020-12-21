@@ -42,7 +42,7 @@ export default class Combinations {
 
 
   private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {
-    console.log(111, keyCode, press, release)
+    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${keyCode}`)
   }
 
 }

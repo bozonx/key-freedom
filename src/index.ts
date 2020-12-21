@@ -3,16 +3,18 @@ import YAML from 'yaml'
 import fs from 'fs'
 import {AppConfig} from './interfaces/AppConfig'
 import Main from './Main'
+import ConsoleLogger from './ConsoleLogger'
 
 
-// TODO: use from home dir or specified
-const pathToConfig = './src/testConfig.yaml'
+const defaultConfigPath = '~/.config/key-freedom/config.yaml'
+const pathToConfig = (yargs.argv.c) ? yargs.argv.c as string : defaultConfigPath
 
 
 async function start () {
   const configStr: string = fs.readFileSync(pathToConfig, 'utf8')
   const parsedConfig: AppConfig = YAML.parse(configStr)
-  const main = new Main(parsedConfig)
+  const logger = new ConsoleLogger((yargs.argv.debug) ? 'debug' : 'info')
+  const main = new Main(logger, parsedConfig)
 
   await main.start()
 
