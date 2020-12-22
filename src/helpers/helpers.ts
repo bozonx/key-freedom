@@ -33,13 +33,3 @@ export function replacePostfix(str: string, to: string): string {
 //
 //   return [SPECIAL_KEYS_NAMES.indexOf(keyName)]
 // }
-
-export function prepareMods(mod?: string[]): string[] | undefined {
-  // TODO: add - Prefix "_A" added if need
-  return mod
-}
-
-export function parseCombination(combination?: string): string[][] | undefined {
-  // TODO: add somedate
-  return
-}
