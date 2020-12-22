@@ -1,6 +1,7 @@
 import Main from './Main'
 import {isCombinationMatches} from './helpers/shurtcutMatchHelpers'
 import {KEY_EVENT} from './constants'
+import {omitObj} from './helpers/objects'
 
 
 export default class ShortcutFinder {
@@ -22,13 +23,11 @@ export default class ShortcutFinder {
     pressedMods: string[],
     event: KEY_EVENT
   ) => {
-    // TODO: use keyCodeToModName(this.pressedKey)
-
     this.main.log.debug(
       `Combination ${(event === KEY_EVENT.press) ? 'press' : 'release'} ` +
       `${key}, mods: ${pressedMods.join(', ')}`
     )
-
+    // try to find corresponding binging definition
     for (const binding of this.main.bindings) {
       const isMatches = isCombinationMatches(
         key,
@@ -36,15 +35,12 @@ export default class ShortcutFinder {
         event,
         binding
       )
-
+      // go further if doesn't match
       if (!isMatches) continue
+      // matched
+      this.main.log.info(`Matched ${pressedMods.join('+')} + ${key}`)
 
-      this.main.log.info(`Matched ${pressedMods.join('+')} + ${keyCodeToModName(key)}`)
-
-      this.main.runAction.run({
-        cmd: binding.cmd,
-        combination: binding.combination,
-      })
+      this.main.runAction.run(omitObj(binding, 'key', 'mod', 'release'))
     }
   }
 

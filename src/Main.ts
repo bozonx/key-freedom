@@ -7,10 +7,10 @@ import {Binding} from './interfaces/Binding'
 import {defaultConfig} from './defaultConfig'
 import {omitObj} from './helpers/objects'
 import {kdePlasmaX} from './deConf/kdePlasmaX'
-import {prepareBindings} from './helpers/shurtcutMatchHelpers'
 import {XINPUT_KEYS_NAMES} from './keyMaps/xinput'
 import {KeyboardListener} from './interfaces/KeyboardListener'
 import {XinputKeyboardListener} from './keyboardListeners/Xinput'
+import {parseBindings} from './helpers/parseBindings'
 
 
 export const keyMaps: Record<string, string[]> = {
@@ -21,7 +21,7 @@ export const keyBoardsListeners: Record<string, new (main: Main) => KeyboardList
   xinput: XinputKeyboardListener,
 }
 
-const deConfigs: Record<string, ConfigProps> = {
+const deConfigs: Record<string, Partial<ConfigProps>> = {
   kdePlasmaX,
 }
 
@@ -39,7 +39,7 @@ export default class Main {
   constructor(logger: Logger, config: AppConfig) {
     this.log = logger
     this.props = this.prepareProps(config)
-    this.bindings = prepareBindings(config)
+    this.bindings = parseBindings(config)
     this.keyboard = new keyBoardsListeners[this.props.listener](this)
     this.combinations = new Combinations(this)
     this.shortcutFinder = new ShortcutFinder(this)
@@ -64,7 +64,7 @@ export default class Main {
       ...defaultConfig,
       ...deConfigs[config.de!],
       ...omitObj(config, 'bindings'),
-    }
+    } as ConfigProps
   }
 
 }

@@ -5,7 +5,7 @@ import {parseCombination, prepareMods, replacePostfix} from './helpers'
 
 
 export function isCombinationMatches(
-  key: number,
+  key: string,
   pressedMods: string[],
   event: KEY_EVENT,
   binding: Binding
@@ -59,20 +59,4 @@ export function isModsSame(pressedMods: string[], bindingMods?: string[]): boole
   }
 
   return foundCount === bindingMods.length
-}
-
-export function prepareBindings(config: AppConfig): Binding[] {
-  const result: Binding[] = []
-
-  for (const item of config.bindings) {
-    result.push({
-      key: convertToKeyCode(item.key),
-      mod: prepareMods(item.mod),
-      release: item.release || false,
-      cmd: item.cmd,
-      combination: parseCombination(item.combination)
-    })
-  }
-
-  return result
 }
