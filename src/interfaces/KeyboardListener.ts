@@ -6,7 +6,7 @@ export type KeyboardHandler = (
 ) => void
 
 
-export interface Keyboard {
+export interface KeyboardListener {
   destroy(): Promise<void>
   start(): Promise<void>
   addListener(cb: KeyboardHandler): number
