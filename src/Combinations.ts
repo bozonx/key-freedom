@@ -6,7 +6,8 @@ import {KEY_EVENT} from './constants'
 
 export type CombinationsHandler = (
   key: number,
-  orderedMod: string[],
+  // modifiers as key numbers
+  mod: number[],
   event: KEY_EVENT
 ) => void
 
@@ -21,16 +22,13 @@ export default class Combinations {
   constructor(main: Main) {
     this.main = main
 
-    this.main.keyboard.addListener(this.onKeyEvent)
+    this.main.keyboard.addListener(this.handleKeyboardEvent)
   }
 
   async destroy() {
     this.keyEvents.destroy()
-    // TODO: add
   }
 
-
-  // TODO: blocking of modifiers releases do on next key press
 
   addListener(cb: CombinationsHandler): number {
     return this.keyEvents.addListener(cb)
@@ -40,6 +38,19 @@ export default class Combinations {
     this.keyEvents.removeListener(handlerIndex)
   }
 
+
+  handleKeyboardEvent = (keyCode: number, press: boolean, release: boolean) => {
+    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${keyCode}`)
+
+    if (press) {
+      this.handlePress(keyCode)
+    }
+    else {
+      this.handleRelease(keyCode)
+    }
+  }
+
+  // TODO: blocking of modifiers releases do on next key press
 
   private handlePress(keyCode: number) {
     // TODO: добавляем таймаут чтобы убрать себя из модификатора
@@ -100,17 +111,6 @@ export default class Combinations {
     // TODO: cancel one shot timeout
 
 
-  }
-
-  private onKeyEvent = (keyCode: number, press: boolean, release: boolean) => {
-    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${keyCode}`)
-
-    if (press) {
-      this.handlePress(keyCode)
-    }
-    else {
-      this.handleRelease(keyCode)
-    }
   }
 
 }

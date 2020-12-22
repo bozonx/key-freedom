@@ -23,6 +23,8 @@ export default class ShortcutFinder {
     pressedMods: string[],
     event: KEY_EVENT
   ) => {
+    // TODO: use keyCodeToModName(this.pressedKey)
+
     this.main.log.debug(
       `Combination ${(event === KEY_EVENT.press) ? 'press' : 'release'} ` +
       `${key}, mods: ${pressedMods.join(', ')}`
