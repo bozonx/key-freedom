@@ -79,7 +79,7 @@ export const XINPUT_KEYS_NAMES: string[] = [
   'F9', // 75
   'F10', // 76
   'NumLock', // 77
-  '-78', // 78
+  'ScrollLock', // 78
   'KpHome', // 79
   'KpUp', // 80
   'KpPgUp', // 81
@@ -128,15 +128,13 @@ export const XINPUT_KEYS_NAMES: string[] = [
   '-124', // 124
   '-125', // 125
   '-126', // 126
-  '-127', // 127
+  'Pause', // 127
   '-128', // 128
   '-129', // 129
   '-130', // 130
   '-131', // 131
   '-132', // 132
   'Super_L', // 133
-  '-134', // 134
+  'Super_R', // 134
   'Menu', // 135
-
-  // TODO: add Super_R
 ]
