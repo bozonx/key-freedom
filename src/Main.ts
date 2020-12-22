@@ -62,7 +62,7 @@ export default class Main {
   private prepareProps(config: AppConfig): ConfigProps {
     return {
       ...defaultConfig,
-      ...deConfigs[config.de],
+      ...deConfigs[config.de!],
       ...omitObj(config, 'bindings'),
     }
   }

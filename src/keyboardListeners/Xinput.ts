@@ -99,8 +99,8 @@ export class XinputKeyboardListener implements KeyboardListener {
         const matchResult = dataStr.match(/(\d+)\s*$/)
 
         if (!matchResult?.[1]) return
-
-        const key = this.convertKeyCodeToName(parseInt(matchResult[1]))
+        // convert key code to key name via specified key map
+        const key = keyMaps[this.main.props.keyMap][parseInt(matchResult[1])]
 
         cb(key, press, release)
       });
@@ -110,10 +110,6 @@ export class XinputKeyboardListener implements KeyboardListener {
       resolve()
     })
 
-  }
-
-  private convertKeyCodeToName(keyCode: number): string {
-    return keyMaps[this.main.props.keyMap][keyCode]
   }
 
 }

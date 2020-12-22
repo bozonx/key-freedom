@@ -4,17 +4,12 @@ import {keyCodeToModName} from './helpers/helpers'
 import {KEY_EVENT} from './constants'
 
 
-export type CombinationsHandler = (
-  key: number,
-  // modifiers as key numbers
-  mod: number[],
-  event: KEY_EVENT
-) => void
+export type CombinationHandler = (key: string, mod: string[], event: KEY_EVENT) => void
 
 
 export default class Combinations {
   private readonly main: Main
-  private readonly keyEvents = new IndexedEvents<CombinationsHandler>()
+  private readonly keyEvents = new IndexedEvents<CombinationHandler>()
   private readonly pressedMods: Record<string, number> = {}
   private pressedKey?: number
 
@@ -30,7 +25,7 @@ export default class Combinations {
   }
 
 
-  addListener(cb: CombinationsHandler): number {
+  addListener(cb: CombinationHandler): number {
     return this.keyEvents.addListener(cb)
   }
 
