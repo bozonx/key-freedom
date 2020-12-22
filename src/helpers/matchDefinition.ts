@@ -15,7 +15,8 @@ export function isCombinationMatches(
   else if (!binding.release && event == KEY_EVENT.release) {
     return false
   }
-  else if (!binding.key.includes(key)) {
+  // TODO: проверить с префиксом _A
+  else if (binding.key !== key) {
     return false
   }
   else if (!isModsSame(pressedMods, binding.mod)) {

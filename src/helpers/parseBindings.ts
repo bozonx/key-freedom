@@ -1,5 +1,7 @@
 import {AppConfig} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
+import {COMBINATION_SEPARATOR} from '../constants'
+import {lastItem} from './arrays'
 
 
 // export function prepareMods(mod?: string[]): string[] | undefined {
@@ -7,14 +9,19 @@ import {Binding} from '../interfaces/Binding'
 //   return mod
 // }
 
-// export function parseCombination(combination?: string): string[][] | undefined {
-//   // TODO: add somedate
-//   return
-// }
+export function parseCombination(combination?: string): string[][] | undefined {
+  // TODO: add somedate
+  return
+}
 
-export function parseKeyStrDefinition (strDefinition: string): {key: string[], mod: string[]} {
-  // TODO: add
-  return {key: [], mod: []}
+export function parseKeyStrDefinition (strDefinition: string): {key: string, mod: string[]} {
+  const keys: string[] = strDefinition.split(COMBINATION_SEPARATOR).map((item): string => {
+    // TODO: add _A
+    return item.trim()
+  })
+
+  // TODO: add -
+  return {key: lastItem(keys), mod: []}
 }
 
 export function parseBindings(config: AppConfig): Binding[] {
@@ -28,7 +35,7 @@ export function parseBindings(config: AppConfig): Binding[] {
       mod,
       release: item.release || false,
       cmd: item.cmd,
-      // combination: parseCombination(item.combination)
+      combination: parseCombination(item.combination)
     })
   }
 

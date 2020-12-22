@@ -60,9 +60,11 @@ export default class Main {
 
 
   private prepareProps(config: AppConfig): ConfigProps {
+    if (!config.de) throw new Error(`Please specify the "de"param in config`)
+
     return {
       ...defaultConfig,
-      ...deConfigs[config.de!],
+      ...deConfigs[config.de],
       ...omitObj(config, 'bindings'),
     } as ConfigProps
   }

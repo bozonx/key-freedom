@@ -1,3 +1,6 @@
+export const COMBINATION_SEPARATOR = '+'
+export const COMBINATIONS_ENUM_SIGN = ','
+
 export enum KEY_EVENT {
   press,
   release,
