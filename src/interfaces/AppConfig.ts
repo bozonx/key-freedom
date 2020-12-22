@@ -1,4 +1,7 @@
 export type ConfigDe = 'kdePlasmaX'
+export type ConfigKeyboardListener = 'xinput'
+export type ConfigKeyMap = 'xinput'
+
 
 export interface ConfigAction {
   // run some cmd
@@ -18,6 +21,9 @@ export interface ConfigBinding extends ConfigAction {
 }
 
 export interface ConfigProps {
+  de?: ConfigDe
+  listener?: ConfigKeyboardListener
+  keyMap?: ConfigKeyMap
   oneShotTimeout?: number
   pressTimeout?: number
   combinationTimeout?: number
@@ -27,6 +33,5 @@ export interface ConfigProps {
 }
 
 export interface AppConfig extends ConfigProps {
-  de: ConfigDe
   bindings: ConfigBinding[]
 }

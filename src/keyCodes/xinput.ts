@@ -1,6 +1,6 @@
 // see https://gist.github.com/rickyzhang82/8581a762c9f9fc6ddb8390872552c250
 // in column sdl
-export const SDL_KEYS_NAMES: string[] = [
+export const XINPUT_KEYS_NAMES: string[] = [
   '-0', //
   '-1', //
   '-2', //

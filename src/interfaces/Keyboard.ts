@@ -1,4 +1,9 @@
-export type KeyboardHandler = (keyCode: number, press: boolean, release: boolean) => void
+export type KeyboardHandler = (
+  // resolved key name
+  key: string,
+  press: boolean,
+  release: boolean
+) => void
 
 
 export interface Keyboard {

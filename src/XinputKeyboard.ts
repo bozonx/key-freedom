@@ -67,9 +67,12 @@ export default class XinputKeyboard implements Keyboard {
     const keyboardsIds = extractKeyboardsIds(xInputResult)
 
     for (const id of keyboardsIds) {
-      await this.addKeyboardListener(id, (keyCode: number, press: boolean, release: boolean) => {
-        this.keyEvents.emit(keyCode, press, release)
-      })
+      await this.addKeyboardListener(
+        id,
+        (key: string, press: boolean, release: boolean) => {
+          this.keyEvents.emit(key, press, release)
+        }
+      )
     }
   }
 
@@ -97,15 +100,19 @@ export default class XinputKeyboard implements Keyboard {
 
         if (!matchResult?.[1]) return
 
-        const keyCode = parseInt(matchResult[1])
-
-        cb(keyCode, press, release)
+        cb(this.convertKeyCodeToName(matchResult[1]), press, release)
       });
 
       // TODO: handle errors on start
 
       resolve()
     })
+
+  }
+
+  private convertKeyCodeToName(keyCode: string): string {
+
+    const keyCode = parseInt(matchResult[1])
 
   }
 

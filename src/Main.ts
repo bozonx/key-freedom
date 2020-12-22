@@ -52,7 +52,7 @@ export default class Main {
     return {
       ...defaultConfig,
       ...deConfigs[config.de],
-      ...omitObj(config, 'de', 'bindings'),
+      ...omitObj(config, 'bindings'),
     }
   }
 
