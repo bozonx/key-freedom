@@ -1,7 +1,7 @@
 import {AppConfig} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
-import {COMBINATION_SEPARATOR} from '../constants'
-import {lastItem} from './arrays'
+import {COMBINATION_SEPARATOR, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
+import {lastItem, withoutLastItem} from './arrays'
 
 
 // export function prepareMods(mod?: string[]): string[] | undefined {
@@ -16,12 +16,14 @@ export function parseCombination(combination?: string): string[][] | undefined {
 
 export function parseKeyStrDefinition (strDefinition: string): {key: string, mod: string[]} {
   const keys: string[] = strDefinition.split(COMBINATION_SEPARATOR).map((item): string => {
-    // TODO: add _A
-    return item.trim()
+    const trimmed = item.trim()
+
+    if (MIRROR_KEYS.includes(trimmed)) return `${trimmed}${KEY_POSTFIX.any}`
+
+    return trimmed
   })
 
-  // TODO: add -
-  return {key: lastItem(keys), mod: []}
+  return {key: lastItem(keys), mod: withoutLastItem(keys)}
 }
 
 export function parseBindings(config: AppConfig): Binding[] {

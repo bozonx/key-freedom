@@ -1,5 +1,10 @@
 export const COMBINATION_SEPARATOR = '+'
-export const COMBINATIONS_ENUM_SIGN = ','
+export const COMBINATIONS_DELIMITER = ','
+export const MIRROR_KEYS = [
+  'Ctrl',
+  'Alt',
+  'Super'
+]
 
 export enum KEY_EVENT {
   press,
