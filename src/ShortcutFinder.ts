@@ -1,6 +1,5 @@
 import Main from './Main'
 import {isCombinationMatches} from './helpers/shurtcutMatchHelpers'
-import {keyCodeToModName} from './helpers/helpers'
 import {KEY_EVENT} from './constants'
 
 
@@ -19,7 +18,7 @@ export default class ShortcutFinder {
 
 
   private onCombination = (
-    key: number,
+    key: string,
     pressedMods: string[],
     event: KEY_EVENT
   ) => {
