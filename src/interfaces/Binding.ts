@@ -2,8 +2,8 @@ import {Action} from './Action'
 
 
 export interface Binding extends Action {
-  // main key codes. More than one for left and right Ctrl etc
-  key: number[]
+  // main key names. More than one for left and right Ctrl etc
+  key: string[]
   // prepared modifiers. Prefix "_A" added if need
   mod?: string[]
   // act only on release

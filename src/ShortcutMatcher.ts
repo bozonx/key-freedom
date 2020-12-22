@@ -4,7 +4,7 @@ import {KEY_EVENT} from './constants'
 import {omitObj} from './helpers/objects'
 
 
-export default class ShortcutFinder {
+export default class ShortcutMatcher {
   private readonly main: Main
 
 

@@ -1,7 +1,6 @@
-import {KEY_POSTFIX} from '../constants'
-import {AppConfig} from '../interfaces/AppConfig'
+import {KEY_EVENT, KEY_POSTFIX} from '../constants'
 import {Binding} from '../interfaces/Binding'
-import {parseCombination, prepareMods, replacePostfix} from './helpers'
+import {replacePostfix} from './helpers'
 
 
 export function isCombinationMatches(
