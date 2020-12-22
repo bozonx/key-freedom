@@ -14,7 +14,7 @@ export interface ConfigCombinationAction {
 export interface ConfigDeShortcutAction {
   action: 'deShortcut'
   // like 'kwin: Walk Through Windows'
-  shortCut: string
+  shortcut: string
 }
 
 export type ConfigAction = (CmdAction | ConfigCombinationAction | ConfigDeShortcutAction)

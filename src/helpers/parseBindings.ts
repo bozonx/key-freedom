@@ -1,7 +1,8 @@
-import {AppConfig, ConfigAction} from '../interfaces/AppConfig'
+import {AppConfig} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
-import {COMBINATION_SEPARATOR, COMBINATIONS_DELIMITER, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
+import {COMBINATION_SEPARATOR, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
 import {compactUndefined, lastItem, withoutLastItem} from './arrays'
+import {parseActions} from './parseActions'
 
 
 export function prepareCombination(strCombination: string): string[] {
@@ -14,23 +15,10 @@ export function prepareCombination(strCombination: string): string[] {
   })
 }
 
-export function parseCombinations(rawCombinations?: string): string[][] | undefined {
-  if (!rawCombinations) return
-
-  const combinations: string[] = rawCombinations.split(COMBINATIONS_DELIMITER)
-    .map((item) => item.trim())
-
-  return combinations.map((item) => prepareCombination(item))
-}
-
 export function parseKeyStrDefinition (strCombination: string): {key: string, mod: string[]} {
   const keys = prepareCombination(strCombination)
 
   return {key: lastItem(keys), mod: withoutLastItem(keys)}
-}
-
-export function parseActions(rawActions: ConfigAction) {
-
 }
 
 export function parseBindings(config: AppConfig): Binding[] {
@@ -47,7 +35,7 @@ export function parseBindings(config: AppConfig): Binding[] {
         ...item.actions,
         item.cmd && { action: 'cmd', cmd: item.cmd },
         item.combination && { action: 'combination', combination: item.combination },
-        item.deShortcut && { action: 'deShortcut', shortCut: item.deShortcut },
+        item.deShortcut && { action: 'deShortcut', shortcut: item.deShortcut },
       ]))
     })
   }

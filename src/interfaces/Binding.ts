@@ -6,7 +6,7 @@ export interface Binding {
   // Prefix "_A" added for OR statement to Ctrl, Alt and Super
   key: string
   // prepared modifiers. Prefix "_A" added for OR statement to Ctrl, Alt and Super
-  mod?: string[]
+  mod: string[]
   // act only on release
   release: boolean
   actions: BindingAction[]
