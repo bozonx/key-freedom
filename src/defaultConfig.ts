@@ -2,8 +2,8 @@ import {ConfigProps} from './interfaces/AppConfig'
 
 
 export const defaultConfig: Partial<ConfigProps> = {
-  oneShotTimeout: 300,
-  pressTimeout: 2000,
-  combinationTimeout: 20000,
+  oneShotTimeoutMs: 300,
+  pressTimeoutMs: 2000,
+  combinationTimeoutMs: 20000,
   runCmdTpl: '${CMD}',
 }
