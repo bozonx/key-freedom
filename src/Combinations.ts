@@ -1,6 +1,7 @@
 import Main from './Main'
 import IndexedEvents from './helpers/IndexedEvents'
 import {KEY_EVENT} from './constants'
+import {isEmptyObject} from './helpers/objects'
 
 
 export type CombinationHandler = (key: string, mod: string[], event: KEY_EVENT) => void
@@ -55,9 +56,7 @@ export default class Combinations {
       // set it as current pressed key
       // move previously pressed key to modifier
       // cancel one shot timeout if set
-      clearTimeout(this.oneShotTimeout as any)
-
-      delete this.oneShotTimeout
+      this.clearOneShotTimeout()
 
       if (this.pressedKey === key) {
         // pressed second time - it is kind or error
@@ -93,34 +92,57 @@ export default class Combinations {
   }
 
   private handleRelease(key: string) {
-    if (this.pressedKey && this.pressedKey === keyCode) {
-      // release currently pressed key
-      this.keyEvents.emit(
-        this.pressedKey,
-        Object.keys(this.pressedMods),
-        KEY_EVENT.release
-      )
+    if (this.pressedKey === key) {
+      // release of currently pressed key
+      if (isEmptyObject(this.pressedMods)) {
+        // it is release of single key
+        if (this.oneShotTimeout) {
+          // it is one shot single key release
+          // then clear timeout and rise event and delete current key
+          this.emitRelease()
 
-      delete this.pressedKey
-      // TODO: delete modifiers ???
-    }
-    else {
-      // some other key. Means modifier
-      for (const key of Object.keys(this.pressedMods)) {
-        if (this.pressedMods[key] !== keyCode) continue
+          return
+        }
+        else {
+          // something wrong
+          delete this.pressedKey
 
-        delete this.pressedMods[key]
-
-        // TODO: remove modifier timeout also
+          return
+        }
+      }
+      else {
+        // it is release of current key which have modifiers
+        // Clear oneShot timeout, emit event, delete current key
+        this.emitRelease()
       }
     }
+    else if (this.pressedKey) {
+      // one of modifier has released but main key(some other) is pressed
+      // just remove modifier
+      this.clearOneShotTimeout()
+      this.removeModifier(key)
+    }
+    else {
+      // release of some modifier and no one main key pressed
+      // just remove it but don't emit any event
+      this.clearOneShotTimeout()
+      this.removeModifier(key)
+    }
+  }
 
-    // do not emit releases of modifiers
-    //if (this.pressedKey !== keyCode) return
+  private emitRelease() {
+    this.clearOneShotTimeout()
 
-    // TODO: cancel one shot timeout
+    if (!this.pressedKey) return
 
+    // release currently pressed key
+    this.keyEvents.emit(
+      this.pressedKey,
+      Object.keys(this.pressedMods),
+      KEY_EVENT.release
+    )
 
+    delete this.pressedKey
   }
 
   private moveCurrentToModifier() {
@@ -129,6 +151,16 @@ export default class Combinations {
     this.pressedMods[this.pressedKey] = this.pressedKey
 
     delete this.pressedKey
+  }
+
+  private clearOneShotTimeout() {
+    clearTimeout(this.oneShotTimeout as any)
+
+    delete this.oneShotTimeout
+  }
+
+  private removeModifier(key: string) {
+    delete this.pressedMods[key]
   }
 
 }
