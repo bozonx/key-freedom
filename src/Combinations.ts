@@ -1,18 +1,13 @@
 import Main from './Main'
 import IndexedEvents from './helpers/IndexedEvents'
 import {keyCodeToModName} from './helpers/helpers'
-
-
-export enum CombinationEvent {
-  press,
-  release,
-}
+import {KEY_EVENT} from './constants'
 
 
 export type CombinationsHandler = (
   key: number,
   orderedMod: string[],
-  event: CombinationEvent
+  event: KEY_EVENT
 ) => void
 
 
@@ -72,7 +67,7 @@ export default class Combinations {
     this.keyEvents.emit(
       this.pressedKey,
       Object.keys(this.pressedMods),
-      CombinationEvent.press
+      KEY_EVENT.press
     )
   }
 
@@ -82,7 +77,7 @@ export default class Combinations {
       this.keyEvents.emit(
         this.pressedKey,
         Object.keys(this.pressedMods),
-        CombinationEvent.release
+        KEY_EVENT.release
       )
 
       delete this.pressedKey

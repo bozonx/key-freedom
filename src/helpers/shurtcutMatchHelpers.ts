@@ -2,19 +2,19 @@ import {KEY_POSTFIX} from '../constants'
 import {AppConfig} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
 import {convertToKeyCode, parseCombination, prepareMods, replacePostfix} from './helpers'
-import {CombinationEvent} from '../Combinations'
+import {KEY_EVENT} from '../Combinations'
 
 
 export function isCombinationMatches(
   key: number,
   pressedMods: string[],
-  event: CombinationEvent,
+  event: KEY_EVENT,
   binding: Binding
 ): boolean {
-  if (binding.release && event != CombinationEvent.release) {
+  if (binding.release && event != KEY_EVENT.release) {
     return false
   }
-  else if (!binding.release && event == CombinationEvent.release) {
+  else if (!binding.release && event == KEY_EVENT.release) {
     return false
   }
   else if (!binding.key.includes(key)) {

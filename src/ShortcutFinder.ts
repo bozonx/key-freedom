@@ -1,7 +1,7 @@
 import Main from './Main'
-import {CombinationEvent} from './Combinations'
 import {isCombinationMatches} from './helpers/shurtcutMatchHelpers'
 import {keyCodeToModName} from './helpers/helpers'
+import {KEY_EVENT} from './constants'
 
 
 export default class ShortcutFinder {
@@ -21,10 +21,10 @@ export default class ShortcutFinder {
   private onCombination = (
     key: number,
     pressedMods: string[],
-    event: CombinationEvent
+    event: KEY_EVENT
   ) => {
     this.main.log.debug(
-      `Combination ${(event === CombinationEvent.press) ? 'press' : 'release'} ` +
+      `Combination ${(event === KEY_EVENT.press) ? 'press' : 'release'} ` +
       `${key}, mods: ${pressedMods.join(', ')}`
     )
 
