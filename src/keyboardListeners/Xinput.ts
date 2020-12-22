@@ -48,7 +48,7 @@ function extractKeyboardsIds(xinputResult: string): string[] {
 }
 
 
-export default class Xinput implements KeyboardListener {
+export class XinputKeyboardListener implements KeyboardListener {
   private readonly main: Main
   private keyEvents = new IndexedEvents<KeyboardHandler>()
 

@@ -1,4 +1,3 @@
-import Xinput from './keyboardListeners/Xinput'
 import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
 import {AppConfig, ConfigProps} from './interfaces/AppConfig'
@@ -11,14 +10,15 @@ import {kdePlasmaX} from './deConf/kdePlasmaX'
 import {prepareBindings} from './helpers/shurtcutMatchHelpers'
 import {XINPUT_KEYS_NAMES} from './keyMaps/xinput'
 import {KeyboardListener} from './interfaces/KeyboardListener'
+import {XinputKeyboardListener} from './keyboardListeners/Xinput'
 
 
 export const keyMaps: Record<string, string[]> = {
   xinput: XINPUT_KEYS_NAMES,
 }
 
-export const keyBoardsListeners: Record<string, KeyboardListener> = {
-
+export const keyBoardsListeners: Record<string, new (main: Main) => KeyboardListener> = {
+  xinput: XinputKeyboardListener,
 }
 
 const deConfigs: Record<string, ConfigProps> = {
@@ -30,7 +30,7 @@ export default class Main {
   readonly log: Logger
   readonly props: ConfigProps
   readonly bindings: Binding[]
-  readonly keyboard: Xinput
+  readonly keyboard: KeyboardListener
   readonly combinations: Combinations
   readonly shortcutFinder: ShortcutFinder
   readonly runAction: RunAction
@@ -40,7 +40,7 @@ export default class Main {
     this.log = logger
     this.props = this.prepareProps(config)
     this.bindings = prepareBindings(config)
-    this.keyboard = new Xinput(this)
+    this.keyboard = new keyBoardsListeners[this.props.listener](this)
     this.combinations = new Combinations(this)
     this.shortcutFinder = new ShortcutFinder(this)
     this.runAction = new RunAction(this)
@@ -50,6 +50,7 @@ export default class Main {
     await this.keyboard.destroy()
     await this.combinations.destroy()
     await this.shortcutFinder.destroy()
+    await this.runAction.destroy()
   }
 
 
