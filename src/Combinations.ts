@@ -10,8 +10,8 @@ export type CombinationHandler = (key: string, mod: string[], event: KEY_EVENT) 
 export default class Combinations {
   private readonly main: Main
   private readonly keyEvents = new IndexedEvents<CombinationHandler>()
-  private readonly pressedMods: Record<string, number> = {}
-  private pressedKey?: number
+  private readonly pressedMods: Record<string, string> = {}
+  private pressedKey?: string
 
 
   constructor(main: Main) {
@@ -34,21 +34,22 @@ export default class Combinations {
   }
 
 
-  handleKeyboardEvent = (keyCode: number, press: boolean, release: boolean) => {
-    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${keyCode}`)
+  private handleKeyboardEvent = (key: string, press: boolean, release: boolean) => {
+    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${key}`)
 
     if (press) {
-      this.handlePress(keyCode)
+      this.handlePress(key)
     }
     else {
-      this.handleRelease(keyCode)
+      this.handleRelease(key)
     }
   }
 
   // TODO: blocking of modifiers releases do on next key press
 
-  private handlePress(keyCode: number) {
-    // TODO: добавляем таймаут чтобы убрать себя из модификатора
+  private handlePress(key: string) {
+    // TODO: add total timeout
+    // TODO: add press timeout
 
     if (this.pressedKey) {
       if (this.pressedKey === keyCode) {
@@ -77,7 +78,7 @@ export default class Combinations {
     )
   }
 
-  private handleRelease(keyCode: number) {
+  private handleRelease(key: string) {
     if (this.pressedKey && this.pressedKey === keyCode) {
       // release currently pressed key
       this.keyEvents.emit(
