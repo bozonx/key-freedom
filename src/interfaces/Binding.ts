@@ -1,7 +1,7 @@
-import {Action} from './Action'
+import {BindingAction} from './BindingAction'
 
 
-export interface Binding extends Action {
+export interface Binding {
   // main key names. More than one for left and right Ctrl etc
   // Prefix "_A" added for OR statement to Ctrl, Alt and Super
   key: string
@@ -9,4 +9,5 @@ export interface Binding extends Action {
   mod?: string[]
   // act only on release
   release: boolean
+  actions: BindingAction[]
 }

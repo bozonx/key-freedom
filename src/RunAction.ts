@@ -1,7 +1,7 @@
 import {exec} from 'child_process'
 
 import Main from './Main'
-import {Action} from './interfaces/Action'
+import {Action} from './interfaces/BindingAction'
 
 
 export default class RunAction {

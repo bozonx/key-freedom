@@ -9,3 +9,7 @@ export function lastItem(arr: any[]): any {
 export function withoutLastItem(arr: any[]): any[] {
   return arr.slice(0, arr.length - 1)
 }
+
+export function compactUndefined(arr: any[]): any[] {
+  return arr.filter((item) => typeof item !== 'undefined');
+}

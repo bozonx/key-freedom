@@ -1,23 +1,34 @@
+import {CmdAction} from './BindingAction'
+
 export type ConfigDe = 'kdePlasmaX'
 export type ConfigKeyboardListener = 'xinput'
 export type ConfigKeyMap = 'xinput'
 
 
-export interface ConfigAction {
-  // run some cmd
-  cmd?: string
+export interface ConfigCombinationAction {
+  action: 'combination'
   // run some other combination. Like 'Shift + Minus, Shift + Equal'
-  combination?: string
-  // like 'kwin: Walk Through Windows'
-  deShortCut?: string
+  combination: string
 }
 
-export interface ConfigBinding extends ConfigAction {
+export interface ConfigDeShortcutAction {
+  action: 'deShortcut'
+  // like 'kwin: Walk Through Windows'
+  shortCut: string
+}
+
+export type ConfigAction = (CmdAction | ConfigCombinationAction | ConfigDeShortcutAction)
+
+export interface ConfigBinding {
   // main key
   key: string
   // act on release
   release?: boolean
   actions: ConfigAction[]
+  // short actions definitions
+  cmd?: string
+  combination?: string
+  deShortcut?: string
 }
 
 export interface ConfigProps {

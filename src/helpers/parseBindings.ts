@@ -1,29 +1,36 @@
-import {AppConfig} from '../interfaces/AppConfig'
+import {AppConfig, ConfigAction} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
-import {COMBINATION_SEPARATOR, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
-import {lastItem, withoutLastItem} from './arrays'
+import {COMBINATION_SEPARATOR, COMBINATIONS_DELIMITER, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
+import {compactUndefined, lastItem, withoutLastItem} from './arrays'
 
 
-// export function prepareMods(mod?: string[]): string[] | undefined {
-//   // TODO: add - Prefix "_A" added if need
-//   return mod
-// }
-
-export function parseCombination(combination?: string): string[][] | undefined {
-  // TODO: add somedate
-  return
-}
-
-export function parseKeyStrDefinition (strDefinition: string): {key: string, mod: string[]} {
-  const keys: string[] = strDefinition.split(COMBINATION_SEPARATOR).map((item): string => {
+export function prepareCombination(strCombination: string): string[] {
+  return strCombination.split(COMBINATION_SEPARATOR).map((item): string => {
     const trimmed = item.trim()
 
     if (MIRROR_KEYS.includes(trimmed)) return `${trimmed}${KEY_POSTFIX.any}`
 
     return trimmed
   })
+}
+
+export function parseCombinations(rawCombinations?: string): string[][] | undefined {
+  if (!rawCombinations) return
+
+  const combinations: string[] = rawCombinations.split(COMBINATIONS_DELIMITER)
+    .map((item) => item.trim())
+
+  return combinations.map((item) => prepareCombination(item))
+}
+
+export function parseKeyStrDefinition (strCombination: string): {key: string, mod: string[]} {
+  const keys = prepareCombination(strCombination)
 
   return {key: lastItem(keys), mod: withoutLastItem(keys)}
+}
+
+export function parseActions(rawActions: ConfigAction) {
+
 }
 
 export function parseBindings(config: AppConfig): Binding[] {
@@ -36,8 +43,12 @@ export function parseBindings(config: AppConfig): Binding[] {
       key,
       mod,
       release: item.release || false,
-      cmd: item.cmd,
-      combination: parseCombination(item.combination)
+      actions: parseActions(compactUndefined([
+        ...item.actions,
+        item.cmd && { action: 'cmd', cmd: item.cmd },
+        item.combination && { action: 'combination', combination: item.combination },
+        item.deShortcut && { action: 'deShortcut', shortCut: item.deShortcut },
+      ]))
     })
   }
 
