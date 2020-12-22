@@ -1,6 +1,6 @@
 import {spawn} from 'child_process'
 
-import Main from '../Main'
+import Main, {keyMaps} from '../Main'
 import {Keyboard, KeyboardHandler} from '../interfaces/Keyboard'
 import IndexedEvents from '../helpers/IndexedEvents'
 
@@ -100,7 +100,9 @@ export default class Xinput implements Keyboard {
 
         if (!matchResult?.[1]) return
 
-        cb(this.convertKeyCodeToName(matchResult[1]), press, release)
+        const key = this.convertKeyCodeToName(parseInt(matchResult[1]))
+
+        cb(key, press, release)
       });
 
       // TODO: handle errors on start
@@ -110,10 +112,8 @@ export default class Xinput implements Keyboard {
 
   }
 
-  private convertKeyCodeToName(keyCode: string): string {
-
-    const keyCode = parseInt(matchResult[1])
-
+  private convertKeyCodeToName(keyCode: number): string {
+    return keyMaps[this.main.props.keyMap][keyCode]
   }
 
 }

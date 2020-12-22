@@ -9,7 +9,17 @@ import {defaultConfig} from './defaultConfig'
 import {omitObj} from './helpers/objects'
 import {kdePlasmaX} from './deConf/kdePlasmaX'
 import {prepareBindings} from './helpers/shurtcutMatchHelpers'
+import {XINPUT_KEYS_NAMES} from './keyMaps/xinput'
+import {Keyboard} from './interfaces/Keyboard'
 
+
+export const keyMaps: Record<string, string[]> = {
+  xinput: XINPUT_KEYS_NAMES,
+}
+
+export const keyBoardsListeners: Record<string, Keyboard> = {
+
+}
 
 const deConfigs: Record<string, ConfigProps> = {
   kdePlasmaX,

@@ -21,17 +21,17 @@ export interface ConfigBinding extends ConfigAction {
 }
 
 export interface ConfigProps {
-  de?: ConfigDe
-  listener?: ConfigKeyboardListener
-  keyMap?: ConfigKeyMap
-  oneShotTimeout?: number
-  pressTimeout?: number
-  combinationTimeout?: number
-  runCmdTpl?: string
-  runCombinationTpl?: string
-  runDeShortCutTpl?: string
+  de: ConfigDe
+  listener: ConfigKeyboardListener
+  keyMap: ConfigKeyMap
+  oneShotTimeout: number
+  pressTimeout: number
+  combinationTimeout: number
+  runCmdTpl: string
+  runCombinationTpl: string
+  runDeShortCutTpl: string
 }
 
-export interface AppConfig extends ConfigProps {
+export interface AppConfig extends Partial<ConfigProps> {
   bindings: ConfigBinding[]
 }
