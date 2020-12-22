@@ -1,8 +1,8 @@
 import {spawn} from 'child_process'
 
-import Main from './Main'
-import {Keyboard, KeyboardHandler} from './interfaces/Keyboard'
-import IndexedEvents from './helpers/IndexedEvents'
+import Main from '../Main'
+import {Keyboard, KeyboardHandler} from '../interfaces/Keyboard'
+import IndexedEvents from '../helpers/IndexedEvents'
 
 
 function getXinputResult(): Promise<string> {
@@ -48,7 +48,7 @@ function extractKeyboardsIds(xinputResult: string): string[] {
 }
 
 
-export default class XinputKeyboard implements Keyboard {
+export default class Xinput implements Keyboard {
   private readonly main: Main
   private keyEvents = new IndexedEvents<KeyboardHandler>()
 

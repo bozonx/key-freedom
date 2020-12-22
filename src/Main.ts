@@ -1,4 +1,4 @@
-import XinputKeyboard from './XinputKeyboard'
+import Xinput from './keyboardListeners/Xinput'
 import Combinations from './Combinations'
 import ShortcutFinder from './ShortcutFinder'
 import {AppConfig, ConfigProps} from './interfaces/AppConfig'
@@ -20,7 +20,7 @@ export default class Main {
   readonly log: Logger
   readonly props: ConfigProps
   readonly bindings: Binding[]
-  readonly keyboard: XinputKeyboard
+  readonly keyboard: Xinput
   readonly combinations: Combinations
   readonly shortcutFinder: ShortcutFinder
   readonly runAction: RunAction
@@ -30,7 +30,7 @@ export default class Main {
     this.log = logger
     this.props = this.prepareProps(config)
     this.bindings = prepareBindings(config)
-    this.keyboard = new XinputKeyboard(this)
+    this.keyboard = new Xinput(this)
     this.combinations = new Combinations(this)
     this.shortcutFinder = new ShortcutFinder(this)
     this.runAction = new RunAction(this)
