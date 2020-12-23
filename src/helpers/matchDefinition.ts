@@ -1,4 +1,4 @@
-import {KEY_EVENT, KEY_POSTFIX} from '../constants'
+import {KEY_EVENT, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
 import {Binding} from '../interfaces/Binding'
 import {replacePostfix} from './helpers'
 
@@ -15,8 +15,8 @@ export function isCombinationMatches(
   else if (!binding.release && event == KEY_EVENT.release) {
     return false
   }
-  // TODO: проверить с префиксом _A
-  else if (binding.key !== key) {
+
+  else if (!isKeySame(binding.key, key)) {
     return false
   }
   else if (!isModsSame(pressedMods, binding.mod)) {
@@ -24,6 +24,14 @@ export function isCombinationMatches(
   }
 
   return true
+}
+
+export function isKeySame(expectedKey: string, testKey: string): boolean {
+  if (expectedKey === testKey) return true
+
+  return expectedKey.indexOf(KEY_POSTFIX.any) > 0
+    //&& testKey.indexOf('_') > 0
+    && expectedKey === replacePostfix(testKey, KEY_POSTFIX.any)
 }
 
 export function isModsSame(pressedMods: string[], bindingMods?: string[]): boolean {

@@ -11,6 +11,8 @@ export function calcAllowedLogLevels(logLevel: LogLevel): LogLevel[] {
 }
 
 export function replacePostfix(str: string, to: string): string {
+  // TODO: проверить что вернет ту же строку если не совпадет
+  // TODO: сделать более оптимально, либо через replace либо indexOf()
   const match = str.match(/(.+)_[LRA]$/)
 
   if (!match) return str
