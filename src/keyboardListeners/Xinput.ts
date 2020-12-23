@@ -104,7 +104,7 @@ export class XinputKeyboardListener implements KeyboardListener {
         // convert key code to key name via specified key map
         const key = keyMaps[this.main.props.keyMap][keyCode]
 
-        this.main.log.debug(`Key code ${keyCode}`)
+        this.main.log.debug(`${(press) ? 'Pressed' : 'Released'} key: ${key} (${keyCode})`)
 
         cb(key, press, release)
       });

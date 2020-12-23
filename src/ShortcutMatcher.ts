@@ -1,7 +1,6 @@
 import Main from './Main'
 import {isCombinationMatches} from './helpers/matchDefinition'
 import {KEY_EVENT} from './constants'
-import {omitObj} from './helpers/objects'
 
 
 export default class ShortcutMatcher {

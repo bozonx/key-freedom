@@ -36,8 +36,6 @@ export default class Combinations {
 
 
   private handleKeyboardEvent = (key: string, press: boolean, release: boolean) => {
-    this.main.log.debug(`Keyboard ${(press) ? 'press' : 'release'} ${key}`)
-
     if (press) {
       this.handlePress(key)
     }
