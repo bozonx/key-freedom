@@ -10,26 +10,26 @@ bindings:
   combination: Shift + Minus
   #cmd: xdotool key --clearmodifiers shift+20
 
-#- key: CapsLock
-#  mod:
-#    - Alt_R
-#  cmd: xdotool key --clearmodifiers 119
-
+######## Backspace and delete
+- key: CapsLock
+  release: true
+  combination: Backspace
 - key: Alt + CapsLock
-  deShortcut: 'kwin: Walk Through Windows'
-  #cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
-
-#- key: Alt_L + Shift_L
-#  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
+  release: true
+  combination: Ctrl + Backspace
+- key: Shift_L
+  release: true
+  combination: Delete
+- key: Alt + Shift_L
+  release: true
+  combination: Ctrl + Delete
 
 ######## ARROWS
-#- key: f
-#  mod:
-#    #- Shift_L
-#    - CapsLock
-#  release: true
-#  cmd: xdotool key --clearmodifiers 111
-#  #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
+- key: CapsLock + f
+  release: true
+  combination: Ctrl + Up
+  #cmd: xdotool key --clearmodifiers 111
+  #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
 
 #- key: k
 #  mod:
@@ -45,3 +45,15 @@ bindings:
 #  mod:
 #    - CapsLock
 #  cmd: xdotool key --clearmodifiers 114
+
+  #- key: CapsLock
+  #  mod:
+  #    - Alt_R
+  #  cmd: xdotool key --clearmodifiers 119
+
+#- key: Alt + CapsLock
+#  deShortcut: 'kwin: Walk Through Windows'
+#  #cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
+
+#- key: Alt_L + Shift_L
+#  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'

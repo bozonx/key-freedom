@@ -21,7 +21,7 @@ export const XINPUT_KEYS_NAMES: string[] = [
   '0', // 19
   'Minus', // 20 - Minus (-)
   'Equal', // 21 - Equal (=)
-  'BackSpace', // 22
+  'Backspace', // 22
   'Tab', // 23
   'q', // 24
   'w', // 25
