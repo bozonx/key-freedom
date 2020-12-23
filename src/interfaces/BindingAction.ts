@@ -26,3 +26,6 @@ export interface DeShortcutAction {
 }
 
 export type BindingAction = CmdAction | CombinationAction | DeShortcutAction
+export type ActionName = 'cmd'
+  | 'combination'
+  | 'deShortcut'

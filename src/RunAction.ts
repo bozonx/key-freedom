@@ -1,7 +1,6 @@
-import {exec} from 'child_process'
-
 import Main from './Main'
 import {BindingAction} from './interfaces/BindingAction'
+import {actionsFunctions} from './helpers/actionsFunctions'
 
 
 export default class RunAction {
@@ -13,28 +12,19 @@ export default class RunAction {
   }
 
   async destroy() {
-    // TODO: add
   }
 
 
   run(actions: BindingAction[]) {
-    for (let item of actions) {
-      if (item.action === 'cmd') {
-        this.runCmd(item.cmd)
-      }
-      // TODO: add combination
-    }
-
+    this.runSync(actions)
+      .catch(this.main.log.error)
   }
 
 
-  private runCmd(cmd: string) {
-    console.log(111111111, cmd)
-    // TODO: does it need arguments???
-    const res = exec(cmd);
-
-    // TODO: kill after timeout
-    // TODO: errors write to log
+  private async runSync(actions: BindingAction[]) {
+    for (let item of actions) {
+      await actionsFunctions[item.action](item)
+    }
   }
 
 }
