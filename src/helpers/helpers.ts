@@ -1,4 +1,6 @@
 import LogLevel, {LOG_LEVELS} from '../interfaces/LogLevel'
+import {KEY_POSTFIX} from '../constants'
+import {keyMaps} from '../Main'
 
 
 /**
@@ -10,7 +12,7 @@ export function calcAllowedLogLevels(logLevel: LogLevel): LogLevel[] {
   return LOG_LEVELS.slice(currentLevelIndex) as LogLevel[];
 }
 
-export function replacePostfix(str: string, to: string): string {
+export function replacePostfix(str: string, to: string = ''): string {
   // TODO: проверить что вернет ту же строку если не совпадет
   // TODO: сделать более оптимально, либо через replace либо indexOf()
   const match = str.match(/(.+)_[LRA]$/)
@@ -18,6 +20,16 @@ export function replacePostfix(str: string, to: string): string {
   if (!match) return str
 
   return `${match[1]}${to}`
+}
+
+export function keyStrToSmartKeyCodes(mapName: string, keyName: string): string | number {
+  if (keyName.indexOf('_')) {
+    if (keyName.indexOf(KEY_POSTFIX.any)) return replacePostfix(keyName)
+
+    return keyName
+  }
+
+  return keyMaps[mapName].indexOf(keyName)
 }
 
 // export function convertToKeyCode(keyName: string): number[] {

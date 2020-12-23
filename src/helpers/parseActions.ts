@@ -1,17 +1,18 @@
-import {ConfigAction, ConfigCombinationAction, ConfigDeShortcutAction} from '../interfaces/AppConfig'
+import {AppProps, ConfigAction, ConfigCombinationAction, ConfigDeShortcutAction} from '../interfaces/AppConfig'
 import {BindingAction, CmdAction, CombinationAction, DeShortcutAction} from '../interfaces/BindingAction'
 import {prepareCombination} from './parseBindings'
 import {COMBINATION_SEPARATOR} from '../constants'
+import {keyStrToSmartKeyCodes} from './helpers'
 
 
 export const actionParsers = {
-  cmd: (definition: CmdAction): CmdAction => {
+  cmd: (appProps: AppProps, definition: CmdAction): CmdAction => {
     return definition
   },
-  combination: (definition: ConfigCombinationAction): CombinationAction => {
-    const keys: string[] = prepareCombination(definition.combination)
-
-    // TODO: конвертнуть в коды
+  combination: (appProps: AppProps, definition: ConfigCombinationAction): CombinationAction => {
+    const keysStr: string[] = prepareCombination(definition.combination)
+    const keys: (string | number)[] = keysStr
+      .map((key: string) => keyStrToSmartKeyCodes(appProps.keyMap, key))
 
     return {
       action: definition.action,
@@ -19,7 +20,7 @@ export const actionParsers = {
       keys
     }
   },
-  deShortcut: (definition: ConfigDeShortcutAction): DeShortcutAction => {
+  deShortcut: (appProps: AppProps, definition: ConfigDeShortcutAction): DeShortcutAction => {
     const [ component, ...rest ] = definition.shortcut.split(':')
 
     return {
@@ -30,6 +31,7 @@ export const actionParsers = {
   },
 }
 
-export function parseActions(rawActions: ConfigAction[]): BindingAction[] {
-  return rawActions.map((item) => actionParsers[item.action](item as any))
+export function parseActions(appProps: AppProps, rawActions: ConfigAction[]): BindingAction[] {
+  return rawActions
+    .map((item) => actionParsers[item.action](appProps, item as any))
 }

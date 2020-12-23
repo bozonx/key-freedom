@@ -5,6 +5,19 @@ export const MIRROR_KEYS = [
   'Super'
 ]
 
+// export const NON_CONVERTABLE_KEYS = [
+//   'Ctrl',
+//   'Ctrl_L',
+//   'Ctrl_R',
+//   'Alt',
+//   'Alt_L',
+//   'Alt_L',
+//   'Super',
+//   'Super_L',
+//   'Super_R',
+// ]
+
+
 export enum KEY_EVENT {
   press,
   release,
