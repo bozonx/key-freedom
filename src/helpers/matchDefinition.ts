@@ -19,7 +19,7 @@ export function isCombinationMatches(
   else if (!isKeySame(binding.key, key)) {
     return false
   }
-  else if (!isModsSame(pressedMods, binding.mod)) {
+  else if (!isModsSame(binding.mod, pressedMods)) {
     return false
   }
 
@@ -34,21 +34,24 @@ export function isKeySame(expectedKey: string, testKey: string): boolean {
     && expectedKey === replacePostfix(testKey, KEY_POSTFIX.any)
 }
 
-export function isModsSame(pressedMods: string[], bindingMods?: string[]): boolean {
-  if (!bindingMods || !bindingMods.length) {
-    // if no pressedMods then means one shot
+/**
+ * There is no need to remove duplicates
+ */
+export function isModsSame(expectedMods: string[], pressedMods: string[]): boolean {
+  if (!expectedMods.length) {
+    // if no pressedMods means one shot
     // else if pressed some mods then means mods aren't same
     return !pressedMods.length
   }
-  else if (pressedMods.length !== bindingMods.length) {
+  else if (expectedMods.length !== pressedMods.length) {
     // if lengths of pressed keys and expected keys aren't same
-    return false;
+    return false
   }
 
   let foundCount = 0
 
   for (const pressedMod of pressedMods) {
-    if (bindingMods.includes(pressedMod)) {
+    if (expectedMods.includes(pressedMod)) {
       // means it has the same key
       foundCount++
 
@@ -56,15 +59,15 @@ export function isModsSame(pressedMods: string[], bindingMods?: string[]): boole
     }
     else {
       // try to find key with postfix _A
-      if (bindingMods.includes(replacePostfix(pressedMod, KEY_POSTFIX.any))) {
+      if (expectedMods.includes(replacePostfix(pressedMod, KEY_POSTFIX.any))) {
         foundCount++
 
         continue
       }
-
+      // if we haven't found at least one mod it means that combination doesn't match
       return false
     }
   }
 
-  return foundCount === bindingMods.length
+  return foundCount === expectedMods.length
 }
