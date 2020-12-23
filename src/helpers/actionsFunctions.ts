@@ -15,7 +15,9 @@ export const actionsFunctions: Record<ActionName, any> = {
     const cmd = appProps.combinationTplLodash({
       COMBINATION: definition.combination,
     })
-    // lodashTemplate(tpl)
+
+    console.log(1111, cmd)
+
     const res = exec(cmd);
 
     // TODO: kill after timeout

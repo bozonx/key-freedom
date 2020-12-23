@@ -7,7 +7,7 @@ bindings:
   cmd: konsole
 
 - key: CapsLock + Space
-  combination: Shift + Minus
+  combination: Shift + -
   #cmd: xdotool key --clearmodifiers shift+20
 
 #- key: CapsLock

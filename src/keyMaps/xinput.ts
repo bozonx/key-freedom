@@ -19,8 +19,8 @@ export const XINPUT_KEYS_NAMES: string[] = [
   '8', // 17
   '9', // 18
   '0', // 19
-  'Minus', // 20
-  'Equal', // 21
+  'Minus', // 20 - Minus (-)
+  'Equal', // 21 - Equal (=)
   'BackSpace', // 22
   'Tab', // 23
   'q', // 24
@@ -46,11 +46,11 @@ export const XINPUT_KEYS_NAMES: string[] = [
   'j', // 44
   'k', // 45
   'l', // 46
-  'Semicolon', // 47
-  'Apostrophe', // 48
-  'Tilda', // 49
+  'Semicolon', // 47 - Semicolon (;)
+  'Apostrophe', // 48 - Apostrophe (')
+  'Tilda', // 49 - Tilda (`)
   'Shift_L', // 50
-  'BackSlash', // 51
+  'BackSlash', // 51 - BackSlash (\)
   'z', // 52
   'x', // 53
   'c', // 54
@@ -58,9 +58,9 @@ export const XINPUT_KEYS_NAMES: string[] = [
   'b', // 56
   'n', // 57
   'm', // 58
-  ',', // 59
-  '.', // 60
-  '/', // 61
+  ',', // 59 - Coma (,)
+  '.', // 60 - Dot
+  'Slash', // 61 - Slash (/)
   'Shift_R', // 62
   'KpAsterisk', // 63 - multiply
   'Alt_L', // 64

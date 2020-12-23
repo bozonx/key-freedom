@@ -11,6 +11,8 @@ export const actionParsers = {
   combination: (definition: ConfigCombinationAction): CombinationAction => {
     const keys: string[] = prepareCombination(definition.combination)
 
+    // TODO: конвертнуть в коды
+
     return {
       action: definition.action,
       combination: keys.join(COMBINATION_SEPARATOR),

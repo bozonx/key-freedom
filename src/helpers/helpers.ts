@@ -20,15 +20,6 @@ export function replacePostfix(str: string, to: string): string {
   return `${match[1]}${to}`
 }
 
-
-//export function keyCodeToModName(keyCode: number): string {
-  //const keyName: string | undefined = SPECIAL_KEYS_NAMES[keyCode]
-
-  //return (keyName) ? keyName : String(keyCode)
-
-//  return SPECIAL_KEYS_NAMES[keyCode]
-//}
-
 // export function convertToKeyCode(keyName: string): number[] {
 //
 //   // TODO: add - поддержка мета клавиш - Alt, Ctrl
