@@ -1,18 +1,20 @@
 import {AppConfig} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
 import {COMBINATION_SEPARATOR, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
-import {compactUndefined, lastItem, withoutLastItem} from './arrays'
+import {compactUndefined, lastItem, uniqueArray, withoutLastItem} from './arrays'
 import {parseActions} from './parseActions'
 
 
 export function prepareCombination(strCombination: string): string[] {
-  return strCombination.split(COMBINATION_SEPARATOR).map((item): string => {
+  const result = strCombination.split(COMBINATION_SEPARATOR).map((item): string => {
     const trimmed = item.trim()
 
     if (MIRROR_KEYS.includes(trimmed)) return `${trimmed}${KEY_POSTFIX.any}`
 
     return trimmed
   })
+
+  return uniqueArray(result)
 }
 
 export function parseKeyStrDefinition (strCombination: string): {key: string, mod: string[]} {

@@ -13,3 +13,17 @@ export function withoutLastItem(arr: any[]): any[] {
 export function compactUndefined(arr: any[]): any[] {
   return arr.filter((item) => typeof item !== 'undefined');
 }
+
+// TODO: test
+export function uniqueArray(arr: any[]): any[] {
+  const result: any[] = []
+
+  for (const item of arr) {
+
+    // TODO: add checks for arrays, objects, and functions
+
+    if (!result.includes(item)) result.push(item)
+  }
+
+  return result
+}
