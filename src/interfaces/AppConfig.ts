@@ -7,6 +7,7 @@ export type ConfigKeyMap = 'xinput'
 
 export interface ConfigCombinationAction {
   action: 'combination'
+  clearCaps: boolean
   // run some other combination. Like 'Shift + Minus'
   // to run sequence add other one action
   combination: string
@@ -39,6 +40,7 @@ export interface ConfigProps {
   oneShotTimeoutMs: number
   pressTimeoutMs: number
   combinationTimeoutMs: number
+  execTimeoutMs: number
   runCmdTpl: string
   runCombinationTpl: string
   runDeShortCutTpl: string

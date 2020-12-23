@@ -9,6 +9,7 @@ export interface CmdAction {
 
 export interface CombinationAction {
   action: 'combination'
+  clearCaps: boolean
   combination: string
   keys: (string | number)[]
 }

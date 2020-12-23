@@ -16,6 +16,7 @@ export const actionParsers = {
 
     return {
       action: definition.action,
+      clearCaps: definition.clearCaps,
       combination: keys.join(COMBINATION_SEPARATOR),
       keys
     }

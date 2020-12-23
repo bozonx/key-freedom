@@ -1,5 +1,3 @@
-# TODO: выполнение комманд - xdotool key --clearmodifiers ctrl+113
-
 de: kdePlasmaX
 
 bindings:
@@ -10,24 +8,32 @@ bindings:
   combination: Shift + Minus
   #cmd: xdotool key --clearmodifiers shift+20
 
-######## Backspace and delete
+######## Backspace, delete, enter
 - key: CapsLock
   release: true
   combination: Backspace
 - key: Alt + CapsLock
   release: true
   combination: Ctrl + Backspace
-- key: Shift_L
+
+- key: Shift + CapsLock
   release: true
   combination: Delete
-- key: Alt + Shift_L
+- key: Alt + Shift + CapsLock
   release: true
   combination: Ctrl + Delete
 
-######## ARROWS
-- key: CapsLock + f
+- key: CapsLock + Shift_R
   release: true
-  combination: Ctrl + Up
+  combination: Enter
+
+######## ARROWS
+- key: CapsLock + j
+  #release: true
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Up
   #cmd: xdotool key --clearmodifiers 111
   #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
 
@@ -57,3 +63,48 @@ bindings:
 
 #- key: Alt_L + Shift_L
 #  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
+
+
+#  /*
+#  #### Arrows
+#  key <AC07> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Left, KP_Left ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Left, KP_Left ]
+#  };
+#  key <AC08> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Up, KP_Up ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Up, KP_Up ]
+#  };
+#  key <AC09> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Down, KP_Down ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Down, KP_Down ]
+#  };
+#  key <AC10> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Right, KP_Right ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Right, KP_Right ]
+#  };
+#
+#  #### Page
+#  # h
+#  key <AC06> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Prior, KP_Prior ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Prior, KP_Prior ]
+#  };
+#  # n
+#  key <AB06> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Next, KP_Next ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Next, KP_Next ]
+#  };
+#
+#  ### Home, end
+#  # u
+#  key <AD07> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Home, KP_Home ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Home, KP_Home ]
+#  };
+#  # i
+#  key <AD08> {
+#  symbols[group1] = [ NoSymbol, NoSymbol, KP_End, KP_End ],
+#  symbols[group2] = [ NoSymbol, NoSymbol, KP_End, KP_End ]
+#  };
+#  */
