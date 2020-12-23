@@ -20,9 +20,9 @@ export interface CombinationAction {
 }
 
 export interface DeShortcutAction {
-  action: 'deShortCut'
+  action: 'deShortcut'
   component: string
-  shortCutName: string
+  shortcutName: string
 }
 
 export type BindingAction = CmdAction | CombinationAction | DeShortcutAction
