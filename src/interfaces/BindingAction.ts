@@ -1,13 +1,6 @@
-// export interface Action {
-//   // run some cmd
-//   cmd?: string
-//   // run some other combination
-//   combination?: string[][]
-//   deShortCut?: {
-//     component: string
-//     shortCutName: string
-//   }
-// }
+export type ActionName = 'cmd'
+  | 'combination'
+  | 'deShortcut'
 
 export interface CmdAction {
   action: 'cmd'
@@ -26,6 +19,3 @@ export interface DeShortcutAction {
 }
 
 export type BindingAction = CmdAction | CombinationAction | DeShortcutAction
-export type ActionName = 'cmd'
-  | 'combination'
-  | 'deShortcut'

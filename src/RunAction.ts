@@ -23,7 +23,7 @@ export default class RunAction {
 
   private async runSync(actions: BindingAction[]) {
     for (let item of actions) {
-      await actionsFunctions[item.action](item)
+      await actionsFunctions[item.action](this.main.props, item)
     }
   }
 
