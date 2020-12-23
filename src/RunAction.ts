@@ -1,7 +1,7 @@
 import {exec} from 'child_process'
 
 import Main from './Main'
-import {Action} from './interfaces/BindingAction'
+import {BindingAction} from './interfaces/BindingAction'
 
 
 export default class RunAction {
@@ -17,11 +17,14 @@ export default class RunAction {
   }
 
 
-  run(action: Action) {
-    if (action.cmd) {
-      this.runCmd(action.cmd)
+  run(actions: BindingAction[]) {
+    for (let item of actions) {
+      if (item.action === 'cmd') {
+        this.runCmd(item.cmd)
+      }
+      // TODO: add combination
     }
-    // TODO: add combination
+
   }
 
 

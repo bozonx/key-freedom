@@ -40,7 +40,7 @@ export default class ShortcutMatcher {
       // matched
       this.main.log.info(`Matched ${pressedMods.join('+')} + ${key}`)
 
-      this.main.runAction.run(omitObj(binding, 'key', 'mod', 'release'))
+      this.main.runAction.run(binding.actions)
     }
   }
 

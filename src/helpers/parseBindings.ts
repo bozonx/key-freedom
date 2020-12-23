@@ -32,7 +32,7 @@ export function parseBindings(config: AppConfig): Binding[] {
       mod,
       release: item.release || false,
       actions: parseActions(compactUndefined([
-        ...item.actions,
+        ...item.actions || [],
         item.cmd && { action: 'cmd', cmd: item.cmd },
         item.combination && { action: 'combination', combination: item.combination },
         item.deShortcut && { action: 'deShortcut', shortcut: item.deShortcut },

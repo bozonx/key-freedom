@@ -44,6 +44,8 @@ export default class Main {
     this.combinations = new Combinations(this)
     this.shortcutMatcher = new ShortcutMatcher(this)
     this.runAction = new RunAction(this)
+
+    this.log.debug(`Parsed bindings: ${JSON.stringify(this.bindings, null, 2)}`)
   }
 
   async destroy() {
