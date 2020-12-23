@@ -1,4 +1,4 @@
-import {AppConfig} from '../interfaces/AppConfig'
+import {AppProps, ConfigBinding} from '../interfaces/AppConfig'
 import {Binding} from '../interfaces/Binding'
 import {COMBINATION_SEPARATOR, KEY_POSTFIX, MIRROR_KEYS} from '../constants'
 import {compactUndefined, lastItem, uniqueArray, withoutLastItem} from './arrays'
@@ -24,24 +24,20 @@ export function parseKeyStrDefinition (strCombination: string): {key: string, mo
   return {key: lastItem(keys), mod: withoutLastItem(keys)}
 }
 
-export function parseBindings(config: AppConfig): Binding[] {
-  const result: Binding[] = []
-
-  for (const item of config.bindings) {
+export function parseBindings(props: AppProps, configBinding: ConfigBinding[] = []): Binding[] {
+  return configBinding.map((item) => {
     const {key, mod} = parseKeyStrDefinition(item.key)
 
-    result.push({
+    return {
       key,
       mod,
       release: item.release || false,
-      actions: parseActions(compactUndefined([
+      actions: parseActions(props, compactUndefined([
         ...item.actions || [],
         item.cmd && { action: 'cmd', cmd: item.cmd },
         item.combination && { action: 'combination', combination: item.combination },
         item.deShortcut && { action: 'deShortcut', shortcut: item.deShortcut },
       ]))
-    })
-  }
-
-  return result
+    }
+  })
 }

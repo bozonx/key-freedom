@@ -38,7 +38,7 @@ export default class Main {
   constructor(logger: Logger, config: AppConfig) {
     this.log = logger
     this.props = parseProps(config)
-    this.bindings = parseBindings(config)
+    this.bindings = parseBindings(this.props, config.bindings)
     this.keyboard = new keyBoardsListeners[this.props.listener](this)
     this.combinations = new Combinations(this)
     this.shortcutMatcher = new ShortcutMatcher(this)

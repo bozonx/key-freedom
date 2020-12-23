@@ -14,6 +14,8 @@ export const actionParsers = {
     const keys: (string | number)[] = keysStr
       .map((key: string) => keyStrToSmartKeyCodes(appProps.keyMap, key))
 
+    console.log(2222, keysStr, keys)
+
     return {
       action: definition.action,
       combination: keys.join(COMBINATION_SEPARATOR),

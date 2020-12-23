@@ -23,7 +23,10 @@ export function replacePostfix(str: string, to: string = ''): string {
 }
 
 export function keyStrToSmartKeyCodes(mapName: string, keyName: string): string | number {
-  if (keyName.indexOf('_')) {
+
+  console.log(33333, keyName, keyName.indexOf('_') > 0)
+
+  if (keyName.indexOf('_') > 0) {
     if (keyName.indexOf(KEY_POSTFIX.any)) return replacePostfix(keyName)
 
     return keyName
