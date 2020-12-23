@@ -1,5 +1,4 @@
 export const COMBINATION_SEPARATOR = '+'
-export const COMBINATIONS_DELIMITER = ','
 export const MIRROR_KEYS = [
   'Ctrl',
   'Alt',

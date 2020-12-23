@@ -7,7 +7,8 @@ export type ConfigKeyMap = 'xinput'
 
 export interface ConfigCombinationAction {
   action: 'combination'
-  // run some other combination. Like 'Shift + Minus, Shift + Equal'
+  // run some other combination. Like 'Shift + Minus'
+  // to run sequence add other one action
   combination: string
 }
 

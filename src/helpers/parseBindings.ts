@@ -8,7 +8,8 @@ import {parseActions} from './parseActions'
 export function prepareCombination(strCombination: string): string[] {
   const result = strCombination.split(COMBINATION_SEPARATOR).map((item): string => {
     const trimmed = item.trim()
-
+    // if it is Ctrl or Alt or Super them add _A postfix,
+    // means this will be matched on pressing of any side
     if (MIRROR_KEYS.includes(trimmed)) return `${trimmed}${KEY_POSTFIX.any}`
 
     return trimmed

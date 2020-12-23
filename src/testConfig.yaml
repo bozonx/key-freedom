@@ -15,7 +15,7 @@ bindings:
 #    - Alt_R
 #  cmd: xdotool key --clearmodifiers 119
 
-- key: Alt_L + CapsLock
+- key: Alt + CapsLock
   deShortcut: 'kwin: Walk Through Windows'
   #cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows'
 

@@ -1,7 +1,7 @@
 import {ConfigAction, ConfigCombinationAction, ConfigDeShortcutAction} from '../interfaces/AppConfig'
 import {BindingAction, CmdAction, CombinationAction, DeShortcutAction} from '../interfaces/BindingAction'
-import {COMBINATIONS_DELIMITER} from '../constants'
 import {prepareCombination} from './parseBindings'
+import {COMBINATION_SEPARATOR} from '../constants'
 
 
 export const actionParsers = {
@@ -9,12 +9,12 @@ export const actionParsers = {
     return definition
   },
   combination: (definition: ConfigCombinationAction): CombinationAction => {
-    const combinations: string[] = definition.combination.split(COMBINATIONS_DELIMITER)
-      .map((item) => item.trim())
+    const keys: string[] = prepareCombination(definition.combination)
 
     return {
       action: definition.action,
-      combination: combinations.map((item) => prepareCombination(item))
+      combination: keys.join(COMBINATION_SEPARATOR),
+      keys
     }
   },
   deShortcut: (definition: ConfigDeShortcutAction): DeShortcutAction => {
