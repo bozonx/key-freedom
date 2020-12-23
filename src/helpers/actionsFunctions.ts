@@ -16,8 +16,6 @@ export const actionsFunctions: Record<ActionName, any> = {
       COMBINATION: definition.combination,
     })
 
-    console.log(1111, cmd)
-
     const res = exec(cmd);
 
     // TODO: kill after timeout
