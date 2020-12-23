@@ -1,11 +1,9 @@
 import Combinations from './Combinations'
 import ShortcutMatcher from './ShortcutMatcher'
-import {AppConfig, ConfigProps} from './interfaces/AppConfig'
+import {AppConfig, AppProps, ConfigProps} from './interfaces/AppConfig'
 import RunAction from './RunAction'
 import Logger from './interfaces/Logger'
 import {Binding} from './interfaces/Binding'
-import {defaultConfig} from './defaultConfig'
-import {omitObj} from './helpers/objects'
 import {kdePlasmaX} from './deConf/kdePlasmaX'
 import {XINPUT_KEYS_NAMES} from './keyMaps/xinput'
 import {KeyboardListener} from './interfaces/KeyboardListener'
@@ -21,14 +19,14 @@ export const keyBoardsListeners: Record<string, new (main: Main) => KeyboardList
   xinput: XinputKeyboardListener,
 }
 
-const deConfigs: Record<string, Partial<ConfigProps>> = {
+export const deConfigs: Record<string, Partial<ConfigProps>> = {
   kdePlasmaX,
 }
 
 
 export default class Main {
   readonly log: Logger
-  readonly props: ConfigProps
+  readonly props: AppProps
   readonly bindings: Binding[]
   readonly keyboard: KeyboardListener
   readonly combinations: Combinations
@@ -58,17 +56,6 @@ export default class Main {
 
   async start() {
     await this.keyboard.start()
-  }
-
-
-  private prepareProps(config: AppConfig): ConfigProps {
-    if (!config.de) throw new Error(`Please specify the "de"param in config`)
-
-    return {
-      ...defaultConfig,
-      ...deConfigs[config.de],
-      ...omitObj(config, 'bindings'),
-    } as ConfigProps
   }
 
 }

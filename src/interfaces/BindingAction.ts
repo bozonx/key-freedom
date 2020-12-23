@@ -9,7 +9,8 @@ export interface CmdAction {
 
 export interface CombinationAction {
   action: 'combination'
-  combination: string[][]
+  combination: string
+  keys: string[]
 }
 
 export interface DeShortcutAction {

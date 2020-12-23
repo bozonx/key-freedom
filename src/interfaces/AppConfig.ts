@@ -43,6 +43,13 @@ export interface ConfigProps {
   runDeShortCutTpl: string
 }
 
+export interface ConfigPreparedTemplates {
+  combinationTplLodash: (env: Record<string, any>) => void
+  deShortCutTplLodash: (env: Record<string, any>) => void
+}
+
+export type AppProps = ConfigProps & ConfigPreparedTemplates
+
 export interface AppConfig extends Partial<ConfigProps> {
   bindings: ConfigBinding[]
 }
