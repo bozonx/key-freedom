@@ -1,5 +1,4 @@
 import {exec} from 'child_process'
-import lodashTemplate from 'lodash.template'
 
 import {ActionName, CmdAction, CombinationAction, DeShortcutAction} from '../interfaces/BindingAction'
 import {AppProps} from '../interfaces/AppConfig'

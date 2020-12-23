@@ -9,6 +9,7 @@ import {XINPUT_KEYS_NAMES} from './keyMaps/xinput'
 import {KeyboardListener} from './interfaces/KeyboardListener'
 import {XinputKeyboardListener} from './keyboardListeners/Xinput'
 import {parseBindings} from './helpers/parseBindings'
+import {parseProps} from './helpers/parseProps'
 
 
 export const keyMaps: Record<string, string[]> = {
@@ -36,7 +37,7 @@ export default class Main {
 
   constructor(logger: Logger, config: AppConfig) {
     this.log = logger
-    this.props = this.prepareProps(config)
+    this.props = parseProps(config)
     this.bindings = parseBindings(config)
     this.keyboard = new keyBoardsListeners[this.props.listener](this)
     this.combinations = new Combinations(this)

@@ -44,8 +44,8 @@ export interface ConfigProps {
 }
 
 export interface ConfigPreparedTemplates {
-  combinationTplLodash: (env: Record<string, any>) => void
-  deShortCutTplLodash: (env: Record<string, any>) => void
+  combinationTplLodash: (env: Record<string, any>) => string
+  deShortCutTplLodash: (env: Record<string, any>) => string
 }
 
 export type AppProps = ConfigProps & ConfigPreparedTemplates
