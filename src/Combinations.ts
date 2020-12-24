@@ -82,29 +82,18 @@ export default class Combinations {
 
   private handleRelease(key: string) {
     if (this.pressedKey === key) {
-      // Currently pressed key has released
-      if (!isEmptyObject(this.pressedMods)) {
-        // it is release of current key with mods
+      if (this.oneShotTimeout) {
+        // it is release of current key with or without mods
         // Clear oneShot timeout, emit event, delete current key
         this.emitRelease()
-
-        return
       }
-      // Else this is release of single key without mods
-      else if (this.oneShotTimeout) {
-        // it is one shot single key release
-        // then clear timeout and rise event and delete current key
-        this.emitRelease()
-        // if no one pressed key has remained then clear combination timeout
-        if (!this.someKeyPressed()) this.clearCombinationTimeout()
-
-        return
+      else {
+        // Release of current key with exceeded oneShot timeout
+        // Then just delete it and don't rise an event
+        delete this.pressedKey
       }
-      // Else release of current key with exceeded one shot timeout
-      // Then just delete it and do noting else
-      delete this.pressedKey
-
-      this.clearCombinationTimeout()
+      // if no one pressed key has remained then clear combination timeout
+      if (!this.someKeyPressed()) this.clearCombinationTimeout()
 
       return
     }
