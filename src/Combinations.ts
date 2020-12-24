@@ -138,24 +138,18 @@ export default class Combinations {
   }
 
   private setOneShotTimeout() {
-    clearTimeout(this.oneShotTimeout as any)
+    this.clearOneShotTimeout()
     // which cancels release of this key - removes it from pressed
     this.oneShotTimeout = setTimeout(() => {
-      if (
-        !this.pressedKey
-        // TODO: review
-        || this.pressedKey !== key
-      ) {
-        delete this.oneShotTimeout
-        // do nothing
-        return
-      }
-      // if it still pressed then move it to modifier
+      delete this.oneShotTimeout
+      // it to modifier
       this.moveCurrentToModifier()
     }, this.main.props.oneShotTimeoutMs)
   }
 
   private setCombinationTimeout() {
+    this.clearCombinationTimeout()
+
     this.combinationTimeout = setTimeout(() => {
       delete this.combinationTimeout
       delete this.pressedKey
