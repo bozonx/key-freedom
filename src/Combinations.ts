@@ -10,9 +10,12 @@ export type CombinationHandler = (key: string, mod: string[], event: KEY_EVENT) 
 export default class Combinations {
   private readonly main: Main
   private readonly keyEvents = new IndexedEvents<CombinationHandler>()
-  private readonly pressedMods: Record<string, string> = {}
+  private pressedMods: Record<string, string> = {}
   private pressedKey?: string
+  // after it has been exceeded the one shot pressing won't rise a release event
   private oneShotTimeout?: NodeJS.Timeout
+  // after it has been exceeded all of pressed keys will be terminated
+  private combinationTimeout?: NodeJS.Timeout
 
 
   constructor(main: Main) {
@@ -25,6 +28,10 @@ export default class Combinations {
     this.keyEvents.destroy()
   }
 
+
+  someKeyPressed(): boolean {
+    return Boolean(this.pressedKey) || !isEmptyObject(this.pressedMods)
+  }
 
   addListener(cb: CombinationHandler): number {
     return this.keyEvents.addListener(cb)
@@ -46,44 +53,28 @@ export default class Combinations {
 
 
   private handlePress(key: string) {
-    // TODO: add total timeout
-    // TODO: add press timeout
-
-    if (this.pressedKey) {
-      // some keys have pressed and some else pressed
-      // set it as current pressed key
-      // move previously pressed key to modifier
-      // cancel one shot timeout if set
-      this.clearOneShotTimeout()
-
-      if (this.pressedKey === key) {
-        // pressed second time - it is kind or error
-        // because release has to be called before
-        return
-      }
-      else {
-        // different key has pressed
-        this.moveCurrentToModifier()
-        // save it as current
-        this.pressedKey = key
-      }
+    if (this.pressedMods[key]) {
+      // If mod key pressed second time - it is an error case
+      // do noting
+      return
+    }
+    else if (!this.pressedKey && isEmptyObject(this.pressedMods)) {
+      // No key or mods pressed before
+      this.pressedKey = key
+      // Set combination timeout because it is the freshest press
+      this.setCombinationTimeout()
+      this.setOneShotTimeout()
     }
     else {
-      // this is the first pressed key ==> add one shot timeout
+      // Some key or mods pressed before.
+      // Set it as current pressed key
+      // move previously pressed key to modifier
+      // cancel one shot timeout if set and start new one
+      this.setOneShotTimeout()
+      // If different key has pressed
+      if (this.pressedKey !== key) this.moveCurrentToModifier()
+      // save it as current
       this.pressedKey = key
-      // which cancels release of this key - removes it from pressed
-      this.oneShotTimeout = setTimeout(() => {
-        if (
-          !this.pressedKey
-          || this.pressedKey !== key
-        ) {
-          delete this.oneShotTimeout
-          // do nothing
-          return
-        }
-        // if it still pressed then move it to modifier
-        this.moveCurrentToModifier()
-      }, this.main.props.oneShotTimeoutMs)
     }
 
     this.keyEvents.emit(this.pressedKey, Object.keys(this.pressedMods), KEY_EVENT.press)
@@ -91,41 +82,42 @@ export default class Combinations {
 
   private handleRelease(key: string) {
     if (this.pressedKey === key) {
-      // release of currently pressed key
+      // Currently pressed key has released
       if (isEmptyObject(this.pressedMods)) {
-        // it is release of single key
+        // it is release of single key without mods
         if (this.oneShotTimeout) {
           // it is one shot single key release
           // then clear timeout and rise event and delete current key
           this.emitRelease()
-
-          return
         }
         else {
-          // something wrong
+          // Release of current key with exceeded one shot timeout
+          // Then just delete it and do noting else
           delete this.pressedKey
 
-          return
         }
+        // if no one pressed key has remained then clear combination timeout
+        if (!this.someKeyPressed()) this.clearCombinationTimeout()
+
+        return
       }
-      else {
-        // it is release of current key which have modifiers
-        // Clear oneShot timeout, emit event, delete current key
-        this.emitRelease()
-      }
+      // it is release of current key with mods
+      // Clear oneShot timeout, emit event, delete current key
+      this.emitRelease()
+
+      return
     }
-    else if (this.pressedKey) {
-      // one of modifier has released but main key(some other) is pressed
-      // just remove modifier
-      this.clearOneShotTimeout()
-      this.removeModifier(key)
-    }
-    else {
-      // release of some modifier and no one main key pressed
-      // just remove it but don't emit any event
-      this.clearOneShotTimeout()
-      this.removeModifier(key)
-    }
+    // release of some modifier and no one main key pressed
+    // just remove it but don't emit any event
+    // Some other pressed key has released.
+    // In case of exceeded oneShot timeout or release of some modifier.
+    // But main key(some other) is pressed.
+    // Then remove this key from mods if it is mod and remove one shot timeout.
+    // If some other key had been released then do nothing - don't emit an event
+    this.clearOneShotTimeout()
+    this.removeModifier(key)
+    // if no one pressed key has remained then clear combination timeout
+    if (!this.someKeyPressed()) this.clearCombinationTimeout()
   }
 
   private emitRelease() {
@@ -151,14 +143,49 @@ export default class Combinations {
     delete this.pressedKey
   }
 
+  private removeModifier(key: string) {
+    delete this.pressedMods[key]
+  }
+
+  private setOneShotTimeout() {
+    clearTimeout(this.oneShotTimeout as any)
+    // which cancels release of this key - removes it from pressed
+    this.oneShotTimeout = setTimeout(() => {
+      if (
+        !this.pressedKey
+        // TODO: review
+        || this.pressedKey !== key
+      ) {
+        delete this.oneShotTimeout
+        // do nothing
+        return
+      }
+      // if it still pressed then move it to modifier
+      this.moveCurrentToModifier()
+    }, this.main.props.oneShotTimeoutMs)
+  }
+
+  private setCombinationTimeout() {
+    this.combinationTimeout = setTimeout(() => {
+      delete this.combinationTimeout
+      delete this.pressedKey
+
+      this.clearOneShotTimeout()
+
+      this.pressedMods = {}
+    }, this.main.props.combinationTimeoutMs)
+  }
+
   private clearOneShotTimeout() {
     clearTimeout(this.oneShotTimeout as any)
 
     delete this.oneShotTimeout
   }
 
-  private removeModifier(key: string) {
-    delete this.pressedMods[key]
+  private clearCombinationTimeout() {
+    clearTimeout(this.combinationTimeout as any)
+
+    delete this.combinationTimeout
   }
 
 }

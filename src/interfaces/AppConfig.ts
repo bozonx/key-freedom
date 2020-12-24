@@ -38,7 +38,6 @@ export interface ConfigProps {
   listener: ConfigKeyboardListener
   keyMap: ConfigKeyMap
   oneShotTimeoutMs: number
-  pressTimeoutMs: number
   combinationTimeoutMs: number
   execTimeoutMs: number
   runCmdTpl: string
