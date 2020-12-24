@@ -8,6 +8,15 @@ bindings:
   combination: Shift + Minus
   #cmd: xdotool key --clearmodifiers shift+20
 
+######## Languages
+- key: Alt_L
+  release: true
+  cmd: xkb-switch -s us
+
+- key: Alt_R
+  release: true
+  cmd: xkb-switch -s ru
+
 ######## Backspace, delete, enter
 - key: CapsLock
   release: true

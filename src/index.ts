@@ -6,7 +6,7 @@ import Main from './Main'
 import ConsoleLogger from './ConsoleLogger'
 
 
-const defaultConfigPath = '~/.config/key-freedom/config.yaml'
+const defaultConfigPath = `${process.env.HOME}/.config/key-freedom/config.yaml`
 const pathToConfig = (yargs.argv.c) ? yargs.argv.c as string : defaultConfigPath
 
 
