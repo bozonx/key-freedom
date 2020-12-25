@@ -1,10 +1,13 @@
 de: kdePlasmaX
 
 bindings:
-- key: CapsLock + a
-  cmd: konsole
+
+- key: Space
+  release: true
+  cmd: xdotool type " "
 
 - key: CapsLock + Space
+  release: true
   combination: Shift + Minus
   #cmd: xdotool key --clearmodifiers shift+20
 
@@ -25,28 +28,163 @@ bindings:
   release: true
   combination: Ctrl + Backspace
 
-- key: Shift + CapsLock
+- key: Shift_L
   release: true
   combination: Delete
-- key: Alt + Shift + CapsLock
+- key: Alt + Shift_L
   release: true
   combination: Ctrl + Delete
 
-- key: CapsLock + Shift_R
+- key: Shift_R
   release: true
   combination: Enter
 
 ######## ARROWS
-- key: CapsLock + j
+- key: Space + j
   #release: true
   actions:
     - action: combination
-      clearCaps: true
-      combination: Up
+      #clearCaps: true
+      combination: Left
   #cmd: xdotool key --clearmodifiers 111
   #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
+- key: Space + k
+  actions:
+    - action: combination
+      combination: Up
+- key: Space + l
+  actions:
+    - action: combination
+      combination: Down
+- key: Space + Semicolon
+  actions:
+    - action: combination
+      combination: Right
+- key: Space + u
+  actions:
+    - action: combination
+      combination: Home
+- key: Space + i
+  actions:
+    - action: combination
+      combination: End
+- key: Space + h
+  actions:
+    - action: combination
+      combination: PgUp
+- key: Space + n
+  actions:
+    - action: combination
+      combination: PgDown
 
-#- key: k
+######## Numbers
+- key: Space + a
+  cmd: xdotool type --clearmodifiers "0"
+- key: Space + x
+  cmd: xdotool type --clearmodifiers "1"
+- key: Space + c
+  cmd: xdotool type --clearmodifiers "2"
+- key: Space + v
+  cmd: xdotool type --clearmodifiers "3"
+- key: Space + s
+  cmd: xdotool type --clearmodifiers "4"
+- key: Space + d
+  cmd: xdotool type --clearmodifiers "5"
+- key: Space + f
+  cmd: xdotool type --clearmodifiers "6"
+- key: Space + w
+  cmd: xdotool type --clearmodifiers "7"
+- key: Space + e
+  cmd: xdotool type --clearmodifiers "8"
+- key: Space + r
+  cmd: xdotool type --clearmodifiers "9"
+- key: Space + g
+  cmd: xdotool type --clearmodifiers "+"
+- key: Space + t
+  cmd: xdotool type --clearmodifiers "-"
+- key: Space + q
+  cmd: xdotool type --clearmodifiers "/"
+- key: Space + z
+  cmd: xdotool type --clearmodifiers "*"
+- key: Space + b
+  cmd: xdotool type --clearmodifiers "="
+
+######## Symbols
+# key m
+- key: Space + m
+  cmd: xdotool type --clearmodifiers "/"
+# key o
+  # TODO: doesn't work
+- key: Space + o
+  cmd: xdotool type --clearmodifiers ":"
+# key p
+  # TODO: doesn't work
+- key: Space + p
+  cmd: xdotool type --clearmodifiers ";"
+# key [
+  # level1 - |
+  # +shift - &
+  # TODO: doesn't work
+- key: Space + [
+  cmd: xdotool type --clearmodifiers "#"
+# key ]
+  # level1 - \
+  # +shift - ~
+# key '
+  # level1 - '
+  # +shift - `
+  # TODO: doesn't work
+- key: Space + '
+  cmd: xdotool type --clearmodifiers '"'
+
+# TODO: не получится поставить точку
+- key: Space + Slash
+  cmd: xdotool type --clearmodifiers "!"
+
+
+- key: Space + BackSlash
+  cmd: xdotool type --clearmodifiers "/"
+- key: Space + ,
+  cmd: xdotool type --clearmodifiers "("
+- key: Space + .
+  cmd: xdotool type --clearmodifiers ")"
+
+######## DE
+# konsole
+- key: Space + t
+  cmd: konsole
+# yakuake
+- key: Space + y
+  deShortcut: 'yakuake: toggle-window-state'
+
+- key: Space + q
+  deShortcut: 'kwin: Window Close'
+- key: Space + w
+  deShortcut: 'kwin: Window Maximize'
+- key: Space + Alt + w
+  deShortcut: 'kwin: Window Maximize Vertical'
+- key: Space + Shift + w
+  deShortcut: 'kwin: Window Maximize Horizontal'
+- key: Space + e
+  deShortcut: 'kwin: Window Minimize'
+
+- key: Space + g
+  deShortcut: 'kwin: Switch to Next Desktop'
+- key: Space + r
+  deShortcut: 'kwin: Window to Next Screen'
+- key: Space + v
+  deShortcut: 'kwin: Window to Next Desktop'
+
+- key: Space + 7
+  deShortcut: 'kmix: mute'
+
+- key: Space + 6
+  deShortcut: 'kmix: mic_mute'
+
+# Walk Through Windows
+# Walk Through Windows of Current Application
+
+  #- key: k
 #  mod:
 #    - CapsLock
 #  cmd: xdotool key --clearmodifiers 111

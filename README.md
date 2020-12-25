@@ -11,6 +11,9 @@ Specify config
 
     node ~/.local/share/key-freedom/key-freedom.js -c ~/mySuperConfig.yaml
 
+## Prepare your system
+
+
 ## Build
 
     yarn build
