@@ -4,7 +4,8 @@ bindings:
 
 - key: Space
   release: true
-  cmd: xdotool type " "
+  combination: Shift + Space
+  #cmd: xdotool type " "
 
 - key: CapsLock + Space
   release: true
@@ -60,6 +61,30 @@ bindings:
   actions:
     - action: combination
       combination: Right
+######## FORCED ARROWS
+- key: Space + f + j
+  combination: Ctrl + Left
+- key: Space + f + k
+  actions:
+    - action: combination
+      combination: Up
+    - action: combination
+      combination: Up
+    - action: combination
+      combination: Up
+- key: Space + f + l
+  actions:
+    - action: combination
+      combination: Down
+    - action: combination
+      combination: Down
+    - action: combination
+      combination: Down
+- key: Space + f + Semicolon
+  combination: Ctrl + Right
+
+
+
 - key: Space + u
   actions:
     - action: combination
@@ -91,6 +116,7 @@ bindings:
 - key: Space + d
   cmd: xdotool type --clearmodifiers "5"
 - key: Space + f
+  release: true
   cmd: xdotool type --clearmodifiers "6"
 - key: Space + w
   cmd: xdotool type --clearmodifiers "7"
@@ -114,17 +140,14 @@ bindings:
 - key: Space + m
   cmd: xdotool type --clearmodifiers "/"
 # key o
-  # TODO: doesn't work
 - key: Space + o
   cmd: xdotool type --clearmodifiers ":"
 # key p
-  # TODO: doesn't work
 - key: Space + p
   cmd: xdotool type --clearmodifiers ";"
 # key [
   # level1 - |
   # +shift - &
-  # TODO: doesn't work
 - key: Space + [
   cmd: xdotool type --clearmodifiers "#"
 # key ]
@@ -133,13 +156,13 @@ bindings:
 # key '
   # level1 - '
   # +shift - `
-  # TODO: doesn't work
-- key: Space + '
-  cmd: xdotool type --clearmodifiers '"'
+# TODO: doesn't work
+#- key: Space + Apostrophe
+#  cmd: xdotool type --clearmodifiers '"'
 
 # TODO: не получится поставить точку
-- key: Space + Slash
-  cmd: xdotool type --clearmodifiers "!"
+#- key: Space + Slash
+#  cmd: xdotool type --clearmodifiers "!"
 
 
 - key: Space + BackSlash
@@ -151,34 +174,34 @@ bindings:
 
 ######## DE
 # konsole
-- key: Space + t
+- key: CapsLock + t
   cmd: konsole
 # yakuake
-- key: Space + y
+- key: CapsLock + y
   deShortcut: 'yakuake: toggle-window-state'
 
-- key: Space + q
+- key: CapsLock + q
   deShortcut: 'kwin: Window Close'
-- key: Space + w
+- key: CapsLock + w
   deShortcut: 'kwin: Window Maximize'
-- key: Space + Alt + w
+- key: CapsLock + Alt + w
   deShortcut: 'kwin: Window Maximize Vertical'
-- key: Space + Shift + w
+- key: CapsLock + Shift + w
   deShortcut: 'kwin: Window Maximize Horizontal'
-- key: Space + e
+- key: CapsLock + e
   deShortcut: 'kwin: Window Minimize'
 
-- key: Space + g
+- key: CapsLock + g
   deShortcut: 'kwin: Switch to Next Desktop'
-- key: Space + r
+- key: CapsLock + r
   deShortcut: 'kwin: Window to Next Screen'
-- key: Space + v
+- key: CapsLock + v
   deShortcut: 'kwin: Window to Next Desktop'
 
-- key: Space + 7
+- key: CapsLock + 7
   deShortcut: 'kmix: mute'
 
-- key: Space + 6
+- key: CapsLock + 6
   deShortcut: 'kmix: mic_mute'
 
 # Walk Through Windows
