@@ -58,6 +58,10 @@ export default class Combinations {
       // do noting
       return
     }
+    // else if (this.pressedKey === key) {
+    //   this.pressedKey = key
+    //   this.clearOneShotTimeout()
+    // }
     else if (!this.pressedKey && isEmptyObject(this.pressedMods)) {
       // No key or mods pressed before
       this.pressedKey = key
