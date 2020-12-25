@@ -76,27 +76,31 @@ bindings:
 - key: CapsLock + f + k
   actions:
     - action: cmd
-      cmd: 'xdotool keyup --clearmodifiers 66'
-    - action: combination
-      combination: Up
-    - action: combination
-      combination: Up
-    - action: combination
-      combination: Up
-    - action: cmd
-      cmd: 'xdotool keydown --clearmodifiers 66'
+      cmd: 'xdotool keyup --clearmodifiers 66; xdotool key --clearmodifiers 111; xdotool key --clearmodifiers 111; xdotool key --clearmodifiers 111; xdotool keydown --clearmodifiers 66'
+#    - action: cmd
+#      cmd: 'xdotool keyup --clearmodifiers 66'
+#    - action: combination
+#      combination: Up
+#    - action: combination
+#      combination: Up
+#    - action: combination
+#      combination: Up
+#    - action: cmd
+#      cmd: 'xdotool keydown --clearmodifiers 66'
 - key: CapsLock + f + l
   actions:
     - action: cmd
-      cmd: 'xdotool keyup --clearmodifiers 66'
-    - action: combination
-      combination: Down
-    - action: combination
-      combination: Down
-    - action: combination
-      combination: Down
-    - action: cmd
-      cmd: 'xdotool keydown --clearmodifiers 66'
+      cmd: 'xdotool keyup --clearmodifiers 66; xdotool key --clearmodifiers 116; xdotool key --clearmodifiers 116; xdotool key --clearmodifiers 116; xdotool keydown --clearmodifiers 66'
+#    - action: cmd
+#      cmd: 'xdotool keyup --clearmodifiers 66'
+#    - action: combination
+#      combination: Down
+#    - action: combination
+#      combination: Down
+#    - action: combination
+#      combination: Down
+#    - action: cmd
+#      cmd: 'xdotool keydown --clearmodifiers 66'
 - key: CapsLock + f + Semicolon
   actions:
     - action: combination
