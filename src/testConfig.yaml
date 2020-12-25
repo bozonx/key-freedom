@@ -2,15 +2,18 @@ de: kdePlasmaX
 
 bindings:
 
-- key: Space
-  release: true
-  combination: Shift + Space
-  #cmd: xdotool type " "
-
-- key: CapsLock + Space
-  release: true
-  combination: Shift + Minus
-  #cmd: xdotool key --clearmodifiers shift+20
+#- key: Space
+#  release: true
+#  # TODO: может обрабатывать релиз без предварительного press возможно изза этого проблема
+#  # TODO: может сделать тогда clear space
+#  #combination: Shift + Space
+#  cmd: xdotool type " "
+#
+## TODO: doesn't work
+#- key: CapsLock + Space
+#  release: true
+#  combination: Shift + Minus
+#  #cmd: xdotool key --clearmodifiers shift+20
 
 ######## Languages
 - key: Alt_L
@@ -41,63 +44,79 @@ bindings:
   combination: Enter
 
 ######## ARROWS
-- key: Space + j
+- key: CapsLock + j
   #release: true
   actions:
     - action: combination
-      #clearCaps: true
+      clearCaps: true
       combination: Left
   #cmd: xdotool key --clearmodifiers 111
   #cmd: bash -e "sleep 1; xdotool key --clearmodifiers 83"
-- key: Space + k
+- key: CapsLock + k
   actions:
     - action: combination
+      clearCaps: true
       combination: Up
-- key: Space + l
+- key: CapsLock + l
   actions:
     - action: combination
+      clearCaps: true
       combination: Down
-- key: Space + Semicolon
+- key: CapsLock + Semicolon
   actions:
     - action: combination
+      clearCaps: true
       combination: Right
 ######## FORCED ARROWS
-- key: Space + f + j
-  combination: Ctrl + Left
-- key: Space + f + k
+- key: CapsLock + f + j
   actions:
     - action: combination
-      combination: Up
+      clearCaps: true
+      combination: Ctrl + Left
+- key: CapsLock + f + k
+  actions:
+    - action: cmd
+      cmd: 'xdotool keyup --clearmodifiers 66'
     - action: combination
       combination: Up
     - action: combination
       combination: Up
-- key: Space + f + l
+    - action: combination
+      combination: Up
+    - action: cmd
+      cmd: 'xdotool keydown --clearmodifiers 66'
+- key: CapsLock + f + l
+  actions:
+    - action: cmd
+      cmd: 'xdotool keyup --clearmodifiers 66'
+    - action: combination
+      combination: Down
+    - action: combination
+      combination: Down
+    - action: combination
+      combination: Down
+    - action: cmd
+      cmd: 'xdotool keydown --clearmodifiers 66'
+- key: CapsLock + f + Semicolon
   actions:
     - action: combination
-      combination: Down
-    - action: combination
-      combination: Down
-    - action: combination
-      combination: Down
-- key: Space + f + Semicolon
-  combination: Ctrl + Right
+      clearCaps: true
+      combination: Ctrl + Right
 
 
-
-- key: Space + u
+- key: CapsLock + u
   actions:
     - action: combination
       combination: Home
-- key: Space + i
+- key: CapsLock + i
   actions:
     - action: combination
       combination: End
-- key: Space + h
+- key: CapsLock + h
   actions:
     - action: combination
       combination: PgUp
-- key: Space + n
+- key: CapsLock + n
   actions:
     - action: combination
       combination: PgDown
@@ -136,41 +155,50 @@ bindings:
   cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
-# key m
-- key: Space + m
-  cmd: xdotool type --clearmodifiers "/"
-# key o
-- key: Space + o
-  cmd: xdotool type --clearmodifiers ":"
-# key p
-- key: Space + p
-  cmd: xdotool type --clearmodifiers ";"
-# key [
-  # level1 - |
-  # +shift - &
-- key: Space + [
-  cmd: xdotool type --clearmodifiers "#"
-# key ]
-  # level1 - \
-  # +shift - ~
-# key '
-  # level1 - '
-  # +shift - `
-# TODO: doesn't work
-#- key: Space + Apostrophe
-#  cmd: xdotool type --clearmodifiers '"'
-
-# TODO: не получится поставить точку
-#- key: Space + Slash
-#  cmd: xdotool type --clearmodifiers "!"
-
-
-- key: Space + BackSlash
-  cmd: xdotool type --clearmodifiers "/"
-- key: Space + ,
-  cmd: xdotool type --clearmodifiers "("
-- key: Space + .
-  cmd: xdotool type --clearmodifiers ")"
+## key m
+#- key: CapsLock + m
+#  cmd: xdotool type --clearmodifiers "/"
+## key o
+#- key: CapsLock + o
+#  cmd: xdotool type --clearmodifiers ":"
+## key p
+#- key: CapsLock + p
+#  cmd: xdotool type --clearmodifiers ";"
+## key [
+#  # level1 - |
+#  # +shift - &
+#- key: CapsLock + [
+#  cmd: xdotool type --clearmodifiers "#"
+## key ]
+#  # level1 - \
+#  # +shift - ~
+## key '
+#  # level1 - '
+#  # +shift - `
+## TODO: doesn't work
+##- key: Space + Apostrophe
+##  cmd: xdotool type --clearmodifiers '"'
+#
+## TODO: не получится поставить точку
+##- key: Space + Slash
+##  cmd: xdotool type --clearmodifiers "!"
+#
+#
+##- key: Space + BackSlash
+##  cmd: xdotool type --clearmodifiers "/"
+#
+#- key: CapsLock + ,
+#  cmd: xdotool type --clearmodifiers "<"
+#- key: CapsLock + .
+#  cmd: xdotool type --clearmodifiers ">"
+## TODO: doesn't work
+##- key: CapsLock + ,
+##  clearCaps: true
+##  cmd: xdotool type --clearmodifiers "("
+### TODO: doesn't work
+##- key: CapsLock + .
+##  clearCaps: true
+##  cmd: xdotool type --clearmodifiers ")"
 
 ######## DE
 # konsole

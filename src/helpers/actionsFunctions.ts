@@ -9,12 +9,13 @@ export const actionsFunctions: Record<ActionName, any> = {
   },
   async combination(appProps: AppProps, definition: CombinationAction) {
     if (definition.clearCaps) {
-      const capsClearCmd = appProps.combinationTplLodash({
-        // TODO: лучше конвертнуть комбинацию
-        COMBINATION: '66',
-      })
-
-      await execCmd(capsClearCmd, appProps.execTimeoutMs);
+      // const capsClearCmd = appProps.combinationTplLodash({
+      //   // TODO: лучше конвертнуть комбинацию
+      //   COMBINATION: '66',
+      // })
+      //
+      // await execCmd(capsClearCmd, appProps.execTimeoutMs);
+      await execCmd('xdotool keyup --clearmodifiers 66', appProps.execTimeoutMs);
     }
 
     const cmd = appProps.combinationTplLodash({
@@ -22,6 +23,10 @@ export const actionsFunctions: Record<ActionName, any> = {
     })
 
     await execCmd(cmd, appProps.execTimeoutMs);
+
+    if (definition.clearCaps) {
+      await execCmd('xdotool keydown --clearmodifiers 66', appProps.execTimeoutMs);
+    }
   },
   async deShortcut(appProps: AppProps, definition: DeShortcutAction) {
     const cmd = appProps.deShortCutTplLodash({
