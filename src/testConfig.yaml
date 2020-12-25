@@ -76,11 +76,11 @@ bindings:
 - key: CapsLock + f + k
   actions:
     - action: cmd
-      cmd: 'xdotool keyup --clearmodifiers 66; xdotool key --clearmodifiers 111 111 111; xdotool keydown --clearmodifiers 66'
+      cmd: 'xdotool keyup 66; xdotool key --clearmodifiers 111 111 111; xdotool keydown 66'
 - key: CapsLock + f + l
   actions:
     - action: cmd
-      cmd: 'xdotool keyup --clearmodifiers 66; xdotool key --clearmodifiers 116 116 116; xdotool keydown --clearmodifiers 66'
+      cmd: 'xdotool keyup 66; xdotool key --clearmodifiers 116 116 116; xdotool keydown 66'
 - key: CapsLock + f + Semicolon
   actions:
     - action: combination
@@ -105,38 +105,38 @@ bindings:
     - action: combination
       combination: PgDown
 
-######## Numbers
-- key: Space + a
-  cmd: xdotool type --clearmodifiers "0"
-- key: Space + x
-  cmd: xdotool type --clearmodifiers "1"
-- key: Space + c
-  cmd: xdotool type --clearmodifiers "2"
-- key: Space + v
-  cmd: xdotool type --clearmodifiers "3"
-- key: Space + s
-  cmd: xdotool type --clearmodifiers "4"
-- key: Space + d
-  cmd: xdotool type --clearmodifiers "5"
-- key: Space + f
-  release: true
-  cmd: xdotool type --clearmodifiers "6"
-- key: Space + w
-  cmd: xdotool type --clearmodifiers "7"
-- key: Space + e
-  cmd: xdotool type --clearmodifiers "8"
-- key: Space + r
-  cmd: xdotool type --clearmodifiers "9"
-- key: Space + g
-  cmd: xdotool type --clearmodifiers "+"
-- key: Space + t
-  cmd: xdotool type --clearmodifiers "-"
-- key: Space + q
-  cmd: xdotool type --clearmodifiers "/"
-- key: Space + z
-  cmd: xdotool type --clearmodifiers "*"
-- key: Space + b
-  cmd: xdotool type --clearmodifiers "="
+######### Numbers
+#- key: Space + a
+#  cmd: xdotool type --clearmodifiers "0"
+#- key: Space + x
+#  cmd: xdotool type --clearmodifiers "1"
+#- key: Space + c
+#  cmd: xdotool type --clearmodifiers "2"
+#- key: Space + v
+#  cmd: xdotool type --clearmodifiers "3"
+#- key: Space + s
+#  cmd: xdotool type --clearmodifiers "4"
+#- key: Space + d
+#  cmd: xdotool type --clearmodifiers "5"
+#- key: Space + f
+#  release: true
+#  cmd: xdotool type --clearmodifiers "6"
+#- key: Space + w
+#  cmd: xdotool type --clearmodifiers "7"
+#- key: Space + e
+#  cmd: xdotool type --clearmodifiers "8"
+#- key: Space + r
+#  cmd: xdotool type --clearmodifiers "9"
+#- key: Space + g
+#  cmd: xdotool type --clearmodifiers "+"
+#- key: Space + t
+#  cmd: xdotool type --clearmodifiers "-"
+#- key: Space + q
+#  cmd: xdotool type --clearmodifiers "/"
+#- key: Space + z
+#  cmd: xdotool type --clearmodifiers "*"
+#- key: Space + b
+#  cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
 ## key m
