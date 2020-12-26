@@ -47,6 +47,7 @@ bindings:
   cmd: 'xdotool key Escape'
 
 ########## Macroses
+# Make new line and move cursor to it
 - key: Shift_L + Shift_R
   release: true
   actions:
@@ -54,6 +55,7 @@ bindings:
       combination: End
     - action: combination
       combination: Enter
+# Make new line and return back
 - key: Alt_L + Shift_R
   release: true
   actions:
@@ -61,8 +63,8 @@ bindings:
       combination: Enter
     - action: combination
       combination: Ctrl + Left
-# Remove line with cutting to the buffer
-- key: Ctrl_R + Caps
+# Remove content of the line
+- key: Ctrl_R + CapsLock
   release: true
   actions:
     - action: combination
@@ -70,8 +72,8 @@ bindings:
     - action: combination
       combination: Shift + Home
     - action: combination
-      combination: Ctrl + x
-# Just remove whole line
+      combination: Backspace
+# Remove whole line
 - key: Ctrl_R + Shift_L
   release: true
   actions:
@@ -81,7 +83,30 @@ bindings:
       combination: Shift + Home
     - action: combination
       combination: Backspace
-
+    - action: combination
+      combination: Delete
+# Remove content of line with cutting to the buffer
+- key: Ctrl_R + Alt_L + CapsLock
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Ctrl + x
+  # Remove line with cutting to the buffer
+- key: Ctrl_R + Alt_L + Shift_L
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Ctrl + x
+    - action: combination
+      combination: Delete
 
 ######## ARROWS
 - key: Alt_L + j
@@ -231,7 +256,7 @@ bindings:
 - key: Alt_R + r
   cmd: xdotool type --clearmodifiers "9"
 - key: Alt_R + g
-  cmd: xdotool type "+"
+  cmd: xdotool type --clearmodifiers "+"
 - key: Alt_R + t
   cmd: xdotool type --clearmodifiers "-"
 - key: Alt_R + q
