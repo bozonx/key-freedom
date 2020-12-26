@@ -92,38 +92,86 @@ bindings:
   combination: PgDown
 
 ######### SELECT
-#- key: Alt_L + j
-#  combination: Shift + Left
-#- key: Alt_L + k
-#  combination: Shift + Up
-#- key: Alt_L + l
-#  combination: Shift + Down
-#- key: Alt_L + Semicolon
-#  combination: Shift + Right
+- key: CapsLock + j
+  #combination: Shift + Left
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Left
+- key: CapsLock + k
+  #combination: Shift + Up
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Up
+- key: CapsLock + l
+  #combination: Shift + Down
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Down
+- key: CapsLock + Semicolon
+  #combination: Shift + Right
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Right
 ######### FORCED SELECT
-#- key: Alt_L + f + j
-#  combination: Shift + Ctrl + Left
-#- key: Alt_L + f + k
-#  cmd: 'xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111'
-#- key: Alt_L + f + l
-#  cmd: 'xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116'
-#- key: Alt_L + f + Semicolon
-#  combination: Shift + Ctrl + Right
+- key: CapsLock + f + j
+  #combination: Shift + Ctrl + Left
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Ctrl + Left
+- key: CapsLock + f + k
+  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111; xdotool keydown 66'
+- key: CapsLock + f + l
+  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116; xdotool keydown 66'
+- key: CapsLock + f + Semicolon
+  #combination: Shift + Ctrl + Right
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Ctrl + Right
 ######### SELECT HOME, END
-#- key: Alt_L + u
-#  combination: Shift + Home
-#- key: Alt_L + i
-#  combination: Shift + End
+- key: CapsLock + u
+  #combination: Shift + Home
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Home
+- key: CapsLock + i
+  #combination: Shift + End
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + End
 ######### FORCED SELECT HOME, END (to start/end of whole page)
-#- key: Alt_L + f + u
-#  combination: Shift + Ctrl + Home
-#- key: Alt_L + f + i
-#  combination: Shift + Ctrl + End
+- key: CapsLock + f + u
+  #combination: Shift + Ctrl + Home
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Ctrl + Home
+- key: CapsLock + f + i
+  #combination: Shift + Ctrl + End
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Ctrl + End
 ######### SELECT PAGE UP, PAGE DOWN
-#- key: Alt_L + h
-#  combination: Shift + PgUp
-#- key: Alt_L + n
-#  combination: Shift + PgDown
+- key: CapsLock + h
+  #combination: Shift + PgUp
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + PgUp
+- key: CapsLock + n
+  #combination: Shift + PgDown
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + PgDown
 
 ######### Numbers
 - key: Alt_R + a
@@ -272,48 +320,3 @@ bindings:
 
 #- key: Alt_L + Shift_L
 #  cmd: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Walk Through Windows of Current Application'
-
-
-#  /*
-#  #### Arrows
-#  key <AC07> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Left, KP_Left ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Left, KP_Left ]
-#  };
-#  key <AC08> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Up, KP_Up ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Up, KP_Up ]
-#  };
-#  key <AC09> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Down, KP_Down ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Down, KP_Down ]
-#  };
-#  key <AC10> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Right, KP_Right ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Right, KP_Right ]
-#  };
-#
-#  #### Page
-#  # h
-#  key <AC06> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Prior, KP_Prior ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Prior, KP_Prior ]
-#  };
-#  # n
-#  key <AB06> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Next, KP_Next ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Next, KP_Next ]
-#  };
-#
-#  ### Home, end
-#  # u
-#  key <AD07> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_Home, KP_Home ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_Home, KP_Home ]
-#  };
-#  # i
-#  key <AD08> {
-#  symbols[group1] = [ NoSymbol, NoSymbol, KP_End, KP_End ],
-#  symbols[group2] = [ NoSymbol, NoSymbol, KP_End, KP_End ]
-#  };
-#  */
