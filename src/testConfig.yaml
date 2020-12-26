@@ -95,7 +95,7 @@ bindings:
       combination: Shift + Home
     - action: combination
       combination: Ctrl + x
-  # Remove line with cutting to the buffer
+# Remove line with cutting to the buffer
 - key: Ctrl_R + Alt_L + Shift_L
   release: true
   actions:
@@ -107,6 +107,20 @@ bindings:
       combination: Ctrl + x
     - action: combination
       combination: Delete
+# Duplicate the selection at new line
+- key: Alt_R + Alt_L
+  release: true
+  actions:
+    - action: combination
+      combination: Ctrl + c
+    - action: combination
+      combination: Left
+    - action: combination
+      combination: Enter
+    - action: combination
+      combination: Up
+    - action: combination
+      combination: Ctrl + v
 
 ######## ARROWS
 - key: Alt_L + j
