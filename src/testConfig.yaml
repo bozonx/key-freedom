@@ -121,6 +121,36 @@ bindings:
       combination: Up
     - action: combination
       combination: Ctrl + v
+# SELECTION BY WHOLE LINE
+- key: Alt_R + j
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+- key: Alt_R + k
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Up
+    - action: combination
+      combination: Shift + Home
+- key: Alt_R + l
+  actions:
+    - action: combination
+      combination: Home
+    - action: combination
+      combination: Shift + Down
+    - action: combination
+      combination: Shift + End
+- key: Alt_R + Semicolon
+  actions:
+    - action: combination
+      combination: Home
+    - action: combination
+      combination: Shift + End
+
 
 ######## ARROWS
 - key: Alt_L + j
@@ -269,29 +299,33 @@ bindings:
   cmd: xdotool type --clearmodifiers "8"
 - key: Alt_R + r
   cmd: xdotool type --clearmodifiers "9"
-- key: Alt_R + g
-  cmd: xdotool type --clearmodifiers "+"
 - key: Alt_R + t
-  cmd: xdotool type --clearmodifiers "-"
+  cmd: xdotool type --clearmodifiers "+"
 - key: Alt_R + q
-  cmd: xdotool type --clearmodifiers $'\u002F'
+  cmd: xdotool type --clearmodifiers "-"
 - key: Alt_R + z
-  cmd: xdotool type --clearmodifiers "*"
+  cmd: xdotool type --clearmodifiers "/"
+  #cmd: xdotool type --clearmodifiers $'\u002F'
 - key: Alt_R + b
+  cmd: xdotool type --clearmodifiers "*"
+- key: Alt_R + g
   cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
 # symbol _
-- key: CapsLock + Space
-  release: true
-  cmd: 'xdotool keyup 66; xdotool type "_"; xdotool keydown 66'
+#- key: CapsLock + Space
+#  release: true
+#  cmd: 'xdotool keyup 66; xdotool type "_"; xdotool keydown 66'
 #  actions:
 #    - action: combination
 #      clearCaps: true
 #      combination: Shift + Minus
+# key y
+- key: Alt + y
+  cmd: xdotool type --clearmodifiers "@"
 # key m
 - key: Alt + m
-  cmd: xdotool type --clearmodifiers "/"
+  cmd: xdotool type --clearmodifiers "_"
 # key o
 - key: Alt + o
   cmd: xdotool type --clearmodifiers ":"
