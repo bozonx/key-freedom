@@ -154,38 +154,48 @@ bindings:
   cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
-## key m
-#- key: CapsLock + m
+# key m
+- key: Alt + m
+  cmd: xdotool type --clearmodifiers "/"
+# key o
+
+- key: Alt + o
+  cmd: xdotool type --clearmodifiers ":"
+# key p
+- key: Alt + p
+  cmd: xdotool type --clearmodifiers ";"
+# key [
+  # level1 - |
+  # +shift - &
+- key: Alt + [
+  cmd: xdotool type --clearmodifiers "#"
+# key ]
+  # level1 - \
+  # +shift - ~
+- key: Alt + ]
+  cmd: xdotool type --clearmodifiers "$"
+# key '
+  # level1 - '
+  # +shift - `
+# TODO: doesn't work in firefox
+- key: Alt + Apostrophe
+  cmd: xdotool type '"'
+  #cmd: "xdotool type $'\u0022'"
+# key '
+  # level1 - ,
+  # +shift - ?
+# TODO: doesn't work in firefox
+- key: Alt + Slash
+  cmd: "xdotool type $'\u003F'"
+  ### this is !
+  #cmd: xdotool type --clearmodifiers $'\u0021'
+
+- key: CapsLock + Slash
+  cmd: "xdotool keyup 66; xdotool type --clearmodifiers $'\u0021'; xdotool keydown 66"
+
+#- key: Space + BackSlash
 #  cmd: xdotool type --clearmodifiers "/"
-## key o
-#- key: CapsLock + o
-#  cmd: xdotool type --clearmodifiers ":"
-## key p
-#- key: CapsLock + p
-#  cmd: xdotool type --clearmodifiers ";"
-## key [
-#  # level1 - |
-#  # +shift - &
-#- key: CapsLock + [
-#  cmd: xdotool type --clearmodifiers "#"
-## key ]
-#  # level1 - \
-#  # +shift - ~
-## key '
-#  # level1 - '
-#  # +shift - `
-## TODO: doesn't work
-##- key: Space + Apostrophe
-##  cmd: xdotool type --clearmodifiers '"'
-#
-## TODO: не получится поставить точку
-##- key: Space + Slash
-##  cmd: xdotool type --clearmodifiers "!"
-#
-#
-##- key: Space + BackSlash
-##  cmd: xdotool type --clearmodifiers "/"
-#
+
 - key: CapsLock + ,
   cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "<"; xdotool keydown 66'
 - key: CapsLock + .
