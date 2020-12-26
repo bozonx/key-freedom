@@ -15,9 +15,8 @@ export const actionsFunctions: Record<ActionName, any> = {
       // })
       //
       // await execCmd(capsClearCmd, appProps.execTimeoutMs);
-      await execCmd('xdotool keyup --clearmodifiers 66', appProps.execTimeoutMs);
+      await execCmd('xdotool keyup 66', appProps.execTimeoutMs);
     }
-
     const cmd = appProps.combinationTplLodash({
       COMBINATION: definition.combination,
     })
@@ -25,7 +24,7 @@ export const actionsFunctions: Record<ActionName, any> = {
     await execCmd(cmd, appProps.execTimeoutMs);
 
     if (definition.clearCaps) {
-      await execCmd('xdotool keydown --clearmodifiers 66', appProps.execTimeoutMs);
+      await execCmd('xdotool keydown 66', appProps.execTimeoutMs);
     }
   },
   async deShortcut(appProps: AppProps, definition: DeShortcutAction) {
