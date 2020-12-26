@@ -23,7 +23,7 @@ bindings:
   release: true
   cmd: xkb-switch -s ru
 
-######## Backspace, delete, enter
+######## Backspace, delete, enter, escape
 - key: CapsLock
   release: true
   combination: Backspace
@@ -41,6 +41,11 @@ bindings:
 - key: Shift_R
   release: true
   combination: Enter
+
+- key: Ctrl_R
+  release: true
+  #combination: Escape
+  cmd: 'xdotool key Escape'
 
 ######## ARROWS
 - key: Alt_L + j
@@ -145,20 +150,24 @@ bindings:
   cmd: xdotool type --clearmodifiers "+"
 - key: Alt_R + t
   cmd: xdotool type --clearmodifiers "-"
-# TODO: Doesn't work!!!!
 - key: Alt_R + q
-  cmd: xdotool type --clearmodifiers "/"
+  cmd: xdotool type --clearmodifiers $'\u002F'
 - key: Alt_R + z
   cmd: xdotool type --clearmodifiers "*"
 - key: Alt_R + b
   cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
+# symbol _
+- key: CapsLock + Space
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Shift + Minus
 # key m
 - key: Alt + m
   cmd: xdotool type --clearmodifiers "/"
 # key o
-
 - key: Alt + o
   cmd: xdotool type --clearmodifiers ":"
 # key p
@@ -192,9 +201,6 @@ bindings:
 
 - key: CapsLock + Slash
   cmd: "xdotool keyup 66; xdotool type --clearmodifiers $'\u0021'; xdotool keydown 66"
-
-#- key: Space + BackSlash
-#  cmd: xdotool type --clearmodifiers "/"
 
 - key: CapsLock + ,
   cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "<"; xdotool keydown 66'
