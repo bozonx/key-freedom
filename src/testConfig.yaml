@@ -9,11 +9,10 @@ bindings:
 #  #combination: Shift + Space
 #  cmd: xdotool type " "
 #
-## TODO: doesn't work
+
 #- key: CapsLock + Space
 #  release: true
-#  combination: Shift + Minus
-#  #cmd: xdotool key --clearmodifiers shift+20
+#  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "_"; xdotool keydown 66'
 
 ######## Languages
 - key: Alt_L
@@ -87,56 +86,115 @@ bindings:
       clearCaps: true
       combination: Ctrl + Right
 
-
+######## HOME, END
 - key: CapsLock + u
   actions:
     - action: combination
+      clearCaps: true
       combination: Home
 - key: CapsLock + i
   actions:
     - action: combination
+      clearCaps: true
       combination: End
+
+######## FORCED HOME, END (start and end of page)
+- key: CapsLock + f + u
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Ctrl + Home
+- key: CapsLock + f + i
+  actions:
+    - action: combination
+      clearCaps: true
+      combination: Ctrl + End
+
+
+######## MOVE SCREEN by 7 LINES
 - key: CapsLock + h
-  actions:
-    - action: combination
-      combination: PgUp
+  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Ctrl+111 Ctrl+111 Ctrl+111 Ctrl+111 Ctrl+111 Ctrl+111 Ctrl+111; xdotool keydown 66'
 - key: CapsLock + n
+  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Ctrl+116 Ctrl+116 Ctrl+116 Ctrl+116 Ctrl+116 Ctrl+116 Ctrl+116; xdotool keydown 66'
+
+######## PAGE UP, PAGE DOWN
+- key: CapsLock + f + h
   actions:
     - action: combination
+      clearCaps: true
+      combination: PgUp
+- key: CapsLock + f + n
+  actions:
+    - action: combination
+      clearCaps: true
       combination: PgDown
 
+######## SELECT
+- key: Alt_L + j
+  combination: Shift + Left
+- key: Alt_L + k
+  combination: Shift + Up
+- key: Alt_L + l
+  combination: Shift + Down
+- key: Alt_L + Semicolon
+  combination: Shift + Right
+######## FORCED SELECT
+- key: Alt_L + f + j
+  combination: Shift + Ctrl + Left
+- key: Alt_L + f + k
+  cmd: 'xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111'
+- key: Alt_L + f + l
+  cmd: 'xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116'
+- key: Alt_L + f + Semicolon
+  combination: Shift + Ctrl + Right
+######## SELECT HOME, END
+- key: Alt_L + u
+  combination: Shift + Home
+- key: Alt_L + i
+  combination: Shift + End
+######## FORCED SELECT HOME, END (to start/end of whole page)
+- key: Alt_L + f + u
+  combination: Shift + Ctrl + Home
+- key: Alt_L + f + i
+  combination: Shift + Ctrl + End
+######## SELECT PAGE UP, PAGE DOWN
+- key: Alt_L + h
+  combination: Shift + PgUp
+- key: Alt_L + n
+  combination: Shift + PgDown
+
 ######### Numbers
-#- key: Space + a
-#  cmd: xdotool type --clearmodifiers "0"
-#- key: Space + x
-#  cmd: xdotool type --clearmodifiers "1"
-#- key: Space + c
-#  cmd: xdotool type --clearmodifiers "2"
-#- key: Space + v
-#  cmd: xdotool type --clearmodifiers "3"
-#- key: Space + s
-#  cmd: xdotool type --clearmodifiers "4"
-#- key: Space + d
-#  cmd: xdotool type --clearmodifiers "5"
-#- key: Space + f
-#  release: true
-#  cmd: xdotool type --clearmodifiers "6"
-#- key: Space + w
-#  cmd: xdotool type --clearmodifiers "7"
-#- key: Space + e
-#  cmd: xdotool type --clearmodifiers "8"
-#- key: Space + r
-#  cmd: xdotool type --clearmodifiers "9"
-#- key: Space + g
-#  cmd: xdotool type --clearmodifiers "+"
-#- key: Space + t
-#  cmd: xdotool type --clearmodifiers "-"
-#- key: Space + q
-#  cmd: xdotool type --clearmodifiers "/"
-#- key: Space + z
-#  cmd: xdotool type --clearmodifiers "*"
-#- key: Space + b
-#  cmd: xdotool type --clearmodifiers "="
+- key: Alt_R + a
+  cmd: xdotool type --clearmodifiers "0"
+- key: Alt_R + x
+  cmd: xdotool type --clearmodifiers "1"
+- key: Alt_R + c
+  cmd: xdotool type --clearmodifiers "2"
+- key: Alt_R + v
+  cmd: xdotool type --clearmodifiers "3"
+- key: Alt_R + s
+  cmd: xdotool type --clearmodifiers "4"
+- key: Alt_R + d
+  cmd: xdotool type --clearmodifiers "5"
+- key: Alt_R + f
+  cmd: xdotool type --clearmodifiers "6"
+- key: Alt_R + w
+  cmd: xdotool type --clearmodifiers "7"
+- key: Alt_R + e
+  cmd: xdotool type --clearmodifiers "8"
+- key: Alt_R + r
+  cmd: xdotool type --clearmodifiers "9"
+- key: Alt_R + g
+  cmd: xdotool type --clearmodifiers "+"
+- key: Alt_R + t
+  cmd: xdotool type --clearmodifiers "-"
+# TODO: Doesn't work!!!!
+- key: Alt_R + q
+  cmd: xdotool type --clearmodifiers "/"
+- key: Alt_R + z
+  cmd: xdotool type --clearmodifiers "*"
+- key: Alt_R + b
+  cmd: xdotool type --clearmodifiers "="
 
 ######## Symbols
 ## key m
@@ -171,18 +229,14 @@ bindings:
 ##- key: Space + BackSlash
 ##  cmd: xdotool type --clearmodifiers "/"
 #
-#- key: CapsLock + ,
-#  cmd: xdotool type --clearmodifiers "<"
-#- key: CapsLock + .
-#  cmd: xdotool type --clearmodifiers ">"
-## TODO: doesn't work
-##- key: CapsLock + ,
-##  clearCaps: true
-##  cmd: xdotool type --clearmodifiers "("
-### TODO: doesn't work
-##- key: CapsLock + .
-##  clearCaps: true
-##  cmd: xdotool type --clearmodifiers ")"
+- key: CapsLock + ,
+  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "<"; xdotool keydown 66'
+- key: CapsLock + .
+  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers ">"; xdotool keydown 66'
+- key: Alt_L + ,
+  cmd: xdotool type --clearmodifiers "("
+- key: Alt_L + .
+  cmd: xdotool type --clearmodifiers ")"
 
 ######## DE
 # konsole
