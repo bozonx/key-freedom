@@ -46,6 +46,43 @@ bindings:
   release: true
   cmd: 'xdotool key Escape'
 
+########## Macroses
+- key: Shift_L + Shift_R
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Enter
+- key: Alt_L + Shift_R
+  release: true
+  actions:
+    - action: combination
+      combination: Enter
+    - action: combination
+      combination: Ctrl + Left
+# Remove line with cutting to the buffer
+- key: Ctrl_R + Caps
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Ctrl + x
+# Just remove whole line
+- key: Ctrl_R + Shift_L
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Backspace
+
+
 ######## ARROWS
 - key: Alt_L + j
   combination: Left
@@ -194,7 +231,7 @@ bindings:
 - key: Alt_R + r
   cmd: xdotool type --clearmodifiers "9"
 - key: Alt_R + g
-  cmd: xdotool type --clearmodifiers "+"
+  cmd: xdotool type "+"
 - key: Alt_R + t
   cmd: xdotool type --clearmodifiers "-"
 - key: Alt_R + q
@@ -208,10 +245,11 @@ bindings:
 # symbol _
 - key: CapsLock + Space
   release: true
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Minus
+  cmd: 'xdotool keyup 66; xdotool type "_"; xdotool keydown 66'
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + Minus
 # key m
 - key: Alt + m
   cmd: xdotool type --clearmodifiers "/"
