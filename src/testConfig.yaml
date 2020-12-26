@@ -44,7 +44,6 @@ bindings:
 
 - key: Ctrl_R
   release: true
-  #combination: Escape
   cmd: 'xdotool key Escape'
 
 ######## ARROWS
@@ -57,14 +56,14 @@ bindings:
 - key: Alt_L + Semicolon
   combination: Right
 ######## FORCED ARROWS
-- key: Alt_L + f + j
+- key: Alt_L + Shift + j
   combination: Ctrl + Left
-- key: Alt_L + f + k
-  cmd: 'xdotool key --clearmodifiers 111 111 111'
-- key: Alt_L + f + l
-  cmd: 'xdotool key --clearmodifiers 116 116 116'
+- key: Alt_L + Shift + k
+  cmd: 'xdotool key --delay 2 --clearmodifiers 111 111 111'
+- key: Alt_L + Shift + l
+  cmd: 'xdotool key --delay 2 --clearmodifiers 116 116 116'
 #cmd: 'xdotool keyup 66; xdotool key --clearmodifiers 116 116 116; xdotool keydown 66'
-- key: Alt_L + f + Semicolon
+- key: Alt_L + Shift + Semicolon
   combination: Ctrl + Right
 
 ######## HOME, END
@@ -74,9 +73,9 @@ bindings:
   combination: End
 
 ######## FORCED HOME, END (start and end of page)
-- key: Alt_L + f + u
+- key: Alt_L + Shift + u
   combination: Ctrl + Home
-- key: Alt_L + f + i
+- key: Alt_L + Shift + i
   combination: Ctrl + End
 
 ######### MOVE SCREEN by 7 LINES
@@ -86,9 +85,9 @@ bindings:
   cmd: 'xdotool click --clearmodifiers 5'
 
 ######## PAGE UP, PAGE DOWN
-- key: Alt_L + f + h
+- key: Alt_L + Shift + h
   combination: PgUp
-- key: Alt_L + f + n
+- key: Alt_L + Shift + n
   combination: PgDown
 
 ######### SELECT
@@ -117,17 +116,17 @@ bindings:
       clearCaps: true
       combination: Shift + Right
 ######### FORCED SELECT
-- key: CapsLock + f + j
+- key: CapsLock + Alt + j
   #combination: Shift + Ctrl + Left
   actions:
     - action: combination
       clearCaps: true
       combination: Shift + Ctrl + Left
-- key: CapsLock + f + k
+- key: CapsLock + Alt + k
   cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111; xdotool keydown 66'
-- key: CapsLock + f + l
+- key: CapsLock + Alt + l
   cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116; xdotool keydown 66'
-- key: CapsLock + f + Semicolon
+- key: CapsLock + Alt + Semicolon
   #combination: Shift + Ctrl + Right
   actions:
     - action: combination
@@ -147,13 +146,13 @@ bindings:
       clearCaps: true
       combination: Shift + End
 ######### FORCED SELECT HOME, END (to start/end of whole page)
-- key: CapsLock + f + u
+- key: CapsLock + Alt + u
   #combination: Shift + Ctrl + Home
   actions:
     - action: combination
       clearCaps: true
       combination: Shift + Ctrl + Home
-- key: CapsLock + f + i
+- key: CapsLock + Alt + i
   #combination: Shift + Ctrl + End
   actions:
     - action: combination
@@ -208,6 +207,7 @@ bindings:
 ######## Symbols
 # symbol _
 - key: CapsLock + Space
+  release: true
   actions:
     - action: combination
       clearCaps: true
