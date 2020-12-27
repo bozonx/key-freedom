@@ -7,7 +7,7 @@ xkb_keymap {
 	xkb_symbols "my"  {
         include "pc+us+ru:2+inet(evdev)+terminate(ctrl_alt_bksp)"
         #include "capslock(none)"
-        include "level3(caps_switch)"
+        include "level5(caps_switch)"
 
 
         name[group1] = "English (US)";
@@ -18,122 +18,41 @@ xkb_keymap {
         replace key <TLDE> { [ Alt_L ] };
         modifier_map Mod1    { <TLDE> };
 
+        replace key <SPCE> { [ space, space, space, space ] };
+
+
+
+        key <LALT> {
+          type[Group1]="ONE_LEVEL",
+          symbols[Group1] = [ ISO_Level3_Shift ]
+        };
+        key <RALT> {
+          type[Group1]="ONE_LEVEL",
+          symbols[Group1] = [ ISO_Level3_Shift ]
+        };
+        replace key <LVL3> {
+          type[Group1] = "ONE_LEVEL",
+          symbols[Group1] = [ ISO_Level3_Shift ]
+        };
+        modifier_map Mod5 { <LVL3> };
+
+        #include "level5(modifier_mapping)"
+        #replace key <MDSW> {
+        #  type[Group1] = "ONE_LEVEL",
+        #  symbols[Group1] = [ ISO_Level5_Shift ]
+        #};
+        #modifier_map Mod3 { <MDSW> };
+
+
+
         ####### REPLACE ALTs WITH HYPER
-        replace key <LALT> { [ Hyper_L ] };
-        replace key <RALT> { [ Hyper_L ] };
-        modifier_map Mod5    { <LALT>, <RALT>, LVL3 };
-
-
-        replace key <SPCE> { [ space, space, VoidSymbol, VoidSymbol ] };
-
-
-        #key <UP>   {	[	Up, Up, Up, Up		]	};
-        #key <LEFT> {
-        #    symbols[group1] = [	Left, Left, Left, Left		],
-        #    symbols[group2] = [	Left, Left, Left, Left		]
-        #};
-        #key <DOWN> {	[	Down , Down, Down, Down		]	};
-        #key <RGHT> {	[	Right , Right, Right, Right		]	};
-        ######## Switch Control with Alt
-        #replace key <RALT> { [ Control_R, Contro_R ] };
-        #replace key <RCTL> { [ Alt_R, Alt_R ] };
-        #modifier_map Control { <RALT> };
-        #modifier_map Mod1    { <RCTL> };
-        #key <ESC>  {
-        #    [ Escape, Escape, Caps_Lock ]
-        #};
-        # key <CAPS> { [ BackSpace, BackSpace, BackSpace, BackSpace ]
-        #### WORKS
-        #key <SPCE> { [ ISO_Level3_Shift, space ] };
-        #modifier_map Mod3    { <SPCE> };
-        #key <SPCE> {
-        #    symbols[group1] = [ space, space, space, space ],
-        #    symbols[group2] = [ space, at, space, space ]
-        #};
-        #key <TLDE> {
-        #    symbols[group1] = [ Escape, Escape, Escape, Escape ],
-        #    symbols[group2] = [ Escape, Escape, Escape, Escape ]
-        #};
+        #replace key <LALT> { [ Hyper_L ] };
+        #replace key <RALT> { [ Hyper_L ] };
+        #modifier_map Mod5    { <LALT>, <RALT>, LVL3 };
 
 
 
 
-
-        ####### Ciphers
-        #key <AE02> {
-        #    symbols[group2] = [ NoSymbol, at, Cyrillic_io, Cyrillic_IO ]
-        #};
-        #key <AE03> {
-        #    symbols[group1] = [ NoSymbol, numbersign, numerosign ],
-        #    symbols[group2] = [ NoSymbol, numbersign, numerosign ]
-        #};
-        #key <AE04> {
-        #    symbols[group1] = [ NoSymbol, NoSymbol, EuroSign ],
-        #    symbols[group2] = [ NoSymbol, dollar, EuroSign ]
-        #};
-        ## rubble sign
-        #key <AE05> {
-        #    symbols[group1] = [ NoSymbol, NoSymbol, U20BD ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, U20BD ]
-        #};
-        #key <AE06> {
-        #    symbols[group2] = [ NoSymbol, asciicircum ]
-        #};
-        #key <AE07> {
-        #    symbols[group2] = [ NoSymbol, ampersand ]
-        #};
-
-        ####### Punctuation
-        # /
-        #key <AB10> {
-        #    symbols[group1] = [ comma, question, period, exclam ],
-        #    symbols[group2] = [ comma, question, period, exclam ]
-        #};
-        # '
-        #key <AC11> {
-        #    symbols[group1] = [ apostrophe, quotedbl, quotedbl ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, quotedbl ]
-        #};
-        ## p
-        #key <AD10> {
-        #    symbols[group1] = [ NoSymbol, NoSymbol, colon, colon ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, colon, colon ]
-        #};
-
-        ####### Programmistic symbols
-
-        ## ] - double of backslash
-        #key <AD12> {
-        #    symbols[group1] = [ backslash,	bar, slash, slash ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, slash, slash ]
-        #};
-        # .
-        #key <AB08> {
-        #    symbols[group1] = [ braceleft, bracketleft, less, less ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, less, less ]
-        #};
-        ## ,
-        #key <AB09> {
-        #    symbols[group1] = [ braceright, bracketright, greater, greater ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, greater, greater ]
-        #};
-        ## [
-        #key <AD11> {
-        #    symbols[group1] = [ grave, asciitilde, semicolon ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, semicolon ]
-        #};
-        ## m
-        #key <AB07> {
-        #    symbols[group1] = [ NoSymbol, NoSymbol, slash, slash ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, slash, slash ]
-        #};
-        ## o
-        #key <AD09> {
-        #    symbols[group1] = [ NoSymbol, NoSymbol, equal, equal ],
-        #    symbols[group2] = [ NoSymbol, NoSymbol, equal, equal ]
-        #};
-
-        ######## Cancel keys
         key <AE01> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
@@ -189,60 +108,66 @@ xkb_keymap {
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
 
-
+        # TOP LETTERS ROW
+        # q
         key <AD01> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, minus, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, minus, VoidSymbol ]
         };
+        # w
         key <AD02> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 7, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 7, VoidSymbol ]
         };
+        # e
         key <AD03> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 8, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 8, VoidSymbol ]
         };
+        # r
         key <AD04> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 9, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 9, VoidSymbol ]
         };
+        # t
         key <AD05> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, plus, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, plus, VoidSymbol ]
         };
+        # y
         key <AD06> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, at, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, at, VoidSymbol ]
         };
+        # u
         key <AD07> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
+        # i
         key <AD08> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
-        # TODO: remove colon
+        # o
         key <AD09> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, colon, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, colon, VoidSymbol ]
         };
-        # TODO: remove semicolon
+        # p
         key <AD10> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, semicolon, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, semicolon, VoidSymbol ]
         };
         # [
-        # TODO: remove numbersign
         key <AD11> {
-            symbols[group1] = [ bar, ampersand, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ bar, ampersand, numbersign, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, numbersign, VoidSymbol ]
         };
         # ]
-        # TODO: remove dollar
         key <AD12> {
-            symbols[group1] = [ backslash, asciitilde, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ backslash, asciitilde, dollar, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, dollar, VoidSymbol ]
         };
         # \
         key <BKSL> {
@@ -250,100 +175,114 @@ xkb_keymap {
             symbols[group2] = [ backslash,	bar, VoidSymbol, VoidSymbol ]
         };
 
-
+        # HOME ROW
+        # a
         key <AC01> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 0, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 0, VoidSymbol ]
         };
+        # s
         key <AC02> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 4, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 4, VoidSymbol ]
         };
+        # d
         key <AC03> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 5, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 5, VoidSymbol ]
         };
+        # f
         key <AC04> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 6, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 6, VoidSymbol ]
         };
+        # g
         key <AC05> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, equal, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, equal, VoidSymbol ]
         };
+        # h
         key <AC06> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
+        # j
         key <AC07> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
+        # k
         key <AC08> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
+        # l
         key <AC09> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
+        # ;
         key <AC10> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
         # '
-        # TODO: remove quotedbl
         key <AC11> {
-            symbols[group1] = [ NoSymbol, grave, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, grave, quotedbl, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, quotedbl, VoidSymbol ]
         };
 
+        # BOTTOM LETTERS ROW
+        # z
         key <AB01> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, slash, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, slash, VoidSymbol ]
         };
+        # x
         key <AB02> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 1, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 1, VoidSymbol ]
         };
+        # c
         key <AB03> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 2, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 2, VoidSymbol ]
         };
+        # v
         key <AB04> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, 3, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, 3, VoidSymbol ]
         };
+        # b
         key <AB05> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, asterisk, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, asterisk, VoidSymbol ]
         };
+        # n
         key <AB06> {
             symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
-        # TODO: remove slash
+        # m
         key <AB07> {
-            symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ NoSymbol, NoSymbol, underscore, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, underscore, VoidSymbol ]
         };
         # ,
-        # TODO: remove less
         key <AB08> {
-            symbols[group1] = [ braceleft, bracketleft, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ braceleft, bracketleft, less, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, less, VoidSymbol ]
         };
         # .
-        # TODO: remove greater
         key <AB09> {
-            symbols[group1] = [ braceright, bracketright, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ braceright, bracketright, greater, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, greater, VoidSymbol ]
         };
         # /
         # was [ comma, question, period, exclam ]
         key <AB10> {
-            symbols[group1] = [ period, comma, VoidSymbol, VoidSymbol ],
-            symbols[group2] = [ period, comma, VoidSymbol, VoidSymbol ]
+            symbols[group1] = [ period, comma, question, VoidSymbol ],
+            symbols[group2] = [ period, comma, question, VoidSymbol ]
         };
 
     };
