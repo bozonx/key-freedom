@@ -7,7 +7,9 @@ xkb_keymap {
 	xkb_symbols "my"  {
         include "pc+us+ru:2+inet(evdev)+terminate(ctrl_alt_bksp)"
         #include "capslock(none)"
-        include "level5(caps_switch)"
+        #include "level3(caps_switch)"
+        #include "level5(caps_switch)"
+        include "level3(alt_switch)"
 
 
         name[group1] = "English (US)";
@@ -20,21 +22,21 @@ xkb_keymap {
 
         replace key <SPCE> { [ space, space, space, space ] };
 
+        #modifier_map Mod3    { <LVL3> };
 
-
-        key <LALT> {
-          type[Group1]="ONE_LEVEL",
-          symbols[Group1] = [ ISO_Level3_Shift ]
-        };
-        key <RALT> {
-          type[Group1]="ONE_LEVEL",
-          symbols[Group1] = [ ISO_Level3_Shift ]
-        };
-        replace key <LVL3> {
-          type[Group1] = "ONE_LEVEL",
-          symbols[Group1] = [ ISO_Level3_Shift ]
-        };
-        modifier_map Mod5 { <LVL3> };
+        #key <LALT> {
+        #  type[Group1]="ONE_LEVEL",
+        #  symbols[Group1] = [ ISO_Level3_Shift ]
+        #};
+        #key <RALT> {
+        #  type[Group1]="ONE_LEVEL",
+        #  symbols[Group1] = [ ISO_Level3_Shift ]
+        #};
+        #replace key <LVL3> {
+        #  type[Group1] = "ONE_LEVEL",
+        #  symbols[Group1] = [ ISO_Level3_Shift ]
+        #};
+        #modifier_map Mod5 { <LVL3> };
 
         #include "level5(modifier_mapping)"
         #replace key <MDSW> {
