@@ -227,18 +227,18 @@ bindings:
 #      combination: Shift + Right
 ######### FORCED SELECT
 - key: Super_L + Shift_L + j
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+113; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Ctrl+Shift+113; xdotool keydown 133'
   #combinadtion: Shift + Ctrl + Left
   #actions:
   #  - action: combination
   #    clearCaps: true
   #    combination: Shift + Ctrl + Left
 - key: Super_L + Shift_L + k
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+111 Shift+111 Shift+111; xdotool keydown 133'
 - key: Super_L + Shift_L + l
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+116 Shift+116 Shift+116; xdotool keydown 133'
 - key: Super_L + Shift_L + Semicolon
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+114; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Ctrl+Shift+114; xdotool keydown 133'
   #combination: Shift + Ctrl + Right
 #  actions:
 #    - action: combination
@@ -246,14 +246,14 @@ bindings:
 #      combination: Shift + Ctrl + Right
 ######### SELECT HOME, END
 - key: Super_L + u
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+110; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+110; xdotool keydown 133'
   #combination: Shift + Home
 #  actions:
 #    - action: combination
 #      clearCaps: true
 #      combination: Shift + Home
 - key: Super_L + i
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+115; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+115; xdotool keydown 133'
   #combination: Shift + End
 #  actions:
 #    - action: combination
@@ -261,14 +261,14 @@ bindings:
 #      combination: Shift + End
 ######### FORCED SELECT HOME, END (to start/end of whole page)
 - key: Super_L + Shift_L + u
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+110; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Ctrl+Shift+110; xdotool keydown 133'
 #  #combination: Shift + Ctrl + Home
 #  actions:
 #    - action: combination
 #      clearCaps: true
 #      combination: Shift + Ctrl + Home
 - key: Super_L + Shift_L + i
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+115; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Ctrl+Shift+115; xdotool keydown 133'
 #  #combination: Shift + Ctrl + End
 #  actions:
 #    - action: combination
@@ -276,7 +276,7 @@ bindings:
 #      combination: Shift + Ctrl + End
 ######### SELECT PAGE UP, PAGE DOWN
 - key: Super_L + h
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+112; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+112; xdotool keydown 133'
   #combination: Shift + PgUp
 #  actions:
 #    - action: combination
@@ -284,7 +284,7 @@ bindings:
 #      combination: Shift + PgUp
 - key: Super_L + n
   #combination: Shift + PgDown
-  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+117; xdotool keydown 133'
+  cmd: 'xdotool keyup 133; xdotool key Shift+117; xdotool keydown 133'
 #  actions:
 #    - action: combination
 #      clearCaps: true
