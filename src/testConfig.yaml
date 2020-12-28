@@ -276,17 +276,19 @@ bindings:
 #      combination: Shift + Ctrl + End
 ######### SELECT PAGE UP, PAGE DOWN
 - key: Super_L + h
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+112; xdotool keydown 133'
   #combination: Shift + PgUp
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + PgUp
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + PgUp
 - key: Super_L + n
   #combination: Shift + PgDown
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + PgDown
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+117; xdotool keydown 133'
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + PgDown
 
 ## TODO: doesn't work in firefox
 #- key: Alt + Slash
