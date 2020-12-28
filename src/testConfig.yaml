@@ -16,14 +16,16 @@ bindings:
   combination: Backspace
 - key: Alt_R + CapsLock
   release: true
-  combination: Ctrl + Backspace
+  cmd: 'xdotool keyup 108; xdotool key Ctrl+22; xdotool keydown 108'
+  #combination: Ctrl + Backspace
 
 - key: Shift_L
   release: true
   combination: Delete
 - key: Alt_R + Shift_L
   release: true
-  combination: Ctrl + Delete
+  cmd: 'xdotool keyup 108; xdotool key Ctrl+119; xdotool keydown 108'
+  #combination: Ctrl + Delete
 
 - key: Shift_R
   release: true
