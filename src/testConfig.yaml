@@ -1,19 +1,6 @@
 de: kdePlasmaX
 
 bindings:
-
-#- key: Space
-#  release: true
-#  # TODO: может обрабатывать релиз без предварительного press возможно изза этого проблема
-#  # TODO: может сделать тогда clear space
-#  #combination: Shift + Space
-#  cmd: xdotool type " "
-#
-
-#- key: CapsLock + Space
-#  release: true
-#  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "_"; xdotool keydown 66'
-
 ######## Languages
 - key: Alt_L
   release: true
@@ -47,109 +34,112 @@ bindings:
   cmd: 'xdotool key Escape'
 
 ########### Macroses
-## Make new line and move cursor to it
-#- key: Shift_L + Shift_R
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Enter
-## Make new line and return back
-#- key: Alt_L + Shift_R
-#  release: true
+# Make new line and move cursor to it
+- key: Shift_L + Shift_R
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Enter
+# Make new line and return back
+- key: Alt_L + Shift_R
+  release: true
+  cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 36 Ctrl+113; xdotool keydown 64'
 #  actions:
 #    - action: combination
 #      combination: Enter
 #    - action: combination
 #      combination: Ctrl + Left
-## Remove content of the line
-#- key: Ctrl_R + CapsLock
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Home
-#    - action: combination
-#      combination: Backspace
-## Remove whole line
-#- key: Ctrl_R + Shift_L
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Home
-#    - action: combination
-#      combination: Backspace
-#    - action: combination
-#      combination: Delete
-## Remove content of line with cutting to the buffer
-#- key: Ctrl_R + Alt_L + CapsLock
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Home
-#    - action: combination
-#      combination: Ctrl + x
-## Remove line with cutting to the buffer
-#- key: Ctrl_R + Alt_L + Shift_L
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Home
-#    - action: combination
-#      combination: Ctrl + x
-#    - action: combination
-#      combination: Delete
-## Duplicate the selection at new line
-#- key: Alt_R + Alt_L
-#  release: true
-#  actions:
-#    - action: combination
-#      combination: Ctrl + c
-#    - action: combination
-#      combination: Left
-#    - action: combination
-#      combination: Enter
-#    - action: combination
-#      combination: Up
-#    - action: combination
-#      combination: Ctrl + v
-## SELECTION BY WHOLE LINE
-#- key: Alt_R + j
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Home
-#- key: Alt_R + k
-#  actions:
-#    - action: combination
-#      combination: End
-#    - action: combination
-#      combination: Shift + Up
-#    - action: combination
-#      combination: Shift + Home
-#- key: Alt_R + l
-#  actions:
-#    - action: combination
-#      combination: Home
-#    - action: combination
-#      combination: Shift + Down
-#    - action: combination
-#      combination: Shift + End
-#- key: Alt_R + Semicolon
-#  actions:
-#    - action: combination
-#      combination: Home
-#    - action: combination
-#      combination: Shift + End
+
+# Remove content of the line
+- key: Ctrl_R + CapsLock
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Backspace
+
+# Remove whole line
+- key: Ctrl_R + Shift_L
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Backspace
+    - action: combination
+      combination: Delete
+# Remove content of line with cutting to the buffer
+- key: Ctrl_R + Alt_L + CapsLock
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Ctrl + x
+# Remove line with cutting to the buffer
+- key: Ctrl_R + Alt_L + Shift_L
+  release: true
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+    - action: combination
+      combination: Ctrl + x
+    - action: combination
+      combination: Delete
+# Duplicate the selection at new line
+- key: Alt_R + Alt_L
+  release: true
+  actions:
+    - action: combination
+      combination: Ctrl + c
+    - action: combination
+      combination: Left
+    - action: combination
+      combination: Enter
+    - action: combination
+      combination: Up
+    - action: combination
+      combination: Ctrl + v
+# SELECTION BY WHOLE LINE
+- key: Alt_R + j
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Home
+- key: Alt_R + k
+  actions:
+    - action: combination
+      combination: End
+    - action: combination
+      combination: Shift + Up
+    - action: combination
+      combination: Shift + Home
+- key: Alt_R + l
+  actions:
+    - action: combination
+      combination: Home
+    - action: combination
+      combination: Shift + Down
+    - action: combination
+      combination: Shift + End
+- key: Alt_R + Semicolon
+  actions:
+    - action: combination
+      combination: Home
+    - action: combination
+      combination: Shift + End
 
 
 ######## ARROWS
@@ -208,14 +198,14 @@ bindings:
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 117; xdotool keydown 64'
 
 ######### SELECT
-- key: CapsLock + j
+- key: Super_L + j
   #combination: Shift + Left
   actions:
     - action: combination
       clearCaps: true
       combination: Shift + Left
 - key: CapsLock + k
-  #combination: Shift + Up
+  #combination: Shift +QQ Up
   actions:
     - action: combination
       clearCaps: true
@@ -234,21 +224,23 @@ bindings:
       combination: Shift + Right
 ######### FORCED SELECT
 - key: CapsLock + Alt + j
-  #combination: Shift + Ctrl + Left
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Ctrl + Left
-- key: CapsLock + Alt + k
-  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111; xdotool keydown 66'
-- key: CapsLock + Alt + l
-  cmd: 'xdotool keyup 66; xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116; xdotool keydown 66'
-- key: CapsLock + Alt + Semicolon
+  cmd: 'xdotool keyup 66 64; xdotool key --clearmodifiers Ctrl+Shift+113; xdotool keydown 66 64'
+  #combinadtion: Shift + Ctrl + Left
+  #actions:
+  #  - action: combination
+  #    clearCaps: true
+  #    combination: Shift + Ctrl + Left
+- key: CapsLock + Alt_L + k
+  cmd: 'xdotool keyup 66 64; xdotool key --clearmodifiers Shift+111 Shift+111 Shift+111; xdotool keydown 66 64'
+- key: CapsLock + Alt_L + l
+  cmd: 'xdotool keyup 66 64; xdotool key --clearmodifiers Shift+116 Shift+116 Shift+116; xdotool keydown 66 64'
+- key: CapsLock + Alt_L + Semicolon
+  cmd: 'xdotool keyup 66 64; xdotool key --clearmodifiers Ctrl+Shift+114; xdotool keydown 66 64'
   #combination: Shift + Ctrl + Right
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Ctrl + Right
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + Ctrl + Right
 ######### SELECT HOME, END
 - key: CapsLock + u
   #combination: Shift + Home
@@ -307,37 +299,37 @@ bindings:
 #- key: Alt_L + .
 #  cmd: xdotool type --clearmodifiers ")"
 
-######## DE
-# konsole
-- key: CapsLock + t
-  cmd: konsole
-# yakuake
-- key: CapsLock + y
-  deShortcut: 'yakuake: toggle-window-state'
-
-- key: CapsLock + q
-  deShortcut: 'kwin: Window Close'
-- key: CapsLock + w
-  deShortcut: 'kwin: Window Maximize'
-- key: CapsLock + Alt + w
-  deShortcut: 'kwin: Window Maximize Vertical'
-- key: CapsLock + Shift + w
-  deShortcut: 'kwin: Window Maximize Horizontal'
-- key: CapsLock + e
-  deShortcut: 'kwin: Window Minimize'
-
-- key: CapsLock + g
-  deShortcut: 'kwin: Switch to Next Desktop'
-- key: CapsLock + r
-  deShortcut: 'kwin: Window to Next Screen'
-- key: CapsLock + v
-  deShortcut: 'kwin: Window to Next Desktop'
-
-- key: CapsLock + 7
-  deShortcut: 'kmix: mute'
-
-- key: CapsLock + 6
-  deShortcut: 'kmix: mic_mute'
+######### DE
+## konsole
+#- key: CapsLock + t
+#  cmd: konsole
+## yakuake
+#- key: CapsLock + y
+#  deShortcut: 'yakuake: toggle-window-state'
+#
+#- key: CapsLock + q
+#  deShortcut: 'kwin: Window Close'
+#- key: CapsLock + w
+#  deShortcut: 'kwin: Window Maximize'
+#- key: CapsLock + Alt + w
+#  deShortcut: 'kwin: Window Maximize Vertical'
+#- key: CapsLock + Shift + w
+#  deShortcut: 'kwin: Window Maximize Horizontal'
+#- key: CapsLock + e
+#  deShortcut: 'kwin: Window Minimize'
+#
+#- key: CapsLock + g
+#  deShortcut: 'kwin: Switch to Next Desktop'
+#- key: CapsLock + r
+#  deShortcut: 'kwin: Window to Next Screen'
+#- key: CapsLock + v
+#  deShortcut: 'kwin: Window to Next Desktop'
+#
+#- key: CapsLock + 7
+#  deShortcut: 'kmix: mute'
+#
+#- key: CapsLock + 6
+#  deShortcut: 'kmix: mic_mute'
 
 # Walk Through Windows
 # Walk Through Windows of Current Application

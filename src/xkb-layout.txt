@@ -22,12 +22,22 @@ xkb_keymap {
 
         replace key <SPCE> { [ space, space, space, space ] };
 
+        key <LCTL> { [ Meta_L ] };
+
+        key <CAPS> { [ Control_L ] };
+        modifier_map Mod2 { <CAPS> };
+
+
+        #modifier_map Mod5    { <CAPS> };
+
         #modifier_map Mod3    { <LVL3> };
 
-        #key <LALT> {
-        #  type[Group1]="ONE_LEVEL",
-        #  symbols[Group1] = [ ISO_Level3_Shift ]
-        #};
+        key <LWIN> {
+          type[Group1]="ONE_LEVEL",
+          symbols[Group1] = [ ISO_Level3_Shift ]
+        };
+        modifier_map Mod5 { <LVL3> };
+
         #key <RALT> {
         #  type[Group1]="ONE_LEVEL",
         #  symbols[Group1] = [ ISO_Level3_Shift ]
@@ -36,7 +46,7 @@ xkb_keymap {
         #  type[Group1] = "ONE_LEVEL",
         #  symbols[Group1] = [ ISO_Level3_Shift ]
         #};
-        #modifier_map Mod5 { <LVL3> };
+
 
         #include "level5(modifier_mapping)"
         #replace key <MDSW> {
