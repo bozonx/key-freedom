@@ -143,6 +143,7 @@ bindings:
 #      combination: Up
 #    - action: combination
 #      combination: Ctrl + v
+
 # SELECTION BY WHOLE LINE
 - key: Super_L + CapsLock + j
   cmd: 'xdotool keyup 133; xdotool key --clearmodifiers 115 Shift+110; xdotool keydown 133'
@@ -151,7 +152,7 @@ bindings:
 #      combination: End
 #    - action: combination
 #      combination: Shift + Home
-- key: Super_L + CapsLock + k
+- key: Super_L + CapsLock + l
   cmd: 'xdotool keyup 133; xdotool key --clearmodifiers 115 Shift+111 Shift+110; xdotool keydown 133'
 #  actions:
 #    - action: combination
@@ -160,7 +161,7 @@ bindings:
 #      combination: Shift + Up
 #    - action: combination
 #      combination: Shift + Home
-- key: Super_L + CapsLock + l
+- key: Super_L + CapsLock + k
   cmd: 'xdotool keyup 133; xdotool key --clearmodifiers 110 Shift+116 Shift+115; xdotool keydown 133'
 #  actions:
 #    - action: combination
@@ -182,10 +183,10 @@ bindings:
 - key: Alt_L + j
   #combination: Left
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 113; xdotool keydown 64'
-- key: Alt_L + k
+- key: Alt_L + l
   #combination: Up
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 111; xdotool keydown 64'
-- key: Alt_L + l
+- key: Alt_L + k
   #combination: Down
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 116; xdotool keydown 64'
 - key: Alt_L + Semicolon
@@ -195,9 +196,9 @@ bindings:
 - key: Alt_L + Shift + j
   #combination: Ctrl + Left
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers Ctrl+113; xdotool keydown 64'
-- key: Alt_L + Shift + k
-  cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 111 111 111; xdotool keydown 64'
 - key: Alt_L + Shift + l
+  cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 111 111 111; xdotool keydown 64'
+- key: Alt_L + Shift + k
   cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 116 116 116; xdotool keydown 64'
 #cmd: 'xdotool keyup 66; xdotool key --clearmodifiers 116 116 116; xdotool keydown 66'
 - key: Alt_L + Shift + Semicolon
@@ -240,14 +241,14 @@ bindings:
 #  actions:
 #    - action: combination
 #      combination: Shift + Left
-- key: Super_L + k
+- key: Super_L + l
   cmd: 'xdotool keyup 133; xdotool key Shift+111; xdotool keydown 133'
   #combination: Shift +QQ Up
 #  actions:
 #    - action: combination
 #      clearCaps: true
 #      combination: Shift + Up
-- key: Super_L + l
+- key: Super_L + k
   cmd: 'xdotool keyup 133; xdotool key Shift+116; xdotool keydown 133'
   #combination: Shift + Down
 #  actions:
@@ -269,9 +270,9 @@ bindings:
   #  - action: combination
   #    clearCaps: true
   #    combination: Shift + Ctrl + Left
-- key: Super_L + Shift_L + k
-  cmd: 'xdotool keyup 133; xdotool key --delay 8 Shift+111 Shift+111 Shift+111; xdotool keydown 133'
 - key: Super_L + Shift_L + l
+  cmd: 'xdotool keyup 133; xdotool key --delay 8 Shift+111 Shift+111 Shift+111; xdotool keydown 133'
+- key: Super_L + Shift_L + k
   cmd: 'xdotool keyup 133; xdotool key --delay 8 Shift+116 Shift+116 Shift+116; xdotool keydown 133'
 - key: Super_L + Shift_L + Semicolon
   cmd: 'xdotool keyup 133; xdotool key Ctrl+Shift+114; xdotool keydown 133'
