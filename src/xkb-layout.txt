@@ -280,21 +280,21 @@ xkb_keymap {
             symbols[group1] = [ NoSymbol, NoSymbol, underscore, VoidSymbol ],
             symbols[group2] = [ NoSymbol, NoSymbol, underscore, VoidSymbol ]
         };
-        # ,
+        # , - was less
         key <AB08> {
-            symbols[group1] = [ braceleft, bracketleft, less, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, less, VoidSymbol ]
+            symbols[group1] = [ braceleft, bracketleft, VoidSymbol, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
-        # .
+        # . - was greater
         key <AB09> {
-            symbols[group1] = [ braceright, bracketright, greater, VoidSymbol ],
-            symbols[group2] = [ NoSymbol, NoSymbol, greater, VoidSymbol ]
+            symbols[group1] = [ braceright, bracketright, VoidSymbol, VoidSymbol ],
+            symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
         };
         # /
         # was [ comma, question, period, exclam ]
         key <AB10> {
-            symbols[group1] = [ period, comma, question, VoidSymbol ],
-            symbols[group2] = [ period, comma, question, VoidSymbol ]
+            symbols[group1] = [ period, comma, VoidSymbol, VoidSymbol ],
+            symbols[group2] = [ period, comma, VoidSymbol, VoidSymbol ]
         };
 
     };

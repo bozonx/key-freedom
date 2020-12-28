@@ -225,7 +225,7 @@ bindings:
 - key: Alt_L + n
   cmd: 'xdotool keyup 64; xdotool click 5; xdotool keydown 64'
 
-######## PAGE UP, PAGE DOWN
+######## PAGE UP, PAGE DOWNh
 - key: Alt_L + Shift + h
   #combination: PgUp
   cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 112; xdotool keydown 64'
@@ -326,23 +326,23 @@ bindings:
 #      clearCaps: true
 #      combination: Shift + PgDown
 
-## TODO: doesn't work in firefox
-#- key: Alt + Slash
-#  cmd: "xdotool type $'\u003F'"
-#  ### this is !
-#  #cmd: xdotool type --clearmodifiers $'\u0021'
-#
-#- key: CapsLock + Slash
+
+######## SYMBOLS
+- key: Alt_L + Slash
+  #  cmd: "xdotool keyup 66; xdotool type --clearmodifiers $'\u0021'; xdotool keydown 66"
+  cmd: xdotool keyup 64; xdotool type '?'; xdotool keydown 64
+- key: Super_L + Slash
 #  cmd: "xdotool keyup 66; xdotool type --clearmodifiers $'\u0021'; xdotool keydown 66"
-#
-#- key: CapsLock + ,
-#  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers "<"; xdotool keydown 66'
-#- key: CapsLock + .
-#  cmd: 'xdotool keyup 66; xdotool type --clearmodifiers ">"; xdotool keydown 66'
-#- key: Alt_L + ,
-#  cmd: xdotool type --clearmodifiers "("
-#- key: Alt_L + .
-#  cmd: xdotool type --clearmodifiers ")"
+  cmd: xdotool keyup 133; xdotool type '!'; xdotool keydown 133
+
+- key: Alt_L + ,
+  cmd: xdotool keyup 64; xdotool type "<"; xdotool keydown 64
+- key: Alt_L + .
+  cmd: xdotool keyup 64; xdotool type ">"; xdotool keydown 64
+- key: Super_L + ,
+  cmd: xdotool keyup 133; xdotool type "("; xdotool keydown 133
+- key: Super_L + .
+  cmd: xdotool keyup 133; xdotool type ")"; xdotool keydown 133
 
 ######### DE
 ## konsole
