@@ -88,7 +88,7 @@ bindings:
 #    - action: combination
 #      combination: Delete
 
-# Remove content of line with cutting to the buffer
+# Cut content of line with cutting to the buffer
 - key: Alt_R + Shift + x
   release: true
   cmd: 'xdotool keyup 108; xdotool key --clearmodifiers 115 Shift+110 Ctrl+53; xdotool keydown 108'
@@ -99,7 +99,7 @@ bindings:
 #      combination: Shift + Home
 #    - action: combination
 #      combination: Ctrl + x
-# Remove line with cutting to the buffer
+# Cut line with cutting to the buffer
 - key: Ctrl_R + Shift + x
   release: true
   cmd: 'xdotool key --clearmodifiers 115 Shift+110 Ctrl+53 119'
@@ -113,28 +113,34 @@ bindings:
 #    - action: combination
 #      combination: Delete
 
-# Duplicate the selection at new line
-- key: Alt_R + Alt_L
+# Copy whole line to the buffer
+- key: Alt_R + Shift + c
   release: true
-  actions:
-    - action: combination
-      combination: Ctrl + c
-    - action: combination
-      combination: Left
-    - action: combination
-      combination: Enter
-    - action: combination
-      combination: Up
-    - action: combination
-      combination: Ctrl + v
+  cmd: 'xdotool key --clearmodifiers 115 Shift+110 Ctrl+54 113'
+
+# Duplicate the selection at new line
+- key: Alt_R + Shift + d
+  release: true
+  cmd: 'xdotool keyup 108; xdotool key --clearmodifiers Ctrl+54 113 36 111 Ctrl+55; xdotool keydown 108'
+#  actions:
+#    - action: combination
+#      combination: Ctrl + c
+#    - action: combination
+#      combination: Left
+#    - action: combination
+#      combination: Enter
+#    - action: combination
+#      combination: Up
+#    - action: combination
+#      combination: Ctrl + v
 # SELECTION BY WHOLE LINE
-- key: Alt_R + j
+- key: CapsLock + j
   actions:
     - action: combination
       combination: End
     - action: combination
       combination: Shift + Home
-- key: Alt_R + k
+- key: CapsLock + k
   actions:
     - action: combination
       combination: End
@@ -142,7 +148,7 @@ bindings:
       combination: Shift + Up
     - action: combination
       combination: Shift + Home
-- key: Alt_R + l
+- key: CapsLock + l
   actions:
     - action: combination
       combination: Home
@@ -150,7 +156,7 @@ bindings:
       combination: Shift + Down
     - action: combination
       combination: Shift + End
-- key: Alt_R + Semicolon
+- key: CapsLock + Semicolon
   actions:
     - action: combination
       combination: Home
