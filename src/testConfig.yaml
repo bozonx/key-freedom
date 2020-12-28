@@ -54,51 +54,65 @@ bindings:
 #    - action: combination
 #      combination: Ctrl + Left
 
-# Remove content of the line
+# Remove from cursor to the beginning of the line
 - key: Ctrl_R + CapsLock
   release: true
-  actions:
-    - action: combination
-      combination: End
-    - action: combination
-      combination: Shift + Home
-    - action: combination
-      combination: Backspace
+  cmd: 'xdotool key --clearmodifiers Shift+110 22'
+# Remove content of the line
+- key: Shift_R + CapsLock
+  release: true
+  cmd: 'xdotool key --clearmodifiers 115 Shift+110 22'
+#  actions:
+#    - action: combination
+#      combination: End
+#    - action: combination
+#      combination: Shift + Home
+#    - action: combination
+#      combination: Backspace
 
-# Remove whole line
+# Remove from cursor to the end of the line
 - key: Ctrl_R + Shift_L
   release: true
-  actions:
-    - action: combination
-      combination: End
-    - action: combination
-      combination: Shift + Home
-    - action: combination
-      combination: Backspace
-    - action: combination
-      combination: Delete
+  cmd: 'xdotool key --clearmodifiers Shift+115 119'
+# Remove whole line
+- key: Shift_R + Shift_L
+  release: true
+  cmd: 'xdotool key --clearmodifiers 115 Shift+110 119 119'
+#  actions:
+#    - action: combination
+#      combination: End
+#    - action: combination
+#      combination: Shift + Home
+#    - action: combination
+#      combination: Backspace
+#    - action: combination
+#      combination: Delete
+
 # Remove content of line with cutting to the buffer
-- key: Ctrl_R + Alt_L + CapsLock
+- key: Alt_R + Shift + x
   release: true
-  actions:
-    - action: combination
-      combination: End
-    - action: combination
-      combination: Shift + Home
-    - action: combination
-      combination: Ctrl + x
+  cmd: 'xdotool keyup 108; xdotool key --clearmodifiers 115 Shift+110 Ctrl+53; xdotool keydown 108'
+#  actions:
+#    - action: combination
+#      combination: End
+#    - action: combination
+#      combination: Shift + Home
+#    - action: combination
+#      combination: Ctrl + x
 # Remove line with cutting to the buffer
-- key: Ctrl_R + Alt_L + Shift_L
+- key: Ctrl_R + Shift + x
   release: true
-  actions:
-    - action: combination
-      combination: End
-    - action: combination
-      combination: Shift + Home
-    - action: combination
-      combination: Ctrl + x
-    - action: combination
-      combination: Delete
+  cmd: 'xdotool key --clearmodifiers 115 Shift+110 Ctrl+53 119'
+#  actions:
+#    - action: combination
+#      combination: End
+#    - action: combination
+#      combination: Shift + Home
+#    - action: combination
+#      combination: Ctrl + x
+#    - action: combination
+#      combination: Delete
+
 # Duplicate the selection at new line
 - key: Alt_R + Alt_L
   release: true
