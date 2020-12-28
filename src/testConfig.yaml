@@ -245,39 +245,43 @@ bindings:
 #      clearCaps: true
 #      combination: Shift + Ctrl + Right
 ######### SELECT HOME, END
-- key: CapsLock + u
+- key: Super_L + u
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+110; xdotool keydown 133'
   #combination: Shift + Home
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Home
-- key: CapsLock + i
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + Home
+- key: Super_L + i
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Shift+115; xdotool keydown 133'
   #combination: Shift + End
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + End
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + End
 ######### FORCED SELECT HOME, END (to start/end of whole page)
-- key: CapsLock + Alt + u
-  #combination: Shift + Ctrl + Home
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Ctrl + Home
-- key: CapsLock + Alt + i
-  #combination: Shift + Ctrl + End
-  actions:
-    - action: combination
-      clearCaps: true
-      combination: Shift + Ctrl + End
+- key: Super_L + Shift_L + u
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+110; xdotool keydown 133'
+#  #combination: Shift + Ctrl + Home
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + Ctrl + Home
+- key: Super_L + Shift_L + i
+  cmd: 'xdotool keyup 133; xdotool key --clearmodifiers Ctrl+Shift+115; xdotool keydown 133'
+#  #combination: Shift + Ctrl + End
+#  actions:
+#    - action: combination
+#      clearCaps: true
+#      combination: Shift + Ctrl + End
 ######### SELECT PAGE UP, PAGE DOWN
-- key: CapsLock + h
+- key: Super_L + h
   #combination: Shift + PgUp
   actions:
     - action: combination
       clearCaps: true
       combination: Shift + PgUp
-- key: CapsLock + n
+- key: Super_L + n
   #combination: Shift + PgDown
   actions:
     - action: combination
