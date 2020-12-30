@@ -97,7 +97,7 @@ bindings:
 - key: Space + Shift_R
   release: true
   cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36; xdotool keydown 65'
-- key: Space + a + Shift_R
+- key: Alt_L + a + Shift_R
   release: true
   cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36 111; xdotool keydown 65'
 
@@ -367,6 +367,9 @@ bindings:
 - key: Alt_L + .
   cmd: xdotool keyup 64; xdotool type ")"; xdotool keydown 64
 
+- key: Space + q
+  release: true
+  cmd: xdotool keyup 65; xdotool type "-"; xdotool keydown 65
 - key: Space + a
   release: true
   cmd: xdotool keyup 65; xdotool type "0"; xdotool keydown 65

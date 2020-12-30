@@ -96,8 +96,8 @@ xkb_keymap {
     # TOP LETTERS ROW
     # q
     key <AD01> {
-        symbols[group1] = [ NoSymbol, NoSymbol, minus, VoidSymbol ],
-        symbols[group2] = [ NoSymbol, NoSymbol, minus, VoidSymbol ]
+        symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
+        symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
     };
     # w
     key <AD02> {
