@@ -13,6 +13,19 @@ Specify config
 
 ## Prepare your system
 
+Install `xcape`
+
+## Install at startup
+
+Make scrips `replace-keyboard.sh`
+
+    #!/usr/bin/env bash
+    xkbcomp $HOME/.config/xkb/my $DISPLAY
+    xmodmap -e "keycode any = space"
+    xcape  -t 200 -e "ISO_Level5_Shift=space"
+    node ~/.local/share/key-freedom/key-freedom.js
+
+After that add it as login script to your system config
 
 ## Build
 

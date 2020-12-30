@@ -6,27 +6,40 @@ xkb_keymap {
 
 	xkb_symbols "my"  {
     include "pc+us+ru:2+inet(evdev)+terminate(ctrl_alt_bksp)"
-    include "level3(alt_switch)"
+    #include "level3(alt_switch)"
 
     name[group1] = "English (US)";
     name[group2] = "Russian";
 
-    ####### MOVE ALT_L TO TILDA
+    ####### MOVE ALT_L TO TILDA AND CTRL_R AS ALT_R
     replace key <TLDE> { [ Alt_L ] };
-    modifier_map Mod1 { <TLDE> };
+    replace key <RCTL> { [ Alt_R ] };
+    modifier_map Mod1 { <TLDE>, <RCTL> };
 
-    replace key <SPCE> { [ space, space, space, space ] };
-
-    key <LCTL> { [ Meta_L ] };
-
+    ####### MAKE CAPS AS CTRL_L AND ALT_R AS CTRL_R
     key <CAPS> { [ Control_L ] };
-    modifier_map Mod2 { <CAPS> };
+    replace key <RALT> { [ Control_R ] };
+    modifier_map Control { <CAPS> };
 
-    key <LWIN> {
-      type[Group1]="ONE_LEVEL",
-      symbols[Group1] = [ ISO_Level3_Shift ]
-    };
-    modifier_map Mod5 { <LVL3> };
+    #modifier_map Control { <CAPS>, <RALT> };
+
+    ####### MAKE SPACE AS LEVEL5 MOD
+    key <SPCE> { [ ISO_Level5_Shift ] };
+    modifier_map Mod5 { <SPCE> };
+
+    #key <LCTL> { [ Meta_L ] };
+
+
+
+    #key <LWIN> {
+    #  type[Group1]="ONE_LEVEL",
+    #  symbols[Group1] = [ ISO_Level3_Shift ]
+    #};
+    #key <SPCE> {
+    #  type[Group1]="ONE_LEVEL",
+    #  symbols[Group1] = [ ISO_Level3_Shift ]
+    #};
+    #modifier_map Mod5 { <LVL3> };
 
 
     ############### REBIND KEYS
