@@ -17,29 +17,24 @@ xkb_keymap {
     modifier_map Mod1 { <TLDE>, <RCTL> };
 
     ####### MAKE CAPS AS CTRL_L AND ALT_R AS CTRL_R
-    key <CAPS> { [ Control_L ] };
+    replace key <CAPS> { [ Control_L ] };
     replace key <RALT> { [ Control_R ] };
-    modifier_map Control { <CAPS> };
-
-    #modifier_map Control { <CAPS>, <RALT> };
+    modifier_map Control { <CAPS>, <RALT> };
 
     ####### MAKE SPACE AS LEVEL5 MOD
-    key <SPCE> { [ ISO_Level5_Shift ] };
-    modifier_map Mod5 { <SPCE> };
+    key <SPCE> {
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    #include "level3(modifier_mapping)"
 
-    #key <LCTL> { [ Meta_L ] };
-
-
-
-    #key <LWIN> {
-    #  type[Group1]="ONE_LEVEL",
-    #  symbols[Group1] = [ ISO_Level3_Shift ]
-    #};
-    #key <SPCE> {
-    #  type[Group1]="ONE_LEVEL",
-    #  symbols[Group1] = [ ISO_Level3_Shift ]
-    #};
-    #modifier_map Mod5 { <LVL3> };
+    key <LALT> {
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level5_Shift ]
+    };
+    include "level5(modifier_mapping)"
+    # use the same modifier map as level3
+    modifier_map Mod5 { <LALT> };
 
 
     ############### REBIND KEYS
