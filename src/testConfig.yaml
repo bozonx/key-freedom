@@ -37,14 +37,14 @@ bindings:
 
 ########### Macroses
 ####### SELECTION BY WHOLE LINE
-- key: Alt_L + CapsLock + j
+- key: Alt_L + a + j
   cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 115 Shift+110; xdotool keydown 64'
   #  actions:
   #    - action: combination
   #      combination: End
   #    - action: combination
   #      combination: Shift + Home
-- key: Alt_L + CapsLock + l
+- key: Alt_L + a + l
   cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 115 Shift+111 Shift+110; xdotool keydown 64'
   #  actions:
   #    - action: combination
@@ -53,7 +53,7 @@ bindings:
   #      combination: Shift + Up
   #    - action: combination
   #      combination: Shift + Home
-- key: Alt_L + CapsLock + k
+- key: Alt_L + a + k
   cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 110 Shift+116 Shift+115; xdotool keydown 64'
   #  actions:
   #    - action: combination
@@ -62,13 +62,19 @@ bindings:
   #      combination: Shift + Down
   #    - action: combination
   #      combination: Shift + End
-- key: Alt_L + CapsLock + Semicolon
+- key: Alt_L + a + Semicolon
   cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 110 Shift+115; xdotool keydown 64'
   #  actions:
   #    - action: combination
   #      combination: Home
   #    - action: combination
   #      combination: Shift + End
+
+####### MOVE LINE OR SELECTION
+- key: Space + a + k
+  cmd: xdotool keyup 65; xdotool key Ctrl+Shift+111; xdotool keydown 65
+- key: Space + a + l
+  cmd: xdotool keyup 65; xdotool key Ctrl+Shift+116; xdotool keydown 65
 
 ####### Enter-like
 # Make new line and move cursor to it
@@ -351,6 +357,10 @@ bindings:
   cmd: xdotool keyup 64; xdotool type "("; xdotool keydown 64
 - key: Alt_L + .
   cmd: xdotool keyup 64; xdotool type ")"; xdotool keydown 64
+
+- key: Space + a
+  release: true
+  cmd: xdotool keyup 65; xdotool type "0"; xdotool keydown 65
 
 ######### DE
 ## konsole
