@@ -14,12 +14,12 @@ xkb_keymap {
     ####### MOVE ALT_L TO TILDA AND CTRL_R AS ALT_R
     replace key <TLDE> { [ Alt_L ] };
     replace key <RCTL> { [ Alt_R ] };
-    modifier_map Mod1 { <TLDE>, <RCTL> };
+    #modifier_map Mod1 { <TLDE>, <RCTL> };
 
     ####### MAKE CAPS AS CTRL_L AND ALT_R AS CTRL_R
     replace key <CAPS> { [ Control_L ] };
     replace key <RALT> { [ Control_R ] };
-    modifier_map Control { <CAPS>, <RALT> };
+    modifier_map Control { <CAPS> };
 
     ####### MAKE SPACE AS LEVEL5 MOD
     key <SPCE> {
@@ -163,8 +163,8 @@ xkb_keymap {
     # HOME ROW
     # a
     key <AC01> {
-        symbols[group1] = [ NoSymbol, NoSymbol, 0, VoidSymbol ],
-        symbols[group2] = [ NoSymbol, NoSymbol, 0, VoidSymbol ]
+        symbols[group1] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ],
+        symbols[group2] = [ NoSymbol, NoSymbol, VoidSymbol, VoidSymbol ]
     };
     # s
     key <AC02> {

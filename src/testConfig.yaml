@@ -88,12 +88,21 @@ bindings:
 # Make new line and return back
 - key: Alt_L + Shift_R
   release: true
-  cmd: 'xdotool keyup 64; xdotool key --clearmodifiers 36 Ctrl+113; xdotool keydown 64'
+  cmd: 'xdotool keyup 64; xdotool key --delay 8 --clearmodifiers 36 Ctrl+113; xdotool keydown 64'
 #  actions:
 #    - action: combination
 #      combination: Enter
 #    - action: combination
 #      combination: Ctrl + Left
+- key: Space + Shift_R
+  release: true
+  cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36; xdotool keydown 65'
+- key: Space + a + Shift_R
+  release: true
+  cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36 111; xdotool keydown 65'
+
+
+
 
 
 ####### Removing
@@ -208,7 +217,7 @@ bindings:
 ######## FORCED ARROWS
 - key: Space + Shift + j
   #combination: Ctrl + Left
-  cmd: 'xdotool key --clearmodifiers Ctrl+113'
+  cmd: 'xdotool keyup 65; xdotool key --clearmodifiers Ctrl+113; xdotool keydown 65'
 - key: Space + Shift + l
   cmd: 'xdotool key --delay 8 --clearmodifiers 111 111 111'
 - key: Space + Shift + k
@@ -216,7 +225,7 @@ bindings:
 #cmd: 'xdotool keyup 66; xdotool key --clearmodifiers 116 116 116; xdotool keydown 66'
 - key: Space + Shift + Semicolon
   #combination: Ctrl + Right
-  cmd: 'xdotool key --clearmodifiers Ctrl+114'
+  cmd: 'xdotool keyup 65; xdotool key --clearmodifiers Ctrl+114; xdotool keydown 65'
 
 ######## HOME, END
 - key: Space + u
