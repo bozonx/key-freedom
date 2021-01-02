@@ -71,9 +71,9 @@ bindings:
   #      combination: Shift + End
 
 ####### MOVE LINE OR SELECTION
-- key: Space + a + k
-  cmd: xdotool keyup 65; xdotool key Ctrl+Shift+111; xdotool keydown 65
 - key: Space + a + l
+  cmd: xdotool keyup 65; xdotool key Ctrl+Shift+111; xdotool keydown 65
+- key: Space + a + k
   cmd: xdotool keyup 65; xdotool key Ctrl+Shift+116; xdotool keydown 65
 
 ####### Enter-like
@@ -368,7 +368,6 @@ bindings:
   cmd: xdotool keyup 64; xdotool type ")"; xdotool keydown 64
 
 - key: Space + q
-  release: true
   cmd: xdotool keyup 65; xdotool type "-"; xdotool keydown 65
 - key: Space + a
   release: true
