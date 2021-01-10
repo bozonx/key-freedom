@@ -94,12 +94,15 @@ bindings:
 #      combination: Enter
 #    - action: combination
 #      combination: Ctrl + Left
+
+# Make a new line above cursor and stay on the old line
 - key: Space + Shift_R
   release: true
   cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36; xdotool keydown 65'
+# Make a new line above cursor and go to the new line
 - key: Alt_L + a + Shift_R
   release: true
-  cmd: 'xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 110 36 111; xdotool keydown 65'
+  cmd: 'xdotool key --delay 8 --clearmodifiers 110 36 111'
 
 
 
