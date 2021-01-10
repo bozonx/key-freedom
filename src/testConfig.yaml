@@ -128,7 +128,7 @@ bindings:
 # Remove whole line
 - key: Ctrl_R + Shift_L
   release: true
-  cmd: 'xdotool key --delay 8 115 Shift+110 119 119'
+  cmd: 'xdotool key --delay 8 --clearmodifiers 115 Shift+110 119 119'
 #  actions:
 #    - action: combination
 #      combination: End
@@ -138,8 +138,6 @@ bindings:
 #      combination: Backspace
 #    - action: combination
 #      combination: Delete
-
-
 
 
 ######## COPY/CUT/PASTE
