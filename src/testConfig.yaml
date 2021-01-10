@@ -14,17 +14,17 @@ bindings:
 - key: CapsLock
   release: true
   combination: Backspace
-- key: Alt_R + CapsLock
+- key: Space + CapsLock
   release: true
-  cmd: 'xdotool keyup 108; xdotool key Ctrl+22; xdotool keydown 108'
+  cmd: 'xdotool key Ctrl+22'
   #combination: Ctrl + Backspace
 
 - key: Shift_L
   release: true
   combination: Delete
-- key: Alt_R + Shift_L
+- key: Space + Shift_L
   release: true
-  cmd: 'xdotool keyup 108; xdotool key Ctrl+119; xdotool keydown 108'
+  cmd: 'xdotool key Ctrl+119'
   #combination: Ctrl + Delete
 
 - key: Shift_R
@@ -104,17 +104,13 @@ bindings:
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers 110 36 111'
 
-
-
-
-
-####### Removing
+####### REMOVING
 # Remove from cursor to the beginning of the line
-- key: Ctrl_R + CapsLock
+- key: Alt_R + CapsLock
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers Shift+110 22'
 # Remove content of the line
-- key: Shift_R + CapsLock
+- key: Ctrl_R + CapsLock
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers 115 Shift+110 22'
 #  actions:
@@ -126,11 +122,11 @@ bindings:
 #      combination: Backspace
 
 # Remove from cursor to the end of the line
-- key: Ctrl_R + Shift_L
+- key: Alt_R + Shift_L
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers Shift+115 119'
 # Remove whole line
-- key: Shift_R + Shift_L
+- key: Ctrl_R + Shift_L
   release: true
   cmd: 'xdotool key --delay 8 115 Shift+110 119 119'
 #  actions:
@@ -146,7 +142,7 @@ bindings:
 
 
 
-
+######## COPY/CUT/PASTE
 # Cut content of line with cutting to the buffer
 - key: Alt_R + Shift + x
   release: true
