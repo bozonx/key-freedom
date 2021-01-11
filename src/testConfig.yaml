@@ -110,7 +110,7 @@ bindings:
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers Shift+110 22'
 # Remove content of the line
-- key: Ctrl_R + CapsLock
+- key: Shift_R + CapsLock
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers 115 Shift+110 22'
 #  actions:
@@ -126,7 +126,7 @@ bindings:
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers Shift+115 119'
 # Remove whole line
-- key: Ctrl_R + Shift_L
+- key: Shift_R + Shift_L
   release: true
   cmd: 'xdotool key --delay 8 --clearmodifiers 115 Shift+110 119 119'
 #  actions:
