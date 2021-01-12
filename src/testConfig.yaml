@@ -353,16 +353,16 @@ bindings:
   cmd: xdotool type '?'
 - key: Alt_L + Slash
 #  cmd: "xdotool keyup 66; xdotool type --clearmodifiers $'\u0021'; xdotool keydown 66"
-  cmd: xdotool keyup 64; xdotool type '!'; xdotool keydown 64
+  cmd: xdotool keyup 64; xdotool type --clearmodifiers '!'; xdotool keydown 64
 
 - key: Space + ,
   cmd: xdotool keyup 65; xdotool type "<"; xdotool keydown 65
 - key: Space + .
   cmd: xdotool keyup 65; xdotool type ">"; xdotool keydown 65
 - key: Alt_L + ,
-  cmd: xdotool keyup 64; xdotool type "("; xdotool keydown 64
+  cmd: xdotool keyup 64; xdotool type --clearmodifiers "("; xdotool keydown 64
 - key: Alt_L + .
-  cmd: xdotool keyup 64; xdotool type ")"; xdotool keydown 64
+  cmd: xdotool keyup 64; xdotool type --clearmodifiers ")"; xdotool keydown 64
 
 - key: Space + q
   cmd: xdotool keyup 65; xdotool type "-"; xdotool keydown 65
