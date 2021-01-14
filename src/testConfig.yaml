@@ -141,10 +141,15 @@ bindings:
 
 
 ######## COPY/CUT/PASTE
-# Cut content of line with cutting to the buffer
-- key: Alt_R + Shift + x
+# Copy whole line to the buffer
+- key: Space + Shift + c
   release: true
-  cmd: 'xdotool keyup 108; xdotool key --clearmodifiers 115 Shift+110 Ctrl+53; xdotool keydown 108'
+  cmd: xdotool key --delay 8 --clearmodifiers 115 Shift+110 Ctrl+54 113
+
+# Cut content of line to the buffer
+- key: Space + Shift + x
+  release: true
+  cmd: xdotool keyup 65; xdotool key --delay 8 --clearmodifiers 115 Shift+110 Ctrl+53; xdotool keydown 65
 #  actions:
 #    - action: combination
 #      combination: End
@@ -152,10 +157,11 @@ bindings:
 #      combination: Shift + Home
 #    - action: combination
 #      combination: Ctrl + x
+
 # Cut line with cutting to the buffer
-- key: Ctrl_R + Shift + x
+- key: Alt_R + Space + x
   release: true
-  cmd: 'xdotool key --clearmodifiers 115 Shift+110 Ctrl+53 119'
+  cmd: xdotool keyup 108; xdotool key --delay 8 --clearmodifiers 115 Shift+110 Ctrl+53 119 119; xdotool keydown 108
 #  actions:
 #    - action: combination
 #      combination: End
@@ -165,11 +171,6 @@ bindings:
 #      combination: Ctrl + x
 #    - action: combination
 #      combination: Delete
-
-# Copy whole line to the buffer
-- key: Alt_R + Shift + c
-  release: true
-  cmd: 'xdotool keyup 108; xdotool key --clearmodifiers 115 Shift+110 Ctrl+54 113; xdotool keydown 108'
 
 # Paste and move to the beginning of the line
 - key: Alt_R + Shift + v

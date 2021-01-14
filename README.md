@@ -36,3 +36,7 @@ After that look up `./build` dir
 ## Debug
 
     yarn start --debug -c ./src/testConfig.yaml
+
+## Fast restart xkbcomp, xmodmap, xcape
+
+    killall -9 xcape; xkbcomp $HOME/.config/xkb/my $DISPLAY && xmodmap -e "keycode any = space" && xcape -t 200 -e "ISO_Level3_Shift=space"
