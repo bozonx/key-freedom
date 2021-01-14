@@ -173,9 +173,9 @@ bindings:
 #      combination: Delete
 
 # Paste and move to the beginning of the line
-- key: Alt_R + Shift + v
+- key: Space + Shift + v
   release: true
-  cmd: 'xdotool keyup 108; xdotool key --clearmodifiers Ctrl+55 110; xdotool keydown 108'
+  cmd: xdotool keyup 65; xdotool key --delay 8 --clearmodifiers Ctrl+55 110; xdotool keydown 65
 
 ## Paste and create a new line
 #- key: Alt_R + Shift + v
